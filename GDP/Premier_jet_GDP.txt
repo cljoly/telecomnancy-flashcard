@@ -1,0 +1,44 @@
+Organisation du travail :
+	- Faire le point sur le sujet, la compréhension par tout le monde et lister les questions --> 1h
+	- Définir les objectifs de la journée :
+		* Besoins fonctionnels définis
+		* Schémas des différentes vues de l'interface
+		* avoir un modèle de base de données défini, et les choix techniques faits.
+		* Définir les objectifs de la semaine (grossiers)
+		* Définir un planning quotidien : Genre faire le point une fois en arrivant, une fois au millieu de matinée, une fois au début d'après midi et une fois avant de partir, 15min max
+		* Première connexion avec la base de donnée en Java (lister les éléments d'une table)
+	- Se fixer certaines questions, les prioriser et rechercher les réponses (qui peuvent être, entre autres) :
+		* Quel outil de gestion de base de données utiliser : Oracle, MySQL, autres ?
+				\-> MySQL est un bon candidat : bonne communauté, bonne intégraton avec Java, Gratuit (Maria DB est une variante créée suite au rachat de MySQL par Oracle, donc tout aussi valide)
+		* Quels outils d'interconnexion avec Java ?
+				\-> JDBC est très connu, documenté et cross-platform (pas d'autres bonnes alternatives)
+		* Quels sont les besoins fonctionnels du logiciel ?
+				\-> Lire des cartes et les réponses
+				\-> Ajouter/Supprimer des cartes
+				\-> Enregistrer des statistiques sur l'utilisation
+				\-> Gestion multi-utilisateur
+				\-> Authentification des utilisateurs
+				\-> Importation des cartes d'autres logiciels
+				\-> Exportation des cartes vers un format importable par d'autres logiciels
+				\-> Bonus: Sessions multi-utilisateurs
+				\-> Bonus: Partage des statistiques
+		* Quels structure technique pour l'interface graphique ? JavaFX suffit-il ?
+	- Une fois les réponses obtenues, il va falloir orienter la reflexion sur le modèle :
+		* Réaliser un modèle entité association, tous ensemble
+				\-> Le limiter à l'essentiel, au pire, prévoir les cases pour les extensions possibles
+				\-> Il faut que tout le monde soit d'accord dessus, mais accepte des concession. Le but est que ça fonctionne. Si c'est pas parfait, et qu'on connait les défauts, c'est pas grave. Si on a le temps, on corrige, sinon, on avance :-)
+		* PRIORISER 
+
+
+Release : juste un git tag
+Faire le point 2 fois par jour mini : le matin pour planif, le soir pour release
+Documentation :
+	* Un document de plannif pour chaque jour (max 1/2 page ?) : objectifs, affectations et méthodes
+	* Un document d'avancement pour chaque jour (max 1/2 page ?) : Résultats, choix à prendre, choses à changer/ajuster
+		\-> Il faut bien différencier la plannif de la release : le premier définit les objectifs, le second fait la validation des travaux, et la réponse aux objectifs (et un peu de polissage si besoin)
+
+	* Chaque fonction publique (et classe) avec de la Javadoc. Pas de détails, mais au moins une phrase pour expliciter la chose.
+	* Un document à part, définissant le fonctionnement global du projet (utilisation, implémentation technique ou juste conception ?)
+		* Si besoin, un document supplémentaire sur l'implémentation technique
+		* Si besoin, documents supplémentaires sur la conception (diagramme de séquence, modèle EA, diagramme de classe)
+		* Ces documents devront être partagés pour que chacun y ai accès, mais il faut régulièrement faire le point sur ce qui a été ajouté (pas forcément durant les meetings officiels)

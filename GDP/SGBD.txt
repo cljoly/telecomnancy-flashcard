@@ -1,0 +1,13 @@
+bdd
+
+Quel SGBD utiliser ?
+MySQL/MariaDB : lourd, complet, gratuit voire open-source + JDBC
+Oracle/SQL Server : lourd, complet, propriétaire voire payant
+PostreSQL, complet, gratuit et open-source + JDBC
+SQLite : Simple, léger, gratuit + JDBC
+H2 : simple, léger, gratuit, fait pour du Java + JDBC
+
+Conclusion : utiliser JDBC permettra de changer le SGBD si besoin, après coup.
+H2 est fait pour Java et est léger (+ recommandation Oster) --> Bon choix à tester
+
+https://db-engines.com/en/system/H2%3BSQLite
