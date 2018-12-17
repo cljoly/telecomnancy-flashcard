@@ -43,8 +43,9 @@ public class App extends Application {
     public static void main(String[] args) {
         try {
             User u1 = new User("lau2do");
-            Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
-            System.out.println(u1.get_deck(d1));
+            Deck d1 = u1.create_deck("Anglais2", "Ne sert à rien");
+            System.out.println(u1.get_deck(d1.getNom()));
+            System.out.println(u1.get_deck("Anglais"));
         } catch (Exception e) {
         }
 

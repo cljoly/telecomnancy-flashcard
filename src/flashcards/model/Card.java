@@ -3,16 +3,19 @@ package flashcards.model;
 import com.j256.ormlite.field.DatabaseField;
 
 public class Card {
+    public static final String RECTO_FIELD_NAME = "recto";
+    public static final String VERSO_FIELD_NAME = "verso";
 
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField
+    @DatabaseField(columnName = RECTO_FIELD_NAME)
     private String recto;
 
-    @DatabaseField
+    @DatabaseField(columnName = VERSO_FIELD_NAME)
     private String verso;
 
+    // TODO Nommer la colonne commme recto & verso
     @DatabaseField
     private boolean reversible;
 

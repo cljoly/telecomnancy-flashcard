@@ -3,11 +3,13 @@ package flashcards.model;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class User {
 
@@ -74,10 +76,12 @@ public class User {
         return d;
     }
 
-    public String get_deck(Deck d) throws SQLException{
-        int dID = deckDao.extractId(d);
-        Deck result = deckDao.queryForId(dID);
-        return result.toString();
+    public Deck get_deck(String deck_name) throws SQLException{
+        QueryBuilder<Deck, Integer> statementBuilder = deckDao.queryBuilder();
+        statementBuilder.where().eq(Deck.NOM_FIELD_NAME, deck_name);
+        Deck result = deckDao.queryForFirst(statementBuilder.prepare());
+
+        return result;
     }
 
 }
