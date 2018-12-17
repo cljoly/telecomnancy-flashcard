@@ -1,0 +1,49 @@
+carte réversible : on implémente mais on n'utilise pas tout de suite
+
+création :
+- une carte :
+    * id : entier
+    * String : recto
+    * String : verso 
+    * boolean : reversible
+
+- éditer son contenu : 
+    * setters et getters pour chaque champs hormis pas de setters pour l'id, sera défini à la création.
+    * id défini par un contenu statique propre à la classe Carte, sera incrémenté à chaque création d'une carte
+
+--> on se garde le fait de traiter des images ou du son pour plus tard
+
+- supprimer une carte :
+    * nécessité que les cartes soient stockées dans une collection : ce sera géré par la base de données, on aura une table qui recensera toutes les cartes
+    * ajout, suppression, modification se feront par des modifications directes dans la base de données.
+    * checker comment la librairie fait le mapping entre les classes et le stockage dans la base de données
+
+- on considère que la pile définie dans le sujet sera chez nous un paquet (en référence à anki) : une classe paquet
+    * id : un entier : la base de données n'a besoin que d'un identifiant unique par table donc ok
+    * nom : un String
+    * une description : un String
+    * id défini statique, à voir si sera géré par la base de données
+    * la collection de cartes ? à savoir si ce sera par la base de données ou si on doit le gérer en Java ?
+    * collection de paquets, même question
+
+- exporter et importer un paquet de cartes : on stockera toutes nos données dans une base de données (SGBD : H2), à voir comment est ce qu'H2 gère sa base de données (un seul fichier ou plusieurs), etc
+
+La gestion des collections est directement faire par la base de données, donc cela simplifie la tâche, pas besoin de créer des collections propres
+
+vues de l'interface : voir photos 
+-> description du premier jet de l'application, sera amené à être amélioré
+
+
+Planning :
+- Lundi : base de données ok, et dans l'IG : structuration de toute l'interface graphique, spécification en même temps
+- Mardi : si IG pas toute finie, la finir. Ajout de cartes via l'IG et consultation des cartes/paquets
+- Mercredi : apprentissage et statistiques : ajout du popup dans l'IG d'apprentissage + coder le prog gérant l'apprentissage (premier point) 
+- Jeudi : deuxième et troisième points du sujet + binôme sur extensions
+- Vendredi : extensions ++
+
+gradle test avec des junit
+
+
+Répartition du travail de lundi :
+- IG : Morgan/Lucas
+- BD : Clément/Laury
