@@ -51,22 +51,30 @@ public class App extends Application {
 
 
     public static void init_database() throws Exception{
+        System.out.println("Init db");
 
         ConnectionSource connectionSource = null;
         try {
+            System.out.println("Src");
             // create our data-source for the database
             connectionSource = new JdbcConnectionSource(DATABASE_URL);
             // setup our database and DAOs
+            System.out.println("Setup");
             setupDatabase(connectionSource);
             // read and write some data
+            System.out.println("ReadWriteMain");
             readWriteData();
             System.out.println("\n\nIt seems to have worked\n\n");
         } catch (Exception e) {
+            System.out.println("EXN");
+            System.out.println(e);
         } finally {
+            System.out.println("Close");
             // destroy the data source which should close underlying connections
             if (connectionSource != null) {
                 connectionSource.close();
             }
+            System.out.println("Closed");
         }
 
     }
@@ -80,6 +88,7 @@ public class App extends Application {
     }
 
     private static void readWriteData() throws Exception {
+        System.out.println("Begin read write");
         // create an instance of Account
         String name = "Jim Coakley";
         Account account = new Account(name);
