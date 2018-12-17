@@ -9,7 +9,7 @@ public class Deck  {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField(columnName = NOM_FIELD_NAME)
+    @DatabaseField(columnName = NOM_FIELD_NAME, unique = true)
     private String nom;
     @DatabaseField(columnName = DESCRIPTION_FIELD_NAME)
     private String  description;
