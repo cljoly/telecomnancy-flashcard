@@ -174,3 +174,4 @@ gradle-app.setting
 
 .idea/encodings.xml
 
+database/*
