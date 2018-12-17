@@ -1,0 +1,24 @@
+@startuml
+
+class Paquet {
+  - int id
+  - String nom
+  - String description
+}
+
+class Carte {
+  - int id /' Unique globalement '/
+  - String recto
+  - String verso
+  - boolean reversible
+  + String getRecto()
+  + String getVerso()
+  + boolean isReversible()
+  + void setRecto(String r)
+  + void setVerso(String v)
+  + void setReversible(boolean b)
+}
+
+Paquet -- "*" Carte
+
+@enduml
