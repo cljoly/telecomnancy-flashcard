@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.FALSE;
 
@@ -39,9 +40,21 @@ public class AddCard
         try {
             user.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
             System.out.println("carte ajoutée");
+            //TODO changer message quand carte ajoutée, embêtant car utilise des threads
         } catch (SQLException e){
             //TODO popup utilisateur
         }
     }
+
+    public void clean_fields(){
+        recto_content.clear();
+        verso_content.clear();
+        non.setSelected(true);
+        //TODO : resest paquet choisi à "aucun"
+
+
+    }
+
+
 
 }

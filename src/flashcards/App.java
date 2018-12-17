@@ -54,7 +54,7 @@ public class App extends Application {
             gameUser.newUser("laurnou");
 
             User u = gameUser.getCurrentUser();
-            System.out.println(u.get_card_recto("Je"));
+            //System.out.println(u.get_card_recto("Je"));
 
             /*User u1 = new User("lau2do");
             Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
