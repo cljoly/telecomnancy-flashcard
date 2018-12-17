@@ -1,6 +1,8 @@
 package flashcards;
 
 
+import flashcards.model.Deck;
+import flashcards.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,11 +42,17 @@ public class App extends Application {
 
     public static void main(String[] args) {
         try {
+            User u1 = new User("lau2do");
+            Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
+            System.out.println(u1.get_deck(d1));
         } catch (Exception e) {
         }
 
         launch(args);
     }
+
+
+
 }
 
 

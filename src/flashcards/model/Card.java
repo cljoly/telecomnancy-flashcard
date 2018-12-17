@@ -53,4 +53,14 @@ public class Card {
     public void setReversible(boolean reversible) {
         this.reversible = reversible;
     }
+
+    public String toString() {
+        StringBuffer r = new StringBuffer();
+        r.append("Recto : ");
+        r.append(this.recto);
+        r.append("\nVerso : ");
+        r.append(this.verso);
+        r.append("\n");
+        return r.toString();
+    }
 }

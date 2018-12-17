@@ -3,7 +3,7 @@ package flashcards.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class Deck {
+public class Deck  {
 
     @DatabaseField(generatedId = true)
     private int id;
@@ -38,4 +38,15 @@ public class Deck {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toString(){
+        StringBuffer r = new StringBuffer();
+        r.append("Nom : ");
+        r.append(this.nom);
+        r.append("\nDescription : ");
+        r.append(this.description);
+        r.append("\n");
+        return r.toString();
+    }
+
 }
