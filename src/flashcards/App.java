@@ -45,18 +45,29 @@ public class App extends Application {
     public static void main(String[] args) {
         try {
             User u1 = new User("lau2do");
-            /*Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
+            Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
             Deck d2 = u1.create_deck("Anglais2", "Ne sert à rien du tout");
             System.out.println(u1.get_deck(d1.getNom()));
             System.out.println(u1.get_deck("Anglais"));
 
+            //Card c1 = u1.create_card("France", "Paris", false);
+            Card c2 = u1.create_card("Islande", "Reykjavic", false);
+            Card c3 = u1.create_card("Australie", "Canberra", false);
+            Card c4 = u1.create_card("Russie", "Moscou", false);
+
+            //u1.add_card2deck(c1, d1);
+            u1.add_card2deck(c2, d1);
+            u1.add_card2deck(c3, d1);
+            u1.add_card2deck(c4, d1);
+
+            System.out.println(u1.get_card_recto("Russie"));
+            System.out.println(u1.get_card_recto("France"));
 
 
-            Card c1 = u1.create_card("Bonjour", "Hello", FALSE);
-            Card c2 = u1.create_card("Miel", "Honey", FALSE);
+            Card c5 = u1.create_card("Miel", "Honey", FALSE);
+            Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
             System.out.println(u1.get_card_recto("Bonjour"));
-            System.out.println(u1.get_card_recto("Miel"));*/
-
+            System.out.println(u1.get_card_recto("Miel"));
 
 
         } catch (Exception e) {
