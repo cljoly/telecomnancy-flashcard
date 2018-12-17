@@ -12,10 +12,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        URL path = getClass().getClassLoader().getResource("AppView.fxml");
+        URL path = getClass().getClassLoader().getResource("PacketSearch.fxml");
         Parent root = FXMLLoader.load(path);
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 800, 700));
         primaryStage.show();
     }
 
