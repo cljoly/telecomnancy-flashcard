@@ -7,9 +7,12 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import javax.management.Query;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.List;
+
+import static java.lang.Boolean.FALSE;
 
 public class User {
 
@@ -91,5 +94,19 @@ public class User {
 
         return result;
     }
+
+    public Card create_card(String recto, String verso, boolean estReversible) throws SQLException {
+        Card c = new Card(recto, verso, FALSE);
+        cardDao.create(c);
+        return c;
+    }
+
+    public Card get_card_recto(String recto_content) throws SQLException {
+        QueryBuilder<Card, Integer> statementBuilder = cardDao.queryBuilder();
+        statementBuilder.where().eq(Card.RECTO_FIELD_NAME, recto_content);
+        Card result = cardDao.queryForFirst(statementBuilder.prepare());
+        return result;
+    }
+
 
 }

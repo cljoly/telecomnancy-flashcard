@@ -1,6 +1,7 @@
 package flashcards;
 
 
+import flashcards.model.Card;
 import flashcards.model.Deck;
 import flashcards.model.User;
 import javafx.application.Application;
@@ -23,6 +24,7 @@ import com.j256.ormlite.stmt.SelectArg;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import static java.lang.Boolean.FALSE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -46,6 +48,11 @@ public class App extends Application {
             Deck d1 = u1.create_deck("Anglais2", "Ne sert à rien");
             System.out.println(u1.get_deck(d1.getNom()));
             System.out.println(u1.get_deck("Anglais"));
+
+
+            System.out.println(u1.get_card_recto("Bonjour"));
+            System.out.println(u1.get_card_recto("Je"));
+
         } catch (Exception e) {
         }
 
