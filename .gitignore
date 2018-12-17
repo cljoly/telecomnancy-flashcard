@@ -204,5 +204,6 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/java
 
 .idea/encodings.xml
+.idea/*
 
 database/*
