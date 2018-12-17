@@ -6,13 +6,13 @@ public class Card {
     public static final String RECTO_FIELD_NAME = "recto";
     public static final String VERSO_FIELD_NAME = "verso";
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, unique = true)
     private int id;
 
-    @DatabaseField(columnName = RECTO_FIELD_NAME)
+    @DatabaseField(columnName = RECTO_FIELD_NAME, unique = true)
     private String recto;
 
-    @DatabaseField(columnName = VERSO_FIELD_NAME)
+    @DatabaseField(columnName = VERSO_FIELD_NAME, unique = true)
     private String verso;
 
     // TODO Nommer la colonne commme recto & verso

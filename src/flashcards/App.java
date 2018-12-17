@@ -45,7 +45,8 @@ public class App extends Application {
     public static void main(String[] args) {
         try {
             User u1 = new User("lau2do");
-            Deck d1 = u1.create_deck("Anglais2", "Ne sert à rien");
+            Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
+            Deck d2 = u1.create_deck("Anglais2", "Ne sert à rien du tout");
             System.out.println(u1.get_deck(d1.getNom()));
             System.out.println(u1.get_deck("Anglais"));
 
@@ -61,6 +62,13 @@ public class App extends Application {
 
             System.out.println(u1.get_card_recto("Russie"));
             System.out.println(u1.get_card_recto("France"));
+
+
+            Card c5 = u1.create_card("Miel", "Honey", FALSE);
+            Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
+            System.out.println(u1.get_card_recto("Bonjour"));
+            System.out.println(u1.get_card_recto("Miel"));
+
 
         } catch (Exception e) {
         }
