@@ -17,6 +17,7 @@ public class User {
     private String DATABASE_URL = "jdbc:h2:file:./database/";
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
+    private Dao<DeckCard, Integer> deckCardDao;
 
     /**
      * Constructeur d'un utilisateur et de sa base de données associée
@@ -52,9 +53,11 @@ public class User {
             System.out.println("Setup");
             this.cardDao = DaoManager.createDao(connectionSource, Card.class);
             this.deckDao = DaoManager.createDao(connectionSource, Deck.class);
+            this.deckCardDao = DaoManager.createDao(connectionSource, DeckCard.class);
 
             TableUtils.createTableIfNotExists(connectionSource, Deck.class);
             TableUtils.createTableIfNotExists(connectionSource, Card.class);
+            TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
 
         } catch (Exception e) {
             System.out.println("EXN");
@@ -68,6 +71,11 @@ public class User {
             System.out.println("Closed");
         }
 
+    }
+
+    public void add_card2deck(Card c, Deck d) throws SQLException {
+        DeckCard dc = new DeckCard(d, c);
+        deckCardDao.create(dc);
     }
 
     public Deck create_deck(String nom, String description) throws SQLException {
