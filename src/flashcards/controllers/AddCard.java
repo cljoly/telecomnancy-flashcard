@@ -44,6 +44,7 @@ public class AddCard
         } catch (SQLException e){
             //TODO popup utilisateur
         }
+        clean_fields();
     }
 
     public void clean_fields(){
