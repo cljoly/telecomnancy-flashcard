@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.AddCard">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -69,12 +71,12 @@
                         <Insets bottom="20.0" left="10.0" top="20.0" />
                      </HBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" text="oui">
+                  <RadioButton fx:id="oui" mnemonicParsing="false" text="oui">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="non">
+                  <RadioButton fx:id="non" mnemonicParsing="false" selected="true" text="non">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </HBox.margin>
@@ -88,7 +90,7 @@
                         <Insets bottom="20.0" left="10.0" right="20.0" top="27.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" promptText="aucun">
+                  <ComboBox fx:id="packet" prefWidth="150.0" promptText="aucun">
                      <HBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </HBox.margin>
@@ -110,7 +112,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="101.0" layoutY="6.0" text="Ajout d'une carte en cours" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" />
+                  <Label fx:id="state" layoutX="101.0" layoutY="6.0" text="Ajout d'une carte en cours" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -119,12 +121,12 @@
                      <children>
                         <AnchorPane prefHeight="64.0" prefWidth="65.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Ajouter" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Button fx:id="ajout" mnemonicParsing="false" text="Ajouter" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="64.0" prefWidth="41.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Button fx:id="annul" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>

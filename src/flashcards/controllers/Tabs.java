@@ -29,8 +29,11 @@ public class Tabs {
 
         URL path;
         path = getClass().getClassLoader().getResource("AddCard.fxml");
-        Parent decks = FXMLLoader.load(path);
-        root.setCenter(decks);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(path);
+        loader.setControllerFactory(iC -> new AddCard());
+        //Parent decks = FXMLLoader.load(path);
+        root.setCenter(loader.load());
     }
 
     public void BTN_BROWSE_ON_ACTION() throws Exception{
