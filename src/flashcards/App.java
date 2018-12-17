@@ -3,6 +3,7 @@ package flashcards;
 
 import flashcards.model.Card;
 import flashcards.model.Deck;
+import flashcards.model.GameUsers;
 import flashcards.model.User;
 import flashcards.controllers.Tabs;
 import javafx.application.Application;
@@ -48,7 +49,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         try {
-            User u1 = new User("lau2do");
+
+            GameUsers gameUser = GameUsers.getInstance();
+            gameUser.newUser("laurnou");
+
+            User u = gameUser.getCurrentUser();
+            System.out.println(u.get_card_recto("Je"));
+
+            /*User u1 = new User("lau2do");
             Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
             Deck d2 = u1.create_deck("Anglais2", "Ne sert à rien du tout");
             System.out.println(u1.get_deck(d1.getNom()));
@@ -71,7 +79,7 @@ public class App extends Application {
             Card c5 = u1.create_card("Miel", "Honey", FALSE);
             Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
             System.out.println(u1.get_card_recto("Bonjour"));
-            System.out.println(u1.get_card_recto("Miel"));
+            System.out.println(u1.get_card_recto("Miel"));*/
 
 
         } catch (Exception e) {
