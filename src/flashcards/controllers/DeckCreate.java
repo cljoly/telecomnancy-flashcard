@@ -3,12 +3,9 @@ package flashcards.controllers;
 import flashcards.model.GameUsers;
 import flashcards.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
-import javafx.stage.Popup;
 
 import java.sql.SQLException;
 
@@ -41,6 +38,8 @@ public class DeckCreate {
         deck_name.clear();
         deck_description.clear();
     }
+
+
 
 
 
