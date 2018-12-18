@@ -60,7 +60,7 @@ public class Tabs {
      * @throws Exception
      */
     public void BTN_STATS_ON_ACTION(){
-        System.out.println("Stats");
+        System.out.println("UserStats");
     }
     /**
      * Réaction au clic sur un bouton permettant d'afficher l'onglet de création de pacquets

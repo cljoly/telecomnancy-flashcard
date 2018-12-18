@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.TestCardVerso">
+   <children>
+      <VBox layoutX="427.0" layoutY="61.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <VBox prefHeight="250.0" prefWidth="100.0">
+               <children>
+                  <Label text="Recto :" underline="true" />
+                  <Label fx:id="lbl_test_card_verso_a" alignment="CENTER" contentDisplay="CENTER" prefHeight="250.0" prefWidth="1040.0" text="Recto" />
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+            <VBox prefHeight="250.0" prefWidth="100.0">
+               <children>
+                  <Label text="Verso :" underline="true" />
+                  <Label fx:id="lbl_test_card_verso_b" alignment="CENTER" prefHeight="250.0" prefWidth="1040.0" text="Verso" />
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btn_test_card_verso_frown" graphicTextGap="0.0" mnemonicParsing="false" onAction="#btn_test_card_verso_frown_on_action">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/interface/img/Frown.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="btn_test_card_verso_neutral" mnemonicParsing="false" onAction="#btn_test_card_verso_neutral_on_action">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/interface/img/Neutral.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btn_test_card_verso_smile" mnemonicParsing="false" onAction="#btn_test_card_verso_smile_on_action">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/interface/img/Smile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
