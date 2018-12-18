@@ -11,6 +11,9 @@ test:
 jar:
   script:
   - gradle jar
+  artifacts:
+    paths:
+    - build/libs/
 
 javadoc:
   script:
