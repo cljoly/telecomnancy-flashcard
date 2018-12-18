@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.AddCard">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.AddCard">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -43,11 +43,11 @@
                         <Insets bottom="20.0" left="10.0" right="20.0" top="25.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextArea prefHeight="200.0" prefWidth="980.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </HBox.margin>
-                  </TextField>
+                  </TextArea>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -57,11 +57,11 @@
                         <Insets bottom="20.0" left="10.0" right="20.0" top="25.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextArea prefHeight="200.0" prefWidth="980.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </HBox.margin>
-                  </TextField>
+                  </TextArea>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -112,17 +112,20 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="state" layoutX="101.0" layoutY="6.0" text="Ajout d'une carte en cours" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" />
+                  <Label fx:id="state" layoutX="101.0" layoutY="6.0" text="Ajout d'une carte en cours" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <HBox layoutX="167.0" prefHeight="30.0" prefWidth="133.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0">
+                  <HBox layoutX="167.0" prefHeight="30.0" prefWidth="133.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <children>
                         <AnchorPane prefHeight="64.0" prefWidth="65.0">
                            <children>
                               <Button fx:id="ajout" mnemonicParsing="false" text="Ajouter" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </AnchorPane>
                         <AnchorPane prefHeight="64.0" prefWidth="41.0">
                            <children>

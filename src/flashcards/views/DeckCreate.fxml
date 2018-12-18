@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckCreate">
+<AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckCreate">
    <children>
       <GridPane layoutX="185.0" layoutY="135.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -43,7 +43,7 @@
                               <Insets left="20.0" right="30.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="445.0" />
+                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="945.0" />
                      </children>
                   </HBox>
                </center>
@@ -54,7 +54,7 @@
                      <HBox.margin>
                         <Insets left="20.0" right="30.0" />
                      </HBox.margin></Label>
-                  <TextArea prefHeight="110.0" prefWidth="400.0">
+                  <TextArea prefHeight="110.0" prefWidth="900.0">
                      <HBox.margin>
                         <Insets bottom="20.0" />
                      </HBox.margin>

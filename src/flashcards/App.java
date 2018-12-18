@@ -41,7 +41,8 @@ public class App extends Application {
         root.setCenter(decks);
 
         primaryStage.setTitle("Memscarlo");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
     }
 
