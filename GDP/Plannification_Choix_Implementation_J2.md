@@ -91,3 +91,4 @@ cours, sur une branche parallèle, en dehors de la release du jour.
 
 - Clément : implémentation des ajouts & suppression de carte et de paquet
 - Clément & Lucas : ajout des fonctions de génération de donnée pour l’affichage
+- Laury : faire apparaitre dans l'onglet d'accueil tous les paquets présents dans la base de données
