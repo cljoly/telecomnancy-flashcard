@@ -6,8 +6,8 @@
 
 - Création d'une carte :
     * id : entier
-    * String : recto
-    * String : verso
+    * String : recto (doit être unique pour toutes les cartes)
+    * String : verso (doit être unique pour toutes les cartes)
     * boolean : reversible
 
 - Éditer le contenu d'une carte :
@@ -23,7 +23,7 @@
 
 - on considère que la pile définie dans le sujet sera chez nous un paquet (en référence à anki) : une classe paquet
     * id : un entier : la base de données n'a besoin que d'un identifiant unique par table donc ok
-    * nom : un String
+    * nom : un String (doit être unique pour tous les paquets)
     * une description : un String
     * id sera défini et géré par la base de données
     * la collection de cartes ? à savoir si ce sera par la base de données ou si on doit le gérer en Java ? --> on le gère avec la base de données directement
