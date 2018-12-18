@@ -3,6 +3,7 @@ package flashcards.model;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -70,7 +71,9 @@ public class User {
             TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
 
         } catch (Exception e) {
-            System.out.println("EXN");
+            System.out.println("==========================");
+            System.out.println("==========  EXN ==========");
+            System.out.println("==========================");
             System.out.println(e);
         } finally {
             System.out.println("Close");
@@ -148,5 +151,27 @@ public class User {
         return result;
     }
 
+    /**
+     * Renvoie la liste (éventuellement vide) des cartes associées à un paquet. On peut récupérer l’objet Deck avec
+     * @link get_deck.
+     * @param d Paquet dont on cheche les cartes
+     * @return Cartes associées
+     */
+    public List<Card> get_card_from_deck(Deck d) throws SQLException {
+        QueryBuilder<DeckCard, Integer> deckCardQb = deckCardDao.queryBuilder();
+        deckCardQb.selectColumns(DeckCard.CARD_ID_FIELD_NAME);
+        deckCardQb.where().eq(DeckCard.DECK_ID_FIELD_NAME, d.getId());
+        deckCardQb.prepare();
+
+        QueryBuilder<Card, Integer> cardQb = cardDao.queryBuilder();
+        cardQb.where().in(Card.ID_FIELD_NAME, deckCardQb);
+        try { cardQb.prepare(); }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        PreparedQuery<Card> prepare = cardQb.prepare();
+        List<Card> q = cardDao.query(prepare);
+        return q;
+    }
 
 }

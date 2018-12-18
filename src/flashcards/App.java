@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 
 import static java.lang.Boolean.FALSE;
 
@@ -55,6 +56,38 @@ public class App extends Application {
             gameUser.newUser("laurnou");
 
             User u = gameUser.getCurrentUser();
+
+            Deck d1 = u.create_deck("Capitales eu", "Espace Économique Européen sert à rien");
+            Deck d2 = u.create_deck("Capitales monde", "Reste du monde");
+
+            Card c1 = u.create_card("France", "Paris", false);
+            Card c2 = u.create_card("Islande", "Reykjavic", false);
+            Card c3 = u.create_card("Australie", "Canberra", false);
+            Card c4 = u.create_card("Russie", "Moscou", false);
+            Card c5 = u.create_card("Thailande", "Bangkoq", false);
+
+            u.add_card2deck(c1, d1);
+            u.add_card2deck(c2, d1);
+
+            u.add_card2deck(c3, d2);
+            u.add_card2deck(c4, d2);
+            u.add_card2deck(c5, d2);
+
+            System.out.println("---------------------------------------------");
+            System.out.println("---------------------------------------------");
+            System.out.println("Paquet 1");
+            List<Card> lc1 = u.get_card_from_deck(d1);
+            System.out.println("[]: "+ lc1);
+            for (Card c : lc1) {
+                System.out.println(c);
+            }
+            System.out.println("---------------------------------------------");
+            System.out.println("Paquet 2");
+            for (Card c : u.get_card_from_deck(d2)) {
+                System.out.println(c);
+            }
+            System.out.println("---------------------------------------------");
+
             //System.out.println(u.get_card_recto("Je"));
 
             /*User u1 = new User("lau2do");
@@ -63,7 +96,7 @@ public class App extends Application {
             System.out.println(u1.get_deck(d1.getNom()));
             System.out.println(u1.get_deck("Anglais"));
 
-            //Card c1 = u1.create_card("France", "Paris", false);
+            Card c1 = u1.create_card("France", "Paris", false);
             Card c2 = u1.create_card("Islande", "Reykjavic", false);
             Card c3 = u1.create_card("Australie", "Canberra", false);
             Card c4 = u1.create_card("Russie", "Moscou", false);
