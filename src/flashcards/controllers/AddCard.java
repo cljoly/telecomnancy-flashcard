@@ -1,19 +1,25 @@
 package flashcards.controllers;
 
+import flashcards.model.Card;
+import flashcards.model.Deck;
 import flashcards.model.GameUsers;
 import flashcards.model.User;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.FALSE;
 
-public class AddCard
-{
+public class AddCard implements Initializable{
     @FXML
-    private Label state;
+    private Label card_create_msg;
     @FXML
     private RadioButton oui;
     @FXML
@@ -27,24 +33,39 @@ public class AddCard
     @FXML
     private TextArea verso_content;
     @FXML
-    ToggleGroup reverse;
+    private ToggleGroup reverse;
+    @FXML
+    private ComboBox<String> paquets;
+
+    private GameUsers g;
+    private User currentUser;
+    private List<Deck> listOfAllDecks;
 
     public AddCard()
     {
-        //final ToggleGroup group = new ToggleGroup();
+
+
+        //ajouter tous les decks au combobox
+        //TODO : voir si l'instanciation dans le constructeur permet la MAJ lors de l'ajout d'un paquet, si non : faire autre part
+
+
+
     }
 
     public void createCard(){
-        GameUsers g = GameUsers.getInstance();
-        User user = g.getCurrentUser();
+
         try {
-            user.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
+            Card c = this.currentUser.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
+            String nom_deck = paquets.getSelectionModel().getSelectedItem();
+            Deck d = this.currentUser.get_deck(nom_deck);
+            this.currentUser.add_card2deck(c, d);
             System.out.println("carte ajoutée");
-            //TODO changer message quand carte ajoutée, embêtant car utilise des threads
+            String msg = ("Recto : \n" + recto_content.getText() + "\n\nVerso : \n" +verso_content.getText());
+            new DispSuccessPopup("La carte a été ajoutée avec succès", msg);
+            clean_fields();
         } catch (SQLException e){
-            //TODO popup utilisateur
+            new DispErrorPopup("Erreur de création de la carte", "Une carte déjà existante comporte les mêmes informations, soit dans son recto, soit dans son verso. Sa création est donc impossible.");
         }
-        clean_fields();
     }
 
     public void clean_fields(){
@@ -56,6 +77,18 @@ public class AddCard
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.g = GameUsers.getInstance();
+        this.currentUser = this.g.getCurrentUser();
 
-
+        try{
+            this.listOfAllDecks = this.currentUser.get_all_decks();
+            for (Deck d : this.listOfAllDecks){
+                System.out.println(d.getNom());
+                paquets.getItems().addAll(d.getNom());
+            }
+        } catch (SQLException e){}
+        //paquets.getItems().setAll("Aucun");
+    }
 }
