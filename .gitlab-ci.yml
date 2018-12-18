@@ -1,10 +1,20 @@
 image: gradle:latest
 
-stages:
-  - build
-  # - test
-
 build:
-  stage: build
   script:
     - gradle build
+
+test:
+  script:
+  - gradle test
+
+jar:
+  script:
+  - gradle jar
+  artifacts:
+    paths:
+    - build/libs/
+
+javadoc:
+  script:
+  - gradle javadoc
