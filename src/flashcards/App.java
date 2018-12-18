@@ -91,6 +91,8 @@ public class App extends Application {
             }
             System.out.println("---------------------------------------------");
 
+            System.out.println(u.get_all_decks());
+
             //System.out.println(u.get_card_recto("Je"));
 
             /*User u1 = new User("lau2do");

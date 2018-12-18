@@ -111,6 +111,15 @@ public class User {
     }
 
     /**
+     * Liste l’ensemble des paquets contenus dans la base de donnée
+     * @return Liste des paquets
+     */
+    public List<Deck> get_all_decks() throws SQLException {
+        QueryBuilder<Deck, Integer> deckQb = deckDao.queryBuilder();
+        return deckDao.query(deckQb.prepare());
+    }
+
+    /**
      * Accéder à un paquet enregistre dans la base de donnée, par son nom
      * @param deck_name Nom du paquet
      * @return Premier (et unique) paquet correspondant
