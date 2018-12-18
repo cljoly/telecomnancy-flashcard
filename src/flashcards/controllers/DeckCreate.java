@@ -3,9 +3,12 @@ package flashcards.controllers;
 import flashcards.model.GameUsers;
 import flashcards.model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Region;
+import javafx.stage.Popup;
 
 import java.sql.SQLException;
 
@@ -27,10 +30,11 @@ public class DeckCreate {
             user.create_deck(deck_name.getText(), deck_description.getText());
             System.out.println("Paquet créé et ajouté à la BD");
             deck_create_msg.setText("Paquet \"" + deck_name.getText() + "\" créé avec succès !");
+            clean_fields();
         } catch (SQLException e){
-            //TODO popup utilisateur
+            deck_create_msg.setText("Erreur de création du paquet");
+            disp_popup_error("Erreur de création du paquet", "Un paquet déjà existant porte le même nom, sa création est donc impossible");
         }
-        clean_fields();
     }
 
 
@@ -40,6 +44,13 @@ public class DeckCreate {
     }
 
 
-
+    public void disp_popup_error(String titre, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fenêtre d'erreur");
+        alert.setHeaderText(titre);
+        alert.setContentText(message);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.showAndWait();
+    }
 
 }
