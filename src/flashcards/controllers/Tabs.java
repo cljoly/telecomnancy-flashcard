@@ -57,7 +57,6 @@ public class Tabs {
     }
     /**
      * Réaction au clic sur un bouton permettant d'afficher l'onglet de présentation des statistiques
-     * @throws Exception
      */
     public void BTN_STATS_ON_ACTION(){
         System.out.println("Stats");
