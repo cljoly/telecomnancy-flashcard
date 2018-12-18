@@ -5,8 +5,9 @@ import com.j256.ormlite.field.DatabaseField;
 public class Card {
     public static final String RECTO_FIELD_NAME = "recto";
     public static final String VERSO_FIELD_NAME = "verso";
+    public final static String ID_FIELD_NAME = "card_id";
 
-    @DatabaseField(generatedId = true, unique = true)
+    @DatabaseField(generatedId = true, unique = true, columnName = ID_FIELD_NAME)
     private int id;
 
     @DatabaseField(columnName = RECTO_FIELD_NAME, unique = true)
@@ -15,7 +16,6 @@ public class Card {
     @DatabaseField(columnName = VERSO_FIELD_NAME, unique = true)
     private String verso;
 
-    // TODO Nommer la colonne commme recto & verso
     @DatabaseField
     private boolean reversible;
 

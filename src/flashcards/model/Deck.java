@@ -6,8 +6,9 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Deck  {
     public static final String NOM_FIELD_NAME = "nom";
     public static final String DESCRIPTION_FIELD_NAME = "description";
+    public final static String ID_FIELD_NAME = "deck_id";
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, columnName = ID_FIELD_NAME)
     private int id;
     @DatabaseField(columnName = NOM_FIELD_NAME, unique = true)
     private String nom;

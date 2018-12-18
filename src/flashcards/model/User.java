@@ -3,6 +3,7 @@ package flashcards.model;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -70,7 +71,9 @@ public class User {
             TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
 
         } catch (Exception e) {
-            System.out.println("EXN");
+            System.out.println("==========================");
+            System.out.println("==========  EXN ==========");
+            System.out.println("==========================");
             System.out.println(e);
         } finally {
             System.out.println("Close");
@@ -105,6 +108,15 @@ public class User {
         Deck d = new Deck(nom, description);
         deckDao.create(d);
         return d;
+    }
+
+    /**
+     * Liste l’ensemble des paquets contenus dans la base de donnée
+     * @return Liste des paquets
+     */
+    public List<Deck> get_all_decks() throws SQLException {
+        QueryBuilder<Deck, Integer> deckQb = deckDao.queryBuilder();
+        return deckDao.query(deckQb.prepare());
     }
 
     /**
@@ -148,5 +160,42 @@ public class User {
         return result;
     }
 
+    /**
+     * Renvoie la liste (éventuellement vide) des cartes associées à un paquet. On peut récupérer l’objet Deck avec
+     * @link get_deck.
+     * @param d Paquet dont on cheche les cartes
+     * @return Cartes associées
+     */
+    public List<Card> get_card_from_deck(Deck d) throws SQLException {
+        QueryBuilder<DeckCard, Integer> deckCardQb = deckCardDao.queryBuilder();
+        deckCardQb.selectColumns(DeckCard.CARD_ID_FIELD_NAME);
+        deckCardQb.where().eq(DeckCard.DECK_ID_FIELD_NAME, d.getId());
+        deckCardQb.prepare();
+
+        QueryBuilder<Card, Integer> cardQb = cardDao.queryBuilder();
+        cardQb.where().in(Card.ID_FIELD_NAME, deckCardQb);
+        PreparedQuery<Card> prepare = cardQb.prepare();
+        List<Card> q = cardDao.query(prepare);
+        return q;
+    }
+
+    /**
+     * Renvoie la liste (éventuellement vide) des paquets associés à une carte. On peut récupérer l’objet Deck avec
+     * @link get_recto.
+     * @param c Carte dont on cheche le paquet
+     * @return Paquet associés
+     */
+    public List<Deck> get_deck_from_card(Card c) throws SQLException {
+        QueryBuilder<DeckCard, Integer> deckCardQb = deckCardDao.queryBuilder();
+        deckCardQb.selectColumns(DeckCard.DECK_ID_FIELD_NAME);
+        deckCardQb.where().eq(DeckCard.CARD_ID_FIELD_NAME, c.getId());
+        deckCardQb.prepare();
+
+        QueryBuilder<Deck, Integer> deckQb = deckDao.queryBuilder();
+        deckQb.where().in(Deck.ID_FIELD_NAME, deckCardQb);
+        PreparedQuery<Deck> prepare = deckQb.prepare();
+        List<Deck> q = deckDao.query(prepare);
+        return q;
+    }
 
 }
