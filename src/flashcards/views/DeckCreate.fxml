@@ -72,7 +72,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
                         <Button mnemonicParsing="false" text="Valider" onAction="#createDeck"/>
-                        <Button mnemonicParsing="false" text="Annuler" />
+                        <Button mnemonicParsing="false" text="Annuler" onAction="#clean_fields"/>
                      </children>
                   </HBox>
                   <Label text="Statut de la création" />
