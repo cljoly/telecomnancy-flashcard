@@ -36,5 +36,10 @@ Lorsque l'utilisateur cliquera sur l'un des trois émojis reflétant de la diffi
 
 ## Synthèse sur le choix des algorithmes d'apprentissage :
 
-//TODO Morgan
+Un algorithme permattant un apprentissage efficace est l'utilisation du système de Leitner. Dans ce système, on range les cartes par groupes, le groupe est déterminé par la connaissance des cartes. Il y a un nombre arbitraire de groupe et en fonction du groupe d'une carte, cette dernière est répétée à des intervalles plus ou moins réguliers.
+
+Un autre algorithme nomé *SuperMemo* permet de déterminer le temps qu'il faut avant de répéter une carte en fonction du nombre de fois qu'elle a déjà été répétée et du facteur de difficulté de la carte, à savoir, avec quelle difficulté l'utilisateur a répondu à la question d'une carte.
+
+Dans le cadre de notre projet, une combinaison des deux méthodes est intéressante à implémenter puisque la première permet de déterminer quelles cartes il faut afficher en priorité et la seconde permet de déterminer des intervalles de temps à partir desquels on peut commencer à faire apparaître à nouveau une carte.
+
 
