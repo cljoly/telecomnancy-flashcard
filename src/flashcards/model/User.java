@@ -206,4 +206,8 @@ public class User {
     public void setMark(Card c, int v) {
         c.setMark(v);
     }
+
+    public CardStates getState(Card c) { return c.getState(); }
+
+    public void setState(Card c, CardStates cs) { c.setState(cs); }
 }
