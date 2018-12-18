@@ -38,11 +38,18 @@ public class User {
 
     }
 
+    /**
+     * Getter username
+     * @return Nom de l’utilisateur courant (supposé unique)
+     */
     public String getUsername() {
         return username;
     }
 
-
+    /**
+     * Unitialisation de la base de donnée (création du fichier, des tables, des Dao)
+     * @throws Exception
+     */
     private void db_init()throws Exception{
         System.out.println("Init db");
 
@@ -76,17 +83,36 @@ public class User {
 
     }
 
+    /**
+     * Ajout d’une carte à un paquet dans la base de donnée
+     * @param c Carte à ajouter
+     * @param d Paquet cible
+     * @throws SQLException
+     */
     public void add_card2deck(Card c, Deck d) throws SQLException {
         DeckCard dc = new DeckCard(d, c);
         deckCardDao.create(dc);
     }
 
+    /**
+     * Crée un nouveau paquet dans la base de donnée
+     * @param nom Nom du paquet (doit être unique)
+     * @param description Descrption du paquet
+     * @return Nouveau paquet créee
+     * @throws SQLException En cas de problème avec la base de donnée (nom non unique ou autre)
+     */
     public Deck create_deck(String nom, String description) throws SQLException {
         Deck d = new Deck(nom, description);
         deckDao.create(d);
         return d;
     }
 
+    /**
+     * Accéder à un paquet enregistre dans la base de donnée, par son nom
+     * @param recto_content Nom du paquet
+     * @return Premier (et unique) paquet correspondant
+     * @throws SQLException
+     */
     public Deck get_deck(String deck_name) throws SQLException{
         QueryBuilder<Deck, Integer> statementBuilder = deckDao.queryBuilder();
         statementBuilder.where().eq(Deck.NOM_FIELD_NAME, deck_name);
@@ -95,12 +121,26 @@ public class User {
         return result;
     }
 
+    /**
+     * Crée une nouvelle carte dans la base de donnée
+     * @param recto Recto de la carte (doit être unique)
+     * @param verso Verso de la carte (doit être unique)
+     * @param estReversible La carte est-elle réversible ?
+     * @return Nouvelle carte créee
+     * @throws SQLException En cas de problème avec la base de donnée (recto/verso non unique ou autre)
+     */
     public Card create_card(String recto, String verso, boolean estReversible) throws SQLException {
         Card c = new Card(recto, verso, FALSE);
         cardDao.create(c);
         return c;
     }
 
+    /**
+     * Accéder à une carte enregistrée dans la base de donnée, par son recto
+     * @param recto_content Recto de la carte
+     * @return Première (et unique) carte correspondante
+     * @throws SQLException
+     */
     public Card get_card_recto(String recto_content) throws SQLException {
         QueryBuilder<Card, Integer> statementBuilder = cardDao.queryBuilder();
         statementBuilder.where().eq(Card.RECTO_FIELD_NAME, recto_content);
