@@ -116,7 +116,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="state" layoutX="101.0" layoutY="6.0" text="Ajout d'une carte en cours" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+                  <Label fx:id="state" layoutX="101.0" layoutY="6.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">

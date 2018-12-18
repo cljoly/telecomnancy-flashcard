@@ -13,7 +13,7 @@ import static java.lang.Boolean.FALSE;
 public class AddCard
 {
     @FXML
-    private Label state;
+    private Label card_create_msg;
     @FXML
     private RadioButton oui;
     @FXML
@@ -40,11 +40,12 @@ public class AddCard
         try {
             user.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
             System.out.println("carte ajoutée");
-            //TODO changer message quand carte ajoutée, embêtant car utilise des threads
+            String msg = ("Recto : \n" + recto_content.getText() + "\n\nVerso : \n" +verso_content.getText());
+            new DispSuccessPopup("La carte a été ajoutée avec succès", msg);
+            clean_fields();
         } catch (SQLException e){
-            //TODO popup utilisateur
+            new DispErrorPopup("Erreur de création de la carte", "Une carte déjà existante comporte les mêmes informations, soit dans son recto, soit dans son verso. Sa création est donc impossible.");
         }
-        clean_fields();
     }
 
     public void clean_fields(){
