@@ -15,6 +15,10 @@ public class Tabs {
         this.root = root;
     }
 
+    /**
+     * Réaction au clic sur un bouton permettant d'afficher l'onglet de présentations des paquets
+     * @throws Exception
+     */
     public void BTN_DECKS_ON_ACTION() throws Exception{
         System.out.println("decks");
 
@@ -24,6 +28,10 @@ public class Tabs {
         root.setCenter(decks);
     }
 
+    /**
+     * Réaction au clic sur un bouton permettant d'afficher l'onglet d'ajout d'une nouvelle cartes
+     * @throws Exception
+     */
     public void BTN_ADD_ON_ACTION() throws Exception{
         System.out.println("Add card");
 
@@ -35,7 +43,10 @@ public class Tabs {
         //Parent decks = FXMLLoader.load(path);
         root.setCenter(loader.load());
     }
-
+    /**
+     * Réaction au clic sur un bouton permettant d'afficher l'onglet de la recherche de cartes
+     * @throws Exception
+     */
     public void BTN_BROWSE_ON_ACTION() throws Exception{
         System.out.println("Browse decks");
 
@@ -44,11 +55,17 @@ public class Tabs {
         Parent decks = FXMLLoader.load(path);
         root.setCenter(decks);
     }
-
+    /**
+     * Réaction au clic sur un bouton permettant d'afficher l'onglet de présentation des statistiques
+     * @throws Exception
+     */
     public void BTN_STATS_ON_ACTION(){
         System.out.println("Stats");
     }
-
+    /**
+     * Réaction au clic sur un bouton permettant d'afficher l'onglet de création de pacquets
+     * @throws Exception
+     */
     public void BTN_CREATE_DECK_ON_ACTION() throws Exception{
         System.out.println("Create deck");
 
