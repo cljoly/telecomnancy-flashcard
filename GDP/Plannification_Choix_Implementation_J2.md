@@ -45,8 +45,9 @@ Dans le cadre de notre projet, une combinaison des deux méthodes est intéressa
 ## Affichage des statistiques
 
 Affichage de différentes données utilisateur:
- Diagramme en barres (Histograme) du nombre et de la date des cartes visitées
- Diagramme circulaire des types de cartes dans la collection (Non vue, jeune/en apprentissage, mature)
+
+- Diagramme en barres (Histograme) du nombre et de la date des cartes visitées
+- Diagramme circulaire des types de cartes dans la collection (Non vue, jeune/en apprentissage, mature)
 
 Charts in jfx:
 https://docs.oracle.com/javafx/2/charts/chart-overview.htm
