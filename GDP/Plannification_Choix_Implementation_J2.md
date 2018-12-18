@@ -1,4 +1,4 @@
-#Jour 2 : spécification et choix d'implémentation
+# Jour 2 : spécification et choix d'implémentation
 
 ## Scrum matinal : 
 Nous avons fait le point sur le travail qui avait été fait hier soir. La JavaDoc du code créé est complète. Un premier lien entre la base de données a été effectué. La spécification d'hier soir a été terminée.
@@ -54,3 +54,40 @@ https://docs.oracle.com/javafx/2/charts/chart-overview.htm
 
 
 
+## Bilan de la journée
+
+Nous n’avons pas pas avancé aussi rapidement que nous l’escontions dans le
+planning prévisionnel.
+
+### Spécification
+
+Toutes les spécifications prévues ont discutées et établies. La façon dont il
+fallait faire persister l’apprentissage a fait débat.
+
+### Partie graphique
+
+La taille des fenêtres a été corrigée
+
+Les vues concerant l’apprentissage ont été créées et le lien entre le modèle et
+les vues (écriture des contrôleur) a été presque achevée. Des difficultés avec
+l’utilisations de Combobox ont ralenties le processus, mais elles ont été
+surmontées.
+
+### Dialogue avec la base de donnée
+
+L’assocation carte paquet est parfaitement fonctionnelle.
+
+Les fonctions utiles ont été ajoutées, même si certaines d’entres elles restent à écrires.
+
+### Algorithme de recommandation & statistiques
+
+La visualisation des statistiques et les informations à afficher ont été
+spécifiés, mais l’implémentation est encore très partielle
+
+L’algorithme de recommandation a été spécifié et une implémentation est en
+cours, sur une branche parallèle, en dehors de la release du jour.
+
+## À faire pour mercredi, jour 3 de la *coding week*
+
+- Clément : implémentation des ajouts & suppression de carte et de paquet
+- Clément & Lucas : ajout des fonctions de génération de donnée pour l’affichage
