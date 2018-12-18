@@ -165,12 +165,27 @@ public class User {
 
         QueryBuilder<Card, Integer> cardQb = cardDao.queryBuilder();
         cardQb.where().in(Card.ID_FIELD_NAME, deckCardQb);
-        try { cardQb.prepare(); }
-        catch (Exception e) {
-            System.out.println(e);
-        }
         PreparedQuery<Card> prepare = cardQb.prepare();
         List<Card> q = cardDao.query(prepare);
+        return q;
+    }
+
+    /**
+     * Renvoie la liste (éventuellement vide) des paquets associés à une carte. On peut récupérer l’objet Deck avec
+     * @link get_recto.
+     * @param c Carte dont on cheche le paquet
+     * @return Paquet associés
+     */
+    public List<Deck> get_deck_from_card(Card c) throws SQLException {
+        QueryBuilder<DeckCard, Integer> deckCardQb = deckCardDao.queryBuilder();
+        deckCardQb.selectColumns(DeckCard.DECK_ID_FIELD_NAME);
+        deckCardQb.where().eq(DeckCard.CARD_ID_FIELD_NAME, c.getId());
+        deckCardQb.prepare();
+
+        QueryBuilder<Deck, Integer> deckQb = deckDao.queryBuilder();
+        deckQb.where().in(Deck.ID_FIELD_NAME, deckCardQb);
+        PreparedQuery<Deck> prepare = deckQb.prepare();
+        List<Deck> q = deckDao.query(prepare);
         return q;
     }
 
