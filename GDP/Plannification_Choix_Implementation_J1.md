@@ -34,6 +34,12 @@
 
 La gestion des collections est directement faire par la base de données, donc cela simplifie la tâche, pas besoin de créer des collections propres
 
+### Diagramme de classe
+
+On a créé le diagramme de classe suivant à partir de ce qui précède :
+
+![Diagramme de classe](diag_classe.png)
+
 ## Vues de l'interface :
 
 Voici nos conceptions de l'interface concernant respectivement la page d'accueil :
