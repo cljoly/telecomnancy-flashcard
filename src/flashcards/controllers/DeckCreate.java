@@ -26,7 +26,8 @@ public class DeckCreate {
         try {
             user.create_deck(deck_name.getText(), deck_description.getText());
             System.out.println("Paquet créé et ajouté à la BD");
-            deck_create_msg.setText("Paquet \"" + deck_name.getText() + "\" créé avec succès !");
+            String content = ("Nom : " + deck_name.getText() + "\n\nDescription : \n" + deck_description.getText());
+            new DispSuccessPopup("Paquet créé avec succès", content);
             clean_fields();
         } catch (SQLException e){
             new DispErrorPopup("Erreur de création du paquet", "Un paquet déjà existant porte le même nom, sa création est donc impossible");
