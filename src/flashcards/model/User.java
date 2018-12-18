@@ -203,7 +203,7 @@ public class User {
      * @param c La carte dont on modifie la note
      * @param v La nouvelle valeur de note de la carte
      */
-    public void setMark(Card c, int v) {
+    public void setMark(Card c, int v) throws SQLException{
         c.setMark(v);
         cardDao.update(c);
     }
@@ -222,7 +222,7 @@ public class User {
      * @param c Carte à modifier
      * @param cs État de la crate à modifier
      */
-    public void setState(Card c, CardStates cs) {
+    public void setState(Card c, CardStates cs) throws SQLException {
         c.setState(cs);
         cardDao.update(c);
     }

@@ -1,10 +1,7 @@
 package flashcards;
 
 
-import flashcards.model.Card;
-import flashcards.model.Deck;
-import flashcards.model.GameUsers;
-import flashcards.model.User;
+import flashcards.model.*;
 import flashcards.controllers.Tabs;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -63,17 +60,17 @@ public class App extends Application {
             Card c1 = u.create_card("France", "Paris", false);
             Card c2 = u.create_card("Islande", "Reykjavic", false);
             Card c3 = u.create_card("Australie", "Canberra", false);
-            //Card c4 = u.create_card("Russie", "Moscou", false);
-            //Card c5 = u.create_card("Thailande", "Bangkoq", false);
+            Card c4 = u.create_card("Russie", "Moscou", false);
+            Card c5 = u.create_card("Thailande", "Bangkoq", false);
 
             u.add_card2deck(c1, d1);
             u.add_card2deck(c2, d1);
 
-            u.add_card2deck(c3, d2);
-            //u.add_card2deck(c4, d2);
-            //u.add_card2deck(c5, d2);
+            u.add_card2deck(c3, d1);
+            u.add_card2deck(c4, d1);
+            u.add_card2deck(c5, d1);
             u.add_card2deck(c2,d2);
-
+            /*
             System.out.println("---------------------------------------------");
             System.out.println("---------------------------------------------");
             System.out.println("Paquet 1");
@@ -90,7 +87,7 @@ public class App extends Application {
                 System.out.println(d);
             }
             System.out.println("---------------------------------------------");
-
+            */
             //System.out.println(u.get_card_recto("Je"));
 
             /*User u1 = new User("lau2do");
@@ -117,6 +114,25 @@ public class App extends Application {
             Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
             System.out.println(u1.get_card_recto("Bonjour"));
             System.out.println(u1.get_card_recto("Miel"));*/
+
+            Training t = new Training(u,d1);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            //System.out.println("coucou");
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+
+            for(Card c : u.get_card_from_deck(d1))
+            {
+                System.out.println(c);
+            }
+
+
 
 
         } catch (Exception e) {
