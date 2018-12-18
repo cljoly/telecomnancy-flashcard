@@ -12,6 +12,7 @@ public class Training
     private User user;
     private Deck deck;
     private int current = 0;
+    private int rand;
     int lowRange = 1;
     int highRange = 4;
     private ArrayList<Card> bad;
@@ -27,10 +28,12 @@ public class Training
         {
             if(c.getMark() == 0)
             {
+                //System.out.println(c);
                 bad.add(c);
             }
             else if(c.getMark() < highRange && c.getMark() >= lowRange)
             {
+                //System.out.println(c);
                 good.add(c);
             }
         }
@@ -39,23 +42,26 @@ public class Training
     public Card go_to_next_card()
     {
         ++current;
-        if(bad.isEmpty())
+        if((current >= 3 && !good.isEmpty()) || bad.isEmpty())
         {
-            current = 3;
-        }
-        if(current == 3)
-        {
-            int i = (new Random()).nextInt(good.size());
             current = 0;
-            return good.get(i);
+            rand = (new Random()).nextInt(good.size() - 1);
+            return good.get(rand);
         }
-        int i = (new Random()).nextInt(bad.size());
-        return bad.get(i);
+        else
+        {
+            int rand = (new Random()).nextInt(bad.size() - 1);
+            return bad.get(rand);
+        }
     }
 
-    public void save_answer(Card c, Faces f)
+    public void save_answer(Card c, Faces f) throws SQLException
     {
-        if(Faces.FaceFrown.equals(f))
+        if(good.isEmpty() && bad.isEmpty())
+        {
+            System.out.println("Stop");
+        }
+        if(Faces.FaceFrown.equals(f) && c != null)
         {
             if(c.getMark() >= lowRange)
             {
@@ -63,8 +69,11 @@ public class Training
                 user.setMark(c,c.getMark() - 1);
                 if(c.getMark() == 0)
                 {
-                    good.remove(c);
-                    bad.add(c);
+                    if(good.contains(c))
+                    {
+                        good.remove(c);
+                        bad.add(c);
+                    }
                 }
             }
             else
@@ -76,18 +85,29 @@ public class Training
                 }
             }
         }
-        else if(Faces.FaceSmile.equals(f))
+        else if(Faces.FaceSmile.equals(f) && c != null)
         {
             if(CardStates.NotSeen.equals(c.getState()))
             {
                 //c.setState(Learning);
                 user.setState(c,Learning);
+                c.setMark(c.getMark() + 1);
+                bad.remove(c);
+                good.add(c);
             }
-            c.setMark(c.getMark() + 1);
-            if(c.getMark() >= highRange)
+            else if(c.getMark() >= highRange - 1)
             {
                 //c.setState(Learned);
+                user.setMark(c,c.getMark() + 1);
                 user.setState(c,Learned);
+                if(good.contains(c))
+                {
+                    good.remove(c);
+                }
+            }
+            else
+            {
+                user.setMark(c,c.getMark() + 1);
             }
         }
     }

@@ -124,6 +124,9 @@ public class Card {
         r.append("\nVerso : ");
         r.append(this.verso);
         r.append("\n");
+        r.append(this.mark);
+        r.append("\n");
+        r.append(this.state);
         return r.toString();
     }
 
