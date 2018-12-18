@@ -38,6 +38,7 @@ public class Card {
         this.recto = recto;
         this.verso = verso;
         this.reversible = reversible;
+        this.note = 0;
     }
 
     /**
