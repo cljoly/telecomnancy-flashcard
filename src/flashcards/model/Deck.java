@@ -14,6 +14,9 @@ public class Deck  {
     @DatabaseField(columnName = DESCRIPTION_FIELD_NAME)
     private String  description;
 
+    /**
+     * Contrôleur sans argument pour ormilte
+     */
     public Deck() {}
 
     public Deck(String nom, String description) {
@@ -21,26 +24,50 @@ public class Deck  {
         this.description = description;
     }
 
+    /**
+     * Getter id
+     * @return Id du packet, l’id est utilisé dans la base de donnée
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Getter nom
+     * @return Nom du paquet
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Setter nom
+     * @param nom Nouveau nom du paquet
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * Getter description
+     * @return Description du paquet
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Setter description
+     * @param description Nouvelle description du paquet
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Représentation textuelle de l’objet
+     * @return Contenu de l’objet sur plusieurs lines
+     */
     public String toString(){
         StringBuffer r = new StringBuffer();
         r.append("Nom : ");

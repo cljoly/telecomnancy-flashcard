@@ -15,10 +15,15 @@ public class DeckCard {
     @DatabaseField(foreign = true, columnName = CARD_ID_FIELD_NAME)
     Card c;
 
+    /**
+     * Contrôleur sans argument pour ormilte
+     */
     public DeckCard() {}
 
     public DeckCard(Deck d, Card c) {
         this.d = d;
         this.c = c;
     }
+
+    // TODO Getter / Setter ?
 }
