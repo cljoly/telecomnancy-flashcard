@@ -109,7 +109,7 @@ public class User {
 
     /**
      * Accéder à un paquet enregistre dans la base de donnée, par son nom
-     * @param recto_content Nom du paquet
+     * @param deck_name Nom du paquet
      * @return Premier (et unique) paquet correspondant
      * @throws SQLException
      */
