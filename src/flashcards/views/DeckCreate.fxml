@@ -43,7 +43,7 @@
                               <Insets left="20.0" right="30.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="945.0" />
+                        <TextField fx:id="deck_name" alignment="CENTER" prefHeight="26.0" prefWidth="945.0" />
                      </children>
                   </HBox>
                </center>
@@ -54,7 +54,7 @@
                      <HBox.margin>
                         <Insets left="20.0" right="30.0" />
                      </HBox.margin></Label>
-                  <TextArea prefHeight="110.0" prefWidth="900.0">
+                  <TextArea fx:id="deck_description" prefHeight="110.0" prefWidth="900.0">
                      <HBox.margin>
                         <Insets bottom="20.0" />
                      </HBox.margin>
@@ -71,8 +71,8 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button mnemonicParsing="false" text="Valider" onAction="#createDeck"/>
-                        <Button mnemonicParsing="false" text="Annuler" onAction="#clean_fields"/>
+                        <Button mnemonicParsing="false" onAction="#createDeck" text="Valider" />
+                        <Button mnemonicParsing="false" onAction="#clean_fields" text="Annuler" />
                      </children>
                   </HBox>
                   <Label text="Statut de la création" />

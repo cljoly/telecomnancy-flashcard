@@ -23,9 +23,9 @@ public class AddCard
     @FXML
     private Button annul;
     @FXML
-    private TextField recto_content;
+    private TextArea recto_content;
     @FXML
-    private TextField verso_content;
+    private TextArea verso_content;
     @FXML
     ToggleGroup reverse;
 
