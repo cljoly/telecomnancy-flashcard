@@ -1,13 +1,12 @@
 package flashcards.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class AddCard implements Initializable
+public class AddCard
 {
     @FXML
     private Label state;
@@ -19,17 +18,9 @@ public class AddCard implements Initializable
     private Button ajout;
     @FXML
     private Button annul;
-    @FXML
-    private ComboBox<String> packet;
 
     public AddCard()
     {
         //final ToggleGroup group = new ToggleGroup();
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        packet.getItems().setAll("ok","bonjour");
     }
 }
