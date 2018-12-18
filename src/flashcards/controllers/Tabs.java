@@ -1,17 +1,26 @@
 package flashcards.controllers;
 
+import flashcards.model.Deck;
+import flashcards.model.GameUsers;
+import flashcards.model.User;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 public class Tabs {
+
     BorderPane root;
 
     public Tabs(BorderPane root){
+
         this.root = root;
     }
 
@@ -73,4 +82,14 @@ public class Tabs {
         Parent decks = FXMLLoader.load(path);
         root.setCenter(decks);
     }
+
+
+    public void BTN_SHOW_DECK_FOR_LEARNING() throws Exception{
+
+        URL path;
+        path = getClass().getClassLoader().getResource("DeckReview.fxml");
+        Parent decks = FXMLLoader.load(path);
+        root.setCenter(decks);
+    }
+
 }

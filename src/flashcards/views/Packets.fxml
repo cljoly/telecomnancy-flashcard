@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.Packets">
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Paquets" />
-          <TableColumn prefWidth="75.0" text="Dû" />
-            <TableColumn prefWidth="75.0" text="Inédits" />
-            <TableColumn prefWidth="75.0" text="Actions" />
-        </columns>
-      </TableView>
+      <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="60.0" left="200.0" right="200.0" top="60.0" />
+         </BorderPane.margin>
+         <content>
+            <TableView fx:id="home_table" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="paquets_column" maxWidth="600.0" minWidth="450.0" prefWidth="-1.0" text="Paquets" />
+                <TableColumn prefWidth="75.0" text="Dû" />
+                  <TableColumn prefWidth="75.0" text="Inédits" />
+                  <TableColumn prefWidth="75.0" text="Actions" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckReview">
+<AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckReview">
    <children>
       <VBox layoutX="449.0" layoutY="119.0" prefHeight="620.0" prefWidth="1040.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Label fx:id="lbl_review_deck_name" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1040.0" text="DECK NAME">
+            <Label fx:id="lbl_review_deck_name" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1040.0" text=" ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -41,7 +41,7 @@
                         <Label fx:id="lbl_review_learnt_card_count" text="#NAN" textFill="#03b515" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Button fx:id="btn_review_launch" mnemonicParsing="false" onAction="#btn_review_launch_on_action" text="Étudier maintenant">
+                  <Button fx:id="btn_review_launch" mnemonicParsing="false" text="Étudier maintenant">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -53,12 +53,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_review_opts" mnemonicParsing="false" onAction="#btn_review_opts_on_action" text="Options générales">
+                  <Button fx:id="btn_review_opts" mnemonicParsing="false" text="Options générales">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btn_review_alt_launch" mnemonicParsing="false" onAction="#btn_review_alt_launch_on_action" text="Réviser autrement">
+                  <Button fx:id="btn_review_alt_launch" mnemonicParsing="false" text="Réviser autrement">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
