@@ -49,7 +49,7 @@
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#BTN_ADD_ON_ACTION" text="Ajouter carte(s) " />
-                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" text="Créer un deck" />
+                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" text="Créer un paquet" />
                   <Button mnemonicParsing="false" onAction="#BTN_BROWSE_ON_ACTION" text="Parcourir paquets" />
                   <Button mnemonicParsing="false" onAction="#BTN_STATS_ON_ACTION" text="Statistiques" />
                </children>
