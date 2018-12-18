@@ -75,8 +75,11 @@
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="reverse" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="non" mnemonicParsing="false" selected="true" text="non">
+                  <RadioButton fx:id="non" mnemonicParsing="false" selected="true" text="non" toggleGroup="$reverse">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </HBox.margin>
@@ -121,7 +124,7 @@
                      <children>
                         <AnchorPane prefHeight="64.0" prefWidth="65.0">
                            <children>
-                              <Button fx:id="ajout" mnemonicParsing="false" text="Ajouter" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Button fx:id="ajout" mnemonicParsing="false" onAction="#createCard" text="Ajouter" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="10.0" />
@@ -129,7 +132,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="64.0" prefWidth="41.0">
                            <children>
-                              <Button fx:id="annul" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Button fx:id="annul" mnemonicParsing="false" onAction="#clean_fields" text="Annuler" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
