@@ -1,7 +1,8 @@
 # Memscarlo
 
 Notre application dispose pour l’instant d’une interface graphique et du modèle
-adossé à une base de donnée.
+adossé à une base de donnée. L’interface graphique permet de modifier les données
+dans leur quasi totalité.
 
 ## Lancement de l’application
 
