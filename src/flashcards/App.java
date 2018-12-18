@@ -63,28 +63,31 @@ public class App extends Application {
             Card c1 = u.create_card("France", "Paris", false);
             Card c2 = u.create_card("Islande", "Reykjavic", false);
             Card c3 = u.create_card("Australie", "Canberra", false);
-            Card c4 = u.create_card("Russie", "Moscou", false);
-            Card c5 = u.create_card("Thailande", "Bangkoq", false);
+            //Card c4 = u.create_card("Russie", "Moscou", false);
+            //Card c5 = u.create_card("Thailande", "Bangkoq", false);
 
             u.add_card2deck(c1, d1);
             u.add_card2deck(c2, d1);
 
             u.add_card2deck(c3, d2);
-            u.add_card2deck(c4, d2);
-            u.add_card2deck(c5, d2);
+            //u.add_card2deck(c4, d2);
+            //u.add_card2deck(c5, d2);
+            u.add_card2deck(c2,d2);
 
             System.out.println("---------------------------------------------");
             System.out.println("---------------------------------------------");
             System.out.println("Paquet 1");
-            List<Card> lc1 = u.get_card_from_deck(d1);
-            System.out.println("[]: "+ lc1);
-            for (Card c : lc1) {
-                System.out.println(c);
+            List<Deck> ld1 = u.get_deck_from_card(c1);
+            //System.out.println("[]: "+ ld1);
+            //On doit juste avoir d1
+            for (Deck d : ld1) {
+                System.out.println(d);
             }
             System.out.println("---------------------------------------------");
             System.out.println("Paquet 2");
-            for (Card c : u.get_card_from_deck(d2)) {
-                System.out.println(c);
+            //On doit avoir d1 et d2
+            for (Deck d : u.get_deck_from_card(c2)) {
+                System.out.println(d);
             }
             System.out.println("---------------------------------------------");
 
