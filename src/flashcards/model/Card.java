@@ -119,10 +119,13 @@ public class Card {
     }
 
     /**
-     * Setter de note
+     * Setter de note, si la note est négative, elle n’est pas modifié.
      * @param mark Nouvelle valeur de la note
      */
     public void setMark(int mark) {
-        this.mark = mark;
+        if (mark >= 0)
+          this.mark = mark;
+        else
+            System.out.println("Note négative, non ajouté");
     }
 }
