@@ -42,4 +42,15 @@ Un autre algorithme nomé *SuperMemo* permet de déterminer le temps qu'il faut 
 
 Dans le cadre de notre projet, une combinaison des deux méthodes est intéressante à implémenter puisque la première permet de déterminer quelles cartes il faut afficher en priorité et la seconde permet de déterminer des intervalles de temps à partir desquels on peut commencer à faire apparaître à nouveau une carte.
 
+## Affichage des statistiques
+
+Affichage de différentes données utilisateur:
+	- Diagramme en barres (Histograme) du nombre et de la date des cartes visitées
+	- Diagramme en barres (Histograme) du nombre et de la date des révisions dûes 
+	- Diagramme circulaire des types de cartes dans la collection (Non vue, en suspens, jeune/en apprentissage, mature)
+
+Charts in jfx:
+https://docs.oracle.com/javafx/2/charts/chart-overview.htm
+
+
 
