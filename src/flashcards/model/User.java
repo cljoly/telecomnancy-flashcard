@@ -199,15 +199,31 @@ public class User {
     }
 
     /**
-     * Modifier la note d’une carte
+     * Modifier la note d’une carte, en répercutant le changement dans la base de donnée
      * @param c La carte dont on modifie la note
      * @param v La nouvelle valeur de note de la carte
      */
     public void setMark(Card c, int v) {
         c.setMark(v);
+        cardDao.update(c);
     }
 
-    public CardStates getState(Card c) { return c.getState(); }
+    /**
+     * Récupère dans la base de donnée l’état d’une carte
+     * @param c Carte dont on récupère l’état
+     * @return
+     */
+    public CardStates getState(Card c) {
+        return c.getState();
+    }
 
-    public void setState(Card c, CardStates cs) { c.setState(cs); }
+    /**
+     * Modifie l’état d’une carte et enregistre ceci dans la base de donnée
+     * @param c Carte à modifier
+     * @param cs État de la crate à modifier
+     */
+    public void setState(Card c, CardStates cs) {
+        c.setState(cs);
+        cardDao.update(c);
+    }
 }
