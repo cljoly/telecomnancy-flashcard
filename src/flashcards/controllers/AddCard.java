@@ -4,17 +4,20 @@ import flashcards.model.Card;
 import flashcards.model.Deck;
 import flashcards.model.GameUsers;
 import flashcards.model.User;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.FALSE;
 
-public class AddCard
-{
+public class AddCard implements Initializable{
     @FXML
     private Label card_create_msg;
     @FXML
@@ -30,9 +33,9 @@ public class AddCard
     @FXML
     private TextArea verso_content;
     @FXML
-    ToggleGroup reverse;
+    private ToggleGroup reverse;
     @FXML
-    ComboBox paquets;
+    private ComboBox<String> paquets;
 
     private GameUsers g;
     private User currentUser;
@@ -40,15 +43,12 @@ public class AddCard
 
     public AddCard()
     {
-        this.g = GameUsers.getInstance();
-        currentUser = this.g.getCurrentUser();
+
 
         //ajouter tous les decks au combobox
         //TODO : voir si l'instanciation dans le constructeur permet la MAJ lors de l'ajout d'un paquet, si non : faire autre part
-        /*this.listOfAllDecks = this.currentUser.get_all_decks();
-        for (Deck d : this.listOfAllDecks){
-            paquets.getItems().add(d.getNom());
-        }*/
+
+
 
     }
 
@@ -76,4 +76,18 @@ public class AddCard
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.g = GameUsers.getInstance();
+        currentUser = this.g.getCurrentUser();
+
+        try{
+            this.listOfAllDecks = this.currentUser.get_all_decks();
+            for (Deck d : this.listOfAllDecks){
+                System.out.println(d.getNom());
+                paquets.getItems().addAll(d.getNom());
+            }
+        } catch (SQLException e){}
+        //paquets.getItems().setAll("Aucun");
+    }
 }

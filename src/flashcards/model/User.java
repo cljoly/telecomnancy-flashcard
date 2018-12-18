@@ -70,6 +70,8 @@ public class User {
             TableUtils.createTableIfNotExists(connectionSource, Card.class);
             TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
 
+            this.create_deck("Par défaut", "Paquet par défaut");
+
         } catch (Exception e) {
             System.out.println("==========================");
             System.out.println("==========  EXN ==========");
