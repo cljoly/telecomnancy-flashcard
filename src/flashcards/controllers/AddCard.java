@@ -56,8 +56,9 @@ public class AddCard implements Initializable{
 
         try {
             Card c = this.currentUser.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
-            //Deck d = user.get_deck(combo sélectionné);
-            //user.add_card2deck(c, d);
+            String nom_deck = paquets.getSelectionModel().getSelectedItem();
+            Deck d = this.currentUser.get_deck(nom_deck);
+            this.currentUser.add_card2deck(c, d);
             System.out.println("carte ajoutée");
             String msg = ("Recto : \n" + recto_content.getText() + "\n\nVerso : \n" +verso_content.getText());
             new DispSuccessPopup("La carte a été ajoutée avec succès", msg);
@@ -79,7 +80,7 @@ public class AddCard implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.g = GameUsers.getInstance();
-        currentUser = this.g.getCurrentUser();
+        this.currentUser = this.g.getCurrentUser();
 
         try{
             this.listOfAllDecks = this.currentUser.get_all_decks();
