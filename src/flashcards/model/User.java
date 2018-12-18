@@ -189,4 +189,16 @@ public class User {
         return q;
     }
 
+    /**
+     * Récupération de la note d’une carte
+     * @param c Carte dont on veut la note
+     * @return Note de la carte
+     */
+    public int getMark(Card c) {
+        return c.getMark();
+    }
+
+    public void setMark(Card c, int v) {
+        c.setMark(v);
+    }
 }

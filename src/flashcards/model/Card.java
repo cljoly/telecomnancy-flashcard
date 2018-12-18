@@ -19,6 +19,9 @@ public class Card {
     @DatabaseField
     private boolean reversible;
 
+    @DatabaseField(columnName = VERSO_FIELD_NAME)
+    private int mark;
+
     /**
      * Contrôleur sans argument pour ormilte
      */
@@ -105,5 +108,13 @@ public class Card {
         r.append(this.verso);
         r.append("\n");
         return r.toString();
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
     }
 }
