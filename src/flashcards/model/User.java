@@ -198,6 +198,11 @@ public class User {
         return c.getMark();
     }
 
+    /**
+     * Modifier la note d’une carte
+     * @param c La carte dont on modifie la note
+     * @param v La nouvelle valeur de note de la carte
+     */
     public void setMark(Card c, int v) {
         c.setMark(v);
     }

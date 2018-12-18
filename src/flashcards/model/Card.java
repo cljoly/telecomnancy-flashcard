@@ -110,10 +110,18 @@ public class Card {
         return r.toString();
     }
 
+    /**
+     * Getter de note
+     * @return La note actuelle
+     */
     public int getMark() {
         return mark;
     }
 
+    /**
+     * Setter de note
+     * @param mark Nouvelle valeur de la note
+     */
     public void setMark(int mark) {
         this.mark = mark;
     }
