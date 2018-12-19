@@ -2,15 +2,16 @@ package flashcards.model;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import javafx.util.Pair;
 
-import javax.management.Query;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
@@ -241,6 +242,25 @@ public class User {
     public void setState(Card c, CardStates cs) throws SQLException {
         c.setState(cs);
         cardDao.update(c);
+    }
+
+    /**
+     * retourne le nombre total de carte pour chaque type
+     * @return
+     */
+    public ArrayList<Pair<String, Integer>> get_all_nbcard_type() throws SQLException{
+        /*QueryBuilder markQb = cardDao.queryBuilder();
+        markQb.groupBy(Card.STATE_FIELD_NAME);
+        markQb.countOf();
+        PreparedQuery<Long> prepare = markQb.prepare();
+        List<Long> q = cardDao.query(prepare);
+        */
+        QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
+        qb.selectRaw("COUNT (*)");
+        qb.groupBy("STATE_FIELD_NAME");
+        GenericRawResults<String[]> rawResults = qb.queryRaw(); //Returns results with
+        String[] a = rawResults.getFirstResult();
+
     }
 
     public void createNewTraining(Deck d) throws SQLException
