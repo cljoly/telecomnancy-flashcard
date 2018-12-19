@@ -22,6 +22,7 @@ public class User {
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
     private Dao<DeckCard, Integer> deckCardDao;
+    private Training currentTraining;
 
     /**
      * Constructeur d'un utilisateur et de sa base de données associée
@@ -31,6 +32,7 @@ public class User {
         this.username = username;
         this.DATABASE_URL = this.DATABASE_URL.concat(this.username);
         System.out.println(this.DATABASE_URL);
+        this.currentTraining = null;
         try{
             db_init();
         } catch (Exception e){
@@ -239,5 +241,20 @@ public class User {
     public void setState(Card c, CardStates cs) throws SQLException {
         c.setState(cs);
         cardDao.update(c);
+    }
+
+    public void createNewTraining(Deck d) throws SQLException
+    {
+        this.currentTraining = new Training(this, d);
+    }
+
+    public void finishTraining()
+    {
+        this.currentTraining = null;
+    }
+
+    public Training getCurrentTraining()
+    {
+        return currentTraining;
     }
 }
