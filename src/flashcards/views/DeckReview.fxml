@@ -41,7 +41,7 @@
                         <Label fx:id="lbl_review_learnt_card_count" text="#NAN" textFill="#03b515" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Button fx:id="btn_review_launch" mnemonicParsing="false" text="Étudier maintenant">
+                  <Button fx:id="btn_review_launch" mnemonicParsing="false" onAction="#when_learn_button_is_clicked" text="Étudier maintenant">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
