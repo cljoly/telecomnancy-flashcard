@@ -1,8 +1,7 @@
 # Memscarlo
 
 Notre application dispose pour l’instant d’une interface graphique et du modèle
-adossé à une base de donnée. L’interface graphique permet de modifier les données
-dans leur quasi totalité.
+adossé à une base de données. L'interface graphique supporte la création de paquets et de cartes, ainsi que l'apprentissage de paquets de manière basique
 
 ## Lancement de l’application
 
