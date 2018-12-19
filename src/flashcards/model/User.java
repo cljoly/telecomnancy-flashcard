@@ -30,13 +30,13 @@ public class User {
     public User(String username){
         this.username = username;
         this.DATABASE_URL = this.DATABASE_URL.concat(this.username);
+        System.out.println("Création de la base dans :");
         System.out.println(this.DATABASE_URL);
         try{
             db_init();
         } catch (Exception e){
-            System.out.println("Exception levée : constructeur User");
+            System.out.println("Exception levée : création base de donnée");
         }
-
     }
 
     /**
