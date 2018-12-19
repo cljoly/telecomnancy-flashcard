@@ -1,3 +1,4 @@
+import flashcards.model.CardStates;
 import javafx.util.Pair;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,6 +9,7 @@ import flashcards.model.Card;
 import flashcards.model.Deck;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -74,6 +76,16 @@ public class UserTest {
         assertEquals(this.user.get_card_recto("France").getMark(), 3);
         this.user.setMark(this.user.get_card_recto("Russie"), 30);
         assertEquals(this.user.get_card_recto("Russie").getMark(), 30);
+    }
+
+    @Test
+    public void testGetNbOfCardsPerType() throws SQLException {
+        this.user.setState(this.user.get_card_recto("France"), CardStates.Learned);
+        ArrayList<Pair<String, Integer>> nbcard_type = this.user.get_all_nbcard_type();
+
+        for (Pair<String, Integer> p : nbcard_type){
+            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 1); }
+        }
     }
 
     @Test

@@ -2,6 +2,7 @@ package flashcards.model;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -9,8 +10,6 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import javafx.util.Pair;
 
-import javax.management.Query;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -247,6 +246,33 @@ public class User {
     public void setState(Card c, CardStates cs) throws SQLException {
         c.setState(cs);
         cardDao.update(c);
+    }
+
+    /**
+     * retourne le nombre total de carte pour chaque type
+     * @return
+     */
+    public ArrayList<Pair<String, Integer>> get_all_nbcard_type() throws SQLException{
+        /////Récupère les infos de la base de donnée
+        GenericRawResults<String[]> rawResults = cardDao.queryRaw("SELECT "+Card.STATE_FIELD_NAME+",COUNT(*) FROM Card GROUP BY "+Card.STATE_FIELD_NAME);
+        List<String[]> qResults = rawResults.getResults();
+
+        /////Génère le résultat//////
+        ArrayList<Pair<String, Integer>> result = new ArrayList<>();
+        int pasVus = 0; int enCours = 0; int Aquis = 0;
+        int size = qResults.size();
+        for (int i=0; i<size; i++){
+            //System.out.println("DEEEEEEEEEEEEEE bug : " + qResults.get(i)[0] + " -> " + qResults.get(i)[1]);
+            if (qResults.get(i)[0] == CardStates.NotSeen.toString()) { pasVus = Integer.parseInt(qResults.get(i)[1]); }
+            if (qResults.get(i)[0] == CardStates.Learning.toString()) { enCours = Integer.parseInt(qResults.get(i)[1]); }
+            if (qResults.get(i)[0] == CardStates.Learned.toString()) { Aquis = Integer.parseInt(qResults.get(i)[1]); }
+        }
+        result.add(new Pair<>("Non vu", pasVus));
+        result.add(new Pair<>("En cours d'apprentissage", enCours));
+        result.add(new Pair<>("Aquis", Aquis));
+
+        return result;
+
     }
 
     public void createNewTraining(Deck d) throws SQLException
