@@ -70,15 +70,26 @@ public class Packets implements Initializable {
                                 } else {
                                     btn.setOnAction(event -> {
                                         Deck deck = getTableView().getItems().get(getIndex());
-                                        URL path = getClass().getClassLoader().getResource("Popup_learning.fxml");
+
+                                        //URL path = getClass().getClassLoader().getResource("Popup_learning.fxml");
+
+                                        FXMLLoader popup = new FXMLLoader();
+                                        popup.setLocation(getClass().getClassLoader().getResource("Popup_learning.fxml"));
+                                        popup.setControllerFactory(iC-> new PopupLearning(deck));
+
+
                                         try{
                                             FXMLLoader loader = new FXMLLoader();
                                             loader.setLocation(getClass().getClassLoader().getResource("DeckReview.fxml"));
                                             loader.setControllerFactory(iC-> new DeckReview(deck));
 
+                                            //chargement du stage popup
+                                            Stage learn = popup.load();
 
-                                            Stage learn = FXMLLoader.load(path);
+                                            //chargement de l'anchor pane deck review
                                             AnchorPane content = loader.load();
+
+                                            //lien entre popup et deck review
                                             ((BorderPane) learn.getScene().getRoot()).setCenter(content);
                                             learn.show();
                                         } catch (IOException e){
