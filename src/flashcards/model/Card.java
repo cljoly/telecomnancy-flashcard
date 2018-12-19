@@ -6,6 +6,8 @@ public class Card {
     public static final String RECTO_FIELD_NAME = "recto";
     public static final String VERSO_FIELD_NAME = "verso";
     public final static String ID_FIELD_NAME = "card_id";
+    public final static String MARK_FIELD_NAME = "mark";
+    public final static String STATE_FIELD_NAME = "state";
 
     @DatabaseField(generatedId = true, unique = true, columnName = ID_FIELD_NAME)
     private int id;
@@ -19,10 +21,26 @@ public class Card {
     @DatabaseField
     private boolean reversible;
 
+    @DatabaseField(columnName = MARK_FIELD_NAME)
+    private int mark;
+
+    @DatabaseField(columnName = STATE_FIELD_NAME)
+    private CardStates state;
+
     /**
      * Contrôleur sans argument pour ormilte
      */
     public Card() {
+    }
+
+    public CardStates getState()
+    {
+        return state;
+    }
+
+    public void setState(CardStates state)
+    {
+        this.state = state;
     }
 
     /**
@@ -35,6 +53,8 @@ public class Card {
         this.recto = recto;
         this.verso = verso;
         this.reversible = reversible;
+        this.mark = 0;
+        this.state = CardStates.NotSeen;
     }
 
     /**
@@ -104,6 +124,28 @@ public class Card {
         r.append("\nVerso : ");
         r.append(this.verso);
         r.append("\n");
+        r.append(this.mark);
+        r.append("\n");
+        r.append(this.state);
         return r.toString();
+    }
+
+    /**
+     * Getter de note
+     * @return La note actuelle
+     */
+    public int getMark() {
+        return mark;
+    }
+
+    /**
+     * Setter de note, si la note est négative, elle n’est pas modifié.
+     * @param mark Nouvelle valeur de la note
+     */
+    public void setMark(int mark) {
+        if (mark >= 0)
+          this.mark = mark;
+        else
+            System.out.println("Note négative, non ajouté");
     }
 }

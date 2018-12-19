@@ -1,10 +1,7 @@
 package flashcards;
 
 
-import flashcards.model.Card;
-import flashcards.model.Deck;
-import flashcards.model.GameUsers;
-import flashcards.model.User;
+import flashcards.model.*;
 import flashcards.controllers.Tabs;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -50,18 +47,13 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
-        try {
 
-            GameUsers gameUser = GameUsers.getInstance();
-            gameUser.newUser("laurnou");
+        GameUsers gameUser = GameUsers.getInstance();
+        gameUser.newUser("laurnou");
 
-        } catch (Exception e) {
-        }
-
+        
         launch(args);
     }
-
-
 
 }
 
