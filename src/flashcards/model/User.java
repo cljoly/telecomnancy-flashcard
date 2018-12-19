@@ -12,6 +12,7 @@ import javafx.util.Pair;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
@@ -22,6 +23,7 @@ public class User {
     private String DATABASE_URL = "jdbc:h2:file:./database/";
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
+    private Dao<VisitePerDay,Integer> visitePerDayDao;
     private Dao<DeckCard, Integer> deckCardDao;
     private Training currentTraining;
 
@@ -32,14 +34,14 @@ public class User {
     public User(String username){
         this.username = username;
         this.DATABASE_URL = this.DATABASE_URL.concat(this.username);
+        System.out.println("Création de la base dans :");
         System.out.println(this.DATABASE_URL);
         this.currentTraining = null;
         try{
             db_init();
         } catch (Exception e){
-            System.out.println("Exception levée : constructeur User");
+            System.out.println("Exception levée : création base de donnée");
         }
-
     }
 
     /**
@@ -68,10 +70,12 @@ public class User {
             this.cardDao = DaoManager.createDao(connectionSource, Card.class);
             this.deckDao = DaoManager.createDao(connectionSource, Deck.class);
             this.deckCardDao = DaoManager.createDao(connectionSource, DeckCard.class);
+            this.visitePerDayDao = DaoManager.createDao(connectionSource, VisitePerDay.class);
 
             TableUtils.createTableIfNotExists(connectionSource, Deck.class);
             TableUtils.createTableIfNotExists(connectionSource, Card.class);
             TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
+            TableUtils.createTableIfNotExists(connectionSource,VisitePerDay.class);
 
             this.create_deck("Par défaut", "Paquet par défaut");
 
@@ -276,5 +280,25 @@ public class User {
     public Training getCurrentTraining()
     {
         return currentTraining;
+    }
+
+    public void add_visit(Date d) throws SQLException
+    {
+        QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
+        statementBuilder.selectColumns();
+        statementBuilder.where().eq(VisitePerDay.DAY_FIELD_NAME,d);
+        PreparedQuery<VisitePerDay> tmp = statementBuilder.prepare();
+        VisitePerDay v = visitePerDayDao.queryForFirst(tmp);
+
+        if(v == null)
+        {
+            v = new VisitePerDay(d,1);
+            visitePerDayDao.create(v);
+        }
+        else
+        {
+            v.incNbCard();
+            visitePerDayDao.update(v);
+        }
     }
 }
