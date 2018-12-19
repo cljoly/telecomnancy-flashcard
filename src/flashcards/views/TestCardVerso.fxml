@@ -43,29 +43,29 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_test_card_verso_frown" graphicTextGap="0.0" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
+                  <Button fx:id="frown" graphicTextGap="0.0" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
                      <graphic>
-                        <ImageView fx:id="frown" fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../res/interface/img/Frown.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="btn_test_card_verso_neutral" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
+                  <Button fx:id="neutral" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
                      <HBox.margin>
                         <Insets left="40.0" right="40.0" />
                      </HBox.margin>
                      <graphic>
-                        <ImageView fx:id="neutral" fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../res/interface/img/Neutral.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btn_test_card_verso_smile" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
+                  <Button fx:id="smile" mnemonicParsing="false" onAction="#when_a_frimousse_is_clicked">
                      <graphic>
-                        <ImageView fx:id="smile" fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../res/interface/img/Smile.png" />
                            </image>

@@ -35,6 +35,8 @@ public class DeckReview implements Initializable {
     }
 
     public void when_learn_button_is_clicked(){
+        //TODO si nombre de cartes du deck restant à apprendre est égal à 0, on ne permet pas de lancer l'apprentissage : popup, et on revient sur l'onglet principal
+
         try {
 
             GameUsers.getInstance().getCurrentUser().createNewTraining(this.deck);
