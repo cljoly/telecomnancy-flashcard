@@ -87,7 +87,7 @@ spécifiés, mais l’implémentation est encore très partielle
 L’algorithme de recommandation a été spécifié et une implémentation est en
 cours, sur une branche parallèle, en dehors de la release du jour.
 
-## À faire pour mercredi, jour 3 de la *coding week*
+## À faire mercredi, jour 3 de la *coding week*
 
 - Clément : implémentation des ajouts & suppression de carte et de paquet
 - Clément & Lucas : ajout des fonctions de génération de donnée pour l’affichage
