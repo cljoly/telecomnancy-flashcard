@@ -8,6 +8,7 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import javafx.beans.binding.IntegerBinding;
 import javafx.util.Pair;
 
 import java.sql.SQLException;
@@ -253,17 +254,28 @@ public class User {
      * @return
      */
     public ArrayList<Pair<String, Integer>> get_all_nbcard_type() throws SQLException{
-        /*QueryBuilder markQb = cardDao.queryBuilder();
-        markQb.groupBy(Card.STATE_FIELD_NAME);
-        markQb.countOf();
-        PreparedQuery<Long> prepare = markQb.prepare();
-        List<Long> q = cardDao.query(prepare);
-        */
+        /////Récupère les infos de la base de donnée
         QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
+        qb.selectRaw(Card.STATE_FIELD_NAME);
         qb.selectRaw("COUNT (*)");
-        qb.groupBy("STATE_FIELD_NAME");
-        GenericRawResults<String[]> rawResults = qb.queryRaw(); //Returns results with
-        String[] a = rawResults.getFirstResult();
+        qb.groupBy(Card.STATE_FIELD_NAME);
+        GenericRawResults<String[]> rawResults = qb.queryRaw();
+        List<String[]> qResults = rawResults.getResults();
+
+        /////Génère le résultat//////
+        ArrayList<Pair<String, Integer>> result = new ArrayList<Pair<String, Integer>>();
+        int pasVus = 0; int enCours = 0; int Aquis = 0;
+        int length = qResults.get(0).length;
+        for (int i=0; i<length; i++){
+            if (qResults.get(0)[i] == CardStates.NotSeen.toString()) { pasVus = Integer.getInteger(qResults.get(1)[i]); }
+            if (qResults.get(0)[i] == CardStates.Learning.toString()) { enCours = Integer.getInteger(qResults.get(1)[i]); }
+            if (qResults.get(0)[i] == CardStates.Learned.toString()) { Aquis = Integer.getInteger(qResults.get(1)[i]); }
+        }
+        result.add(new Pair<>("Non vu", pasVus));
+        result.add(new Pair<>("En cours d'apprentissage", enCours));
+        result.add(new Pair<>("Aquis", Aquis));
+
+        return result;
 
     }
 
