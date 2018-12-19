@@ -9,8 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
@@ -142,11 +144,14 @@ public class App extends Application {
                 System.out.println(c);
             }
 
+            u.setState(u.get_card_recto("France"), CardStates.Learned);
+            ArrayList<Pair<String, Integer>> result = u.get_all_nbcard_type();
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+
         launch(args);
     }
 

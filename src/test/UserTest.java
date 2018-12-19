@@ -10,13 +10,17 @@ import flashcards.model.Deck;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UserTest {
 
     private User user;
 
     @Before
-    public void init() throws SQLException {
+    public void init() throws SQLException, ParseException
+    {
             this.user = new User("test_junit-"+System.currentTimeMillis());
 
             Deck d1 = this.user.create_deck("Capitales eu", "Espace Économique Européen");
@@ -35,6 +39,15 @@ public class UserTest {
             this.user.add_card2deck(c4, d1);
             this.user.add_card2deck(c5, d1);
             this.user.add_card2deck(c2, d2);
+
+            Long millis = System.currentTimeMillis();
+            Date date = new Date(millis);
+            SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+            String str = formater.format(date);
+            date = formater.parse(str);
+            this.user.add_visit(date);
+            this.user.add_visit(date);
+            this.user.add_visit(date);
     }
 
     @Test
@@ -73,6 +86,34 @@ public class UserTest {
             if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 1); }
         }
     }
+
+    @Test
+    public void testUpdateDate() throws SQLException,ParseException
+    {
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        String str = formater.format(date);
+        date = formater.parse(str);
+        assertEquals(user.get_day_entry(date).getDay(),date);
+        str = "18-12-2018";
+        //String strTrue = "19-12-2018";
+        Date date1 = formater.parse(str);
+        //Date date2 = formater.parse(strTrue);
+        assertNotEquals(user.get_day_entry(date).getDay(),date1);
+        //assertEquals(user.get_day_entry(date).getDay(),date2);
+        assertEquals(user.get_day_entry(date).getNbCard(),3);
+    }
+    /*
+    @Test
+    public void testGetAllNbCards() throws SQLException,ParseException
+    {
+        String strTrue = "25-11-2019";
+        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        Date date1 = formater.parse(strTrue);
+        assertEquals();
+    }
+    */
 
     // TODO Test association
 
