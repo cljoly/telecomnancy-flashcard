@@ -67,8 +67,13 @@ public class Tabs {
     /**
      * Réaction au clic sur un bouton permettant d'afficher l'onglet de présentation des statistiques
      */
-    public void BTN_STATS_ON_ACTION(){
+    public void BTN_STATS_ON_ACTION() throws Exception{
         System.out.println("Stats");
+
+        URL path;
+        path = getClass().getClassLoader().getResource("UserStats.fxml");
+        Parent decks = FXMLLoader.load(path);
+        root.setCenter(decks);
     }
     /**
      * Réaction au clic sur un bouton permettant d'afficher l'onglet de création de pacquets
@@ -82,7 +87,6 @@ public class Tabs {
         Parent decks = FXMLLoader.load(path);
         root.setCenter(decks);
     }
-
 
     public void BTN_SHOW_DECK_FOR_LEARNING() throws Exception{
 
