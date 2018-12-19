@@ -3,6 +3,7 @@ package flashcards.controllers;
 import flashcards.model.Card;
 import flashcards.model.Deck;
 import flashcards.model.GameUsers;
+import flashcards.model.Training;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,12 +37,12 @@ public class DeckReview implements Initializable {
     public void when_learn_button_is_clicked(){
         try {
 
-            //TODO : sera à enlever quand j'aurai les fonctions de Morgan de l'algo
-            Card c = new Card("Hi", "Je", false);
+            GameUsers.getInstance().getCurrentUser().createNewTraining(this.deck);
+            Training training = GameUsers.getInstance().getCurrentUser().getCurrentTraining();
 
             FXMLLoader recto = new FXMLLoader();
             recto.setLocation(getClass().getClassLoader().getResource("TestCardRecto.fxml"));
-            recto.setControllerFactory(iC -> new TestCardRecto());
+            recto.setControllerFactory(iC -> new TestCardRecto(training));
 
             //chargement de l'anchor pane deck review
             AnchorPane content = recto.load();
@@ -50,7 +51,7 @@ public class DeckReview implements Initializable {
             ((BorderPane) deck_review_window.getParent().getScene().getRoot()).setCenter(content);
 
 
-        } catch (IOException e){
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
