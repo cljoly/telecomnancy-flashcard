@@ -26,7 +26,7 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_test_card_show" mnemonicParsing="false" onAction="#btn_test_card_show_on_action" text="Afficher le verso" />
+                  <Button fx:id="btn_test_card_show" mnemonicParsing="false" text="Afficher le verso" />
                </children>
             </HBox>
          </children>

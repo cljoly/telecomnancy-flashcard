@@ -52,7 +52,7 @@ public class App extends Application {
             GameUsers gameUser = GameUsers.getInstance();
             gameUser.newUser("laurnou");
 
-            User u = gameUser.getCurrentUser();
+           /* User u = gameUser.getCurrentUser();
 
             Deck d1 = u.create_deck("Capitales eu", "Espace Économique Européen sert à rien");
             Deck d2 = u.create_deck("Capitales monde", "Reste du monde");
@@ -70,7 +70,7 @@ public class App extends Application {
             u.add_card2deck(c4, d1);
             u.add_card2deck(c5, d1);
             u.add_card2deck(c2,d2);
-            /*
+
             System.out.println("---------------------------------------------");
             System.out.println("---------------------------------------------");
             System.out.println("Paquet 1");
@@ -87,10 +87,10 @@ public class App extends Application {
                 System.out.println(d);
             }
             System.out.println("---------------------------------------------");
-            */
+
         //System.out.println(u.get_card_recto("Je"));
 
-            /*User u1 = new User("lau2do");
+            User u1 = new User("lau2do");
             Deck d1 = u1.create_deck("Anglais", "Ne sert à rien");
             Deck d2 = u1.create_deck("Anglais2", "Ne sert à rien du tout");
             System.out.println(u1.get_deck(d1.getNom()));
@@ -114,7 +114,7 @@ public class App extends Application {
             Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
             System.out.println(u1.get_card_recto("Bonjour"));
             System.out.println(u1.get_card_recto("Miel"));
-            */
+
             Training t = new Training(u,d1);
             Card cd = t.go_to_next_card();
             int k = 0;
@@ -141,7 +141,7 @@ public class App extends Application {
             {
                 System.out.println(c);
             }
-
+*/
         }
         catch (Exception e)
         {
