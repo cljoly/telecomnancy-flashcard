@@ -7,10 +7,12 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import javafx.util.Pair;
 
 import javax.management.Query;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -281,4 +283,37 @@ public class User {
             visitePerDayDao.update(v);
         }
     }
+
+    public VisitePerDay get_day_entry(Date d) throws SQLException
+    {
+        QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
+        statementBuilder.where().eq(VisitePerDay.DAY_FIELD_NAME,d);
+        VisitePerDay result = visitePerDayDao.queryForFirst(statementBuilder.prepare());
+        return result;
+    }
+
+    public ArrayList<Pair<String,Integer>> get_all_nbcard_days() throws SQLException
+    {
+        ArrayList<Pair<String,Integer>> tmp = new ArrayList<Pair<String,Integer>>();
+        QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
+        statementBuilder.selectColumns();
+        List<VisitePerDay> result = visitePerDayDao.query(statementBuilder.prepare());
+        Pair<String,Integer> pair = null;
+        for(VisitePerDay v : result)
+        {
+            pair = new Pair<String,Integer>(v.getDay().toString(),v.getNbCard());
+            tmp.add(pair);
+        }
+        return tmp;
+    }
+
+    public ArrayList<Pair<String,Integer>> get_all_nbcard_days(int nbDays) throws SQLException
+    {
+        ArrayList<Pair<String,Integer>> tmp = this.get_all_nbcard_days();
+        int lim = tmp.size();
+        int deb = lim - nbDays;
+        ArrayList<Pair<String,Integer>> tmp2 = (ArrayList<Pair<String,Integer>>)tmp.subList(deb,lim);
+        return tmp2;
+    }
+
 }
