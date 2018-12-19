@@ -14,7 +14,7 @@ public class UserTest {
 
     @Before
     public void init() throws SQLException {
-            this.user = new User("test_junit"+System.currentTimeMillis());
+            this.user = new User("test_junit-"+System.currentTimeMillis());
 
             Deck d1 = this.user.create_deck("Capitales eu", "Espace Économique Européen");
             Deck d2 = this.user.create_deck("Capitales monde", "Reste du monde");
