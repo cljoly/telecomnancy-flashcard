@@ -22,6 +22,7 @@ public class User {
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
     private Dao<DeckCard, Integer> deckCardDao;
+    private Training currentTraining;
 
     /**
      * Constructeur d'un utilisateur et de sa base de données associée
@@ -31,6 +32,7 @@ public class User {
         this.username = username;
         this.DATABASE_URL = this.DATABASE_URL.concat(this.username);
         System.out.println(this.DATABASE_URL);
+        this.currentTraining = null;
         try{
             db_init();
         } catch (Exception e){
@@ -210,12 +212,15 @@ public class User {
     }
 
     /**
-     * Modifier la note d’une carte, en répercutant le changement dans la base de donnée
+     * Modifier la note d’une carte, en répercutant le changement dans la base de donnée, si la note est négative, elle est mise à zéro.
      * @param c La carte dont on modifie la note
      * @param v La nouvelle valeur de note de la carte
      */
     public void setMark(Card c, int v) throws SQLException{
         c.setMark(v);
+        //System.out.println("Maj");
+        //System.out.println(v);
+        //System.out.println(c.getMark());
         cardDao.update(c);
     }
 
@@ -236,5 +241,20 @@ public class User {
     public void setState(Card c, CardStates cs) throws SQLException {
         c.setState(cs);
         cardDao.update(c);
+    }
+
+    public void createNewTraining(Deck d) throws SQLException
+    {
+        this.currentTraining = new Training(this, d);
+    }
+
+    public void finishTraining()
+    {
+        this.currentTraining = null;
+    }
+
+    public Training getCurrentTraining()
+    {
+        return currentTraining;
     }
 }
