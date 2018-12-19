@@ -1,3 +1,4 @@
+import javafx.util.Pair;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import flashcards.model.Deck;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UserTest {
@@ -91,16 +93,27 @@ public class UserTest {
         //assertEquals(user.get_day_entry(date).getDay(),date2);
         assertEquals(user.get_day_entry(date).getNbCard(),3);
     }
-    /*
     @Test
     public void testGetAllNbCards() throws SQLException,ParseException
     {
         String strTrue = "25-11-2019";
         SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
         Date date1 = formater.parse(strTrue);
-        assertEquals();
+        user.add_visit(date1);
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        String str = formater.format(date);
+        date = formater.parse(str);
+        ArrayList<Pair<String,Integer>> test1 = new ArrayList<Pair<String,Integer>>();
+        ArrayList<Pair<String,Integer>> test2 = new ArrayList<Pair<String,Integer>>();
+        Pair<String,Integer> p1 = new Pair<String,Integer>(date.toString(),3);
+        Pair<String,Integer> p2 = new Pair<String,Integer>(date1.toString(),1);
+        test1.add(p1);
+        test1.add(p2);
+        test2.add(p2);
+        assertEquals(user.get_all_nbcard_days(),test1);
+        assertEquals(user.get_all_nbcard_days(1),test2);
     }
-    */
 
     // TODO Test association
 

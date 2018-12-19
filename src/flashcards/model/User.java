@@ -312,7 +312,11 @@ public class User {
         ArrayList<Pair<String,Integer>> tmp = this.get_all_nbcard_days();
         int lim = tmp.size();
         int deb = lim - nbDays;
-        ArrayList<Pair<String,Integer>> tmp2 = (ArrayList<Pair<String,Integer>>)tmp.subList(deb,lim);
+        ArrayList<Pair<String,Integer>> tmp2 = new ArrayList<Pair<String,Integer>>();
+        for(int i = deb; i < lim; i++)
+        {
+            tmp2.add(tmp.get(i));
+        }
         return tmp2;
     }
 
