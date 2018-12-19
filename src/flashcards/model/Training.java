@@ -84,6 +84,10 @@ public class Training
         return good.get(rand);
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
+
     /**
      * Mets à jour dans la base de données les notes et les états de cahque carte en fonction de ce que l'utilisateur a donné comme appréciation (Faces)
      * @param c carte tirée

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -54,7 +55,7 @@ public class TestCardVerso implements Initializable{
                     break;
             }
 
-            try {
+            if (!this.training.isFinished()) {
 
                 FXMLLoader recto = new FXMLLoader();
                 recto.setLocation(getClass().getClassLoader().getResource("TestCardRecto.fxml"));
@@ -66,12 +67,17 @@ public class TestCardVerso implements Initializable{
                 //lien entre popup et deck review
                 ((BorderPane) deck_verso_window.getParent().getScene().getRoot()).setCenter(content);
 
+            } else {
 
-            } catch (Exception e){
-                e.printStackTrace();
+                System.out.println("Apprentissage terminé");
+                new DispSuccessPopup("Apprentissage du paquet terminé", "Bravo, vous avez terminé l'apprentissage du paquet "
+                + this.training.getDeck().getNom() + " !\n"
+                + "Bon travail !");
+
+                ((Stage) deck_verso_window.getParent().getScene().getWindow()).close();
             }
 
-        } catch (SQLException e){
+        } catch(Exception e){
             e.printStackTrace();
         }
 
