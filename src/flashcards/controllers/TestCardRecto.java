@@ -18,7 +18,7 @@ public class TestCardRecto implements Initializable {
     @FXML
     private Button btn_test_card_show;
     @FXML
-    private Label q_recto_content;
+    private Label lbl_test_card_recto_a;
 
     public TestCardRecto(Training training){
         this.training = training;
@@ -32,11 +32,11 @@ public class TestCardRecto implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if (this.training != null) {
             Card c = this.training.go_to_next_card();
-            q_recto_content.setText(c.getRecto());
+            lbl_test_card_recto_a.setText(c.getRecto());
         } else {
         //Card c = new Card("Toto", "Tata", false);
         //String recto = c.getRecto();
-        q_recto_content.setText("Ne marche pas");
+            lbl_test_card_recto_a.setText("Ne marche pas");
         }
     }
 }
