@@ -7,6 +7,9 @@ import flashcards.model.Card;
 import flashcards.model.Deck;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class UserTest {
 
@@ -28,9 +31,9 @@ public class UserTest {
             this.user.add_card2deck(c1, d1);
             this.user.add_card2deck(c2, d1);
 
-            this.user.add_card2deck(c3, d1);
-            this.user.add_card2deck(c4, d1);
-            this.user.add_card2deck(c5, d1);
+            this.user.add_card2deck(c3, d2);
+            this.user.add_card2deck(c4, d2);
+            this.user.add_card2deck(c5, d2);
             this.user.add_card2deck(c2, d2);
     }
 
@@ -61,6 +64,22 @@ public class UserTest {
         assertEquals(this.user.get_card_recto("Russie").getMark(), 30);
     }
 
-    // TODO Test association
+    @Test
+    public void testReadAssociation() throws SQLException {
+        ArrayList<String> rectosExpected = new ArrayList();
+        rectosExpected.add("France");
+        rectosExpected.add("Islande");
+
+        Deck d = this.user.get_deck("Capitales eu");
+        List<Card> cards = this.user.get_card_from_deck(d);
+        ArrayList<String> rectos = new ArrayList();
+        for (Card c : cards) {
+            rectos.add(c.getRecto());
+        }
+
+        Collections.sort(rectosExpected);
+        Collections.sort(rectos);
+        assertEquals(rectosExpected,rectos);
+    }
 
 }
