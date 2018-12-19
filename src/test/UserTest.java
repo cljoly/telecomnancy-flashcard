@@ -17,24 +17,29 @@ public class UserTest {
 
     @Before
     public void init() throws SQLException {
-            this.user = new User("test_junit-"+System.currentTimeMillis());
+        StringBuilder sb = new StringBuilder();
+        sb.append("test_junit-");
+        sb.append(System.currentTimeMillis());
+        sb.append("_");
+        sb.append(Math.random()*10000);
+        this.user = new User(sb.toString());
 
-            Deck d1 = this.user.create_deck("Capitales eu", "Espace Économique Européen");
-            Deck d2 = this.user.create_deck("Capitales monde", "Reste du monde");
+        Deck d1 = this.user.create_deck("Capitales eu", "Espace Économique Européen");
+        Deck d2 = this.user.create_deck("Capitales monde", "Reste du monde");
 
-            Card c1 = this.user.create_card("France", "Paris", false);
-            Card c2 = this.user.create_card("Islande", "Reykjavic", false);
-            Card c3 = this.user.create_card("Australie", "Canberra", false);
-            Card c4 = this.user.create_card("Russie", "Moscou", false);
-            Card c5 = this.user.create_card("Thailande", "Bangkoq", false);
+        Card c1 = this.user.create_card("France", "Paris", false);
+        Card c2 = this.user.create_card("Islande", "Reykjavic", false);
+        Card c3 = this.user.create_card("Australie", "Canberra", false);
+        Card c4 = this.user.create_card("Russie", "Moscou", false);
+        Card c5 = this.user.create_card("Thailande", "Bangkoq", false);
 
-            this.user.add_card2deck(c1, d1);
-            this.user.add_card2deck(c2, d1);
+        this.user.add_card2deck(c1, d1);
+        this.user.add_card2deck(c2, d1);
 
-            this.user.add_card2deck(c3, d2);
-            this.user.add_card2deck(c4, d2);
-            this.user.add_card2deck(c5, d2);
-            this.user.add_card2deck(c2, d2);
+        this.user.add_card2deck(c3, d2);
+        this.user.add_card2deck(c4, d2);
+        this.user.add_card2deck(c5, d2);
+        this.user.add_card2deck(c2, d2);
     }
 
     @Test
