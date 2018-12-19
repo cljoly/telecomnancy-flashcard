@@ -47,6 +47,7 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
+        /*
         try {
 
             GameUsers gameUser = GameUsers.getInstance();
@@ -113,19 +114,15 @@ public class App extends Application {
             Card c5 = u1.create_card("Miel", "Honey", FALSE);
             Card c6 = u1.create_card("Bonjour", "Hello", FALSE);
             System.out.println(u1.get_card_recto("Bonjour"));
-            System.out.println(u1.get_card_recto("Miel"));*/
+            System.out.println(u1.get_card_recto("Miel"));
 
             Training t = new Training(u,d1);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            //System.out.println("coucou");
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
-            t.save_answer(t.go_to_next_card(),Faces.FaceSmile);
+            Card cd = t.go_to_next_card();
+            while (cd != null)
+            {
+                t.save_answer(cd,Faces.FaceSmile);
+                cd = t.go_to_next_card();
+            }
 
             for(Card c : u.get_card_from_deck(d1))
             {
@@ -137,11 +134,9 @@ public class App extends Application {
 
         } catch (Exception e) {
         }
-
+        */
         launch(args);
     }
-
-
 
 }
 

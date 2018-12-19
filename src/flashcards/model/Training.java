@@ -42,25 +42,25 @@ public class Training
     public Card go_to_next_card()
     {
         ++current;
-        if((current >= 3 && !good.isEmpty()) || bad.isEmpty())
+        if((current >= 3 && !good.isEmpty()) || (bad.isEmpty() && !good.isEmpty()))
         {
             current = 0;
             rand = (new Random()).nextInt(good.size() - 1);
             return good.get(rand);
         }
-        else
+        else if(!bad.isEmpty())
         {
             int rand = (new Random()).nextInt(bad.size() - 1);
             return bad.get(rand);
+        }
+        else
+        {
+            return null;
         }
     }
 
     public void save_answer(Card c, Faces f) throws SQLException
     {
-        if(good.isEmpty() && bad.isEmpty())
-        {
-            System.out.println("Stop");
-        }
         if(Faces.FaceFrown.equals(f) && c != null)
         {
             if(c.getMark() >= lowRange)
@@ -110,6 +110,9 @@ public class Training
                 user.setMark(c,c.getMark() + 1);
             }
         }
+        else if(c == null)
+        {
+            System.out.println("Stop");
+        }
     }
-
 }
