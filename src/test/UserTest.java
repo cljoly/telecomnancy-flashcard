@@ -52,6 +52,15 @@ public class UserTest {
             assertEquals(d_monde.getDescription(), "Reste du monde");
     }
 
-    // TODO Test association, update
+    @Test
+    public void testUpdateCard() throws SQLException {
+        Card c = this.user.get_card_recto("France");
+        this.user.setMark(c, 3);
+        assertEquals(this.user.get_card_recto("France").getMark(), 3);
+        this.user.setMark(this.user.get_card_recto("Russie"), 30);
+        assertEquals(this.user.get_card_recto("Russie").getMark(), 30);
+    }
+
+    // TODO Test association
 
 }
