@@ -11,11 +11,9 @@
 
 <?import javafx.stage.Stage?>
 <?import javafx.scene.Scene?>
-<Stage title="Apprentissage d'un paquet" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.PopupLearning">
-    <scene>
-        <Scene>
-            <root>
-                <BorderPane fx:id="popup_root" prefHeight="660.0" prefWidth="1080.0">
+
+
+                <BorderPane  xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:id="popup_root" prefHeight="660.0" prefWidth="1080.0" fx:controller="flashcards.controllers.PopupLearning">
                    <bottom>
                       <GridPane BorderPane.alignment="CENTER">
                         <columnConstraints>
@@ -47,7 +45,3 @@
                       </GridPane>
                    </bottom>
                 </BorderPane>
-            </root>
-        </Scene>
-    </scene>
-</Stage>

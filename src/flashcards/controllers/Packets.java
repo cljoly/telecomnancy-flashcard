@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -84,14 +85,19 @@ public class Packets implements Initializable {
                                             loader.setControllerFactory(iC-> new DeckReview(deck));
 
                                             //chargement du stage popup
-                                            Stage learn = popup.load();
+                                            //Stage learn = popup.load();
+                                            Stage s = new Stage();
+                                            s.setTitle("Apprentissage d'un paquet");
+                                            s.setResizable(false);
+                                            s.setScene(new Scene(popup.load(), 1080, 720));
+
 
                                             //chargement de l'anchor pane deck review
                                             AnchorPane content = loader.load();
 
                                             //lien entre popup et deck review
-                                            ((BorderPane) learn.getScene().getRoot()).setCenter(content);
-                                            learn.show();
+                                            ((BorderPane) s.getScene().getRoot()).setCenter(content);
+                                            s.show();
                                         } catch (IOException e){
                                             e.printStackTrace();                                        }
                                     });
