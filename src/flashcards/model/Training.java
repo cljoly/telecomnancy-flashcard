@@ -39,19 +39,21 @@ public class Training
         }
     }
 
+    /**
+     * Prends une carte selon les critères de l'algorithme d'apprentissage
+     * @return une carte à apprendre
+     */
     public Card go_to_next_card()
     {
         ++current;
         if((current >= 3 && !good.isEmpty()) || (bad.isEmpty() && !good.isEmpty()))
         {
             current = 0;
-            rand = (new Random()).nextInt(good.size() - 1);
-            return good.get(rand);
+            return getCard(good);
         }
         else if(!bad.isEmpty())
         {
-            int rand = (new Random()).nextInt(bad.size() - 1);
-            return bad.get(rand);
+            return getCard(bad);
         }
         else
         {
@@ -59,6 +61,30 @@ public class Training
         }
     }
 
+    /**
+     * Prends une carte au hasard dans une liste de carte
+     * @param good liste de cartes
+     * @return la carte prise au hasard
+     */
+    private Card getCard(ArrayList<Card> good)
+    {
+        if(good.size() != 1)
+        {
+            rand = (new Random()).nextInt(good.size() - 1);
+        }
+        else
+        {
+            rand = 0;
+        }
+        return good.get(rand);
+    }
+
+    /**
+     * Mets à jour dans la base de données les notes et les états de cahque carte en fonction de ce que l'utilisateur a donné comme appréciation (Faces)
+     * @param c carte tirée
+     * @param f appréciation de l'utilisateur
+     * @throws SQLException
+     */
     public void save_answer(Card c, Faces f) throws SQLException
     {
         if(Faces.FaceFrown.equals(f) && c != null)
@@ -95,11 +121,20 @@ public class Training
                 bad.remove(c);
                 good.add(c);
             }
+            else if(bad.contains(c))
+            {
+                bad.remove(c);
+                good.add(c);
+                user.setMark(c,c.getMark() + 1);
+            }
             else if(c.getMark() >= highRange - 1)
             {
                 //c.setState(Learned);
+                System.out.println(c.getMark());
                 user.setMark(c,c.getMark() + 1);
+                System.out.println(c.getMark());
                 user.setState(c,Learned);
+                System.out.println(c.getState());
                 if(good.contains(c))
                 {
                     good.remove(c);

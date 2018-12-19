@@ -210,12 +210,15 @@ public class User {
     }
 
     /**
-     * Modifier la note d’une carte, en répercutant le changement dans la base de donnée
+     * Modifier la note d’une carte, en répercutant le changement dans la base de donnée, si la note est négative, elle est mise à zéro.
      * @param c La carte dont on modifie la note
      * @param v La nouvelle valeur de note de la carte
      */
     public void setMark(Card c, int v) throws SQLException{
         c.setMark(v);
+        //System.out.println("Maj");
+        //System.out.println(v);
+        //System.out.println(c.getMark());
         cardDao.update(c);
     }
 
