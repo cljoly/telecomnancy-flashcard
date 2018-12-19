@@ -58,8 +58,6 @@ public class TestCardRecto implements Initializable {
         if (this.training != null){
             lbl_test_card_recto_a.setText(this.card.getRecto());
         } else {
-        //Card c = new Card("Toto", "Tata", false);
-        //String recto = c.getRecto();
             lbl_test_card_recto_a.setText("Ne marche pas");
         }
     }
