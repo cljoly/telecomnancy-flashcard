@@ -12,9 +12,11 @@ public class Training
     private User user;
     private Deck deck;
     private int current = 0;
+    private int nbCard;
+    private int countTot = 0;
     private int rand;
-    int lowRange = 1;
-    int highRange = 4;
+    private int lowRange = 1;
+    private int highRange = 4;
     private ArrayList<Card> bad;
     private ArrayList<Card> good;
 
@@ -24,6 +26,8 @@ public class Training
         this.deck = deck;
         bad = new ArrayList<Card>();
         good = new ArrayList<Card>();
+        nbCard = 20;
+        countTot = 0;
         for(Card c : user.get_card_from_deck(deck))
         {
             if(c.getMark() == 0)
@@ -45,6 +49,7 @@ public class Training
      */
     public Card go_to_next_card()
     {
+        ++countTot;
         ++current;
         if((current >= 3 && !good.isEmpty()) || (bad.isEmpty() && !good.isEmpty()))
         {
@@ -149,5 +154,14 @@ public class Training
         {
             System.out.println("Stop");
         }
+    }
+
+    public boolean isFinished()
+    {
+        if((good.isEmpty() && bad.isEmpty()) || countTot == nbCard)
+        {
+            return true;
+        }
+        return false;
     }
 }
