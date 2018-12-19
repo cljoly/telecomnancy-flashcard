@@ -11,6 +11,7 @@ import com.j256.ormlite.table.TableUtils;
 import javax.management.Query;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
@@ -21,6 +22,7 @@ public class User {
     private String DATABASE_URL = "jdbc:h2:file:./database/";
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
+    private Dao<VisitePerDay,Integer> visitePerDayDao;
     private Dao<DeckCard, Integer> deckCardDao;
     private Training currentTraining;
 
@@ -67,10 +69,12 @@ public class User {
             this.cardDao = DaoManager.createDao(connectionSource, Card.class);
             this.deckDao = DaoManager.createDao(connectionSource, Deck.class);
             this.deckCardDao = DaoManager.createDao(connectionSource, DeckCard.class);
+            this.visitePerDayDao = DaoManager.createDao(connectionSource, VisitePerDay.class);
 
             TableUtils.createTableIfNotExists(connectionSource, Deck.class);
             TableUtils.createTableIfNotExists(connectionSource, Card.class);
             TableUtils.createTableIfNotExists(connectionSource, DeckCard.class);
+            TableUtils.createTableIfNotExists(connectionSource,VisitePerDay.class);
 
             this.create_deck("Par défaut", "Paquet par défaut");
 
@@ -256,5 +260,25 @@ public class User {
     public Training getCurrentTraining()
     {
         return currentTraining;
+    }
+
+    public void add_visit(Date d) throws SQLException
+    {
+        QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
+        statementBuilder.selectColumns();
+        statementBuilder.where().eq(VisitePerDay.DAY_FIELD_NAME,d);
+        PreparedQuery<VisitePerDay> tmp = statementBuilder.prepare();
+        VisitePerDay v = visitePerDayDao.queryForFirst(tmp);
+
+        if(v == null)
+        {
+            v = new VisitePerDay(d,1);
+            visitePerDayDao.create(v);
+        }
+        else
+        {
+            v.incNbCard();
+            visitePerDayDao.update(v);
+        }
     }
 }
