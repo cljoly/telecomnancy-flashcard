@@ -254,21 +254,18 @@ public class User {
      */
     public ArrayList<Pair<String, Integer>> get_all_nbcard_type() throws SQLException{
         /////Récupère les infos de la base de donnée
-        QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
-        qb.selectRaw(Card.STATE_FIELD_NAME);
-        qb.selectRaw("COUNT (*)");
-        qb.groupBy(Card.STATE_FIELD_NAME);
-        GenericRawResults<String[]> rawResults = qb.queryRaw();
+        GenericRawResults<String[]> rawResults = cardDao.queryRaw("SELECT "+Card.STATE_FIELD_NAME+",COUNT(*) FROM Card GROUP BY "+Card.STATE_FIELD_NAME);
         List<String[]> qResults = rawResults.getResults();
 
         /////Génère le résultat//////
-        ArrayList<Pair<String, Integer>> result = new ArrayList<Pair<String, Integer>>();
+        ArrayList<Pair<String, Integer>> result = new ArrayList<>();
         int pasVus = 0; int enCours = 0; int Aquis = 0;
-        int length = qResults.get(0).length;
-        for (int i=0; i<length; i++){
-            if (qResults.get(0)[i] == CardStates.NotSeen.toString()) { pasVus = Integer.getInteger(qResults.get(1)[i]); }
-            if (qResults.get(0)[i] == CardStates.Learning.toString()) { enCours = Integer.getInteger(qResults.get(1)[i]); }
-            if (qResults.get(0)[i] == CardStates.Learned.toString()) { Aquis = Integer.getInteger(qResults.get(1)[i]); }
+        int size = qResults.size();
+        for (int i=0; i<size; i++){
+            //System.out.println("DEEEEEEEEEEEEEE bug : " + qResults.get(i)[0] + " -> " + qResults.get(i)[1]);
+            if (qResults.get(i)[0] == CardStates.NotSeen.toString()) { pasVus = Integer.parseInt(qResults.get(i)[1]); }
+            if (qResults.get(i)[0] == CardStates.Learning.toString()) { enCours = Integer.parseInt(qResults.get(i)[1]); }
+            if (qResults.get(i)[0] == CardStates.Learned.toString()) { Aquis = Integer.parseInt(qResults.get(i)[1]); }
         }
         result.add(new Pair<>("Non vu", pasVus));
         result.add(new Pair<>("En cours d'apprentissage", enCours));
