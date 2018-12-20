@@ -3,11 +3,16 @@ package flashcards.controllers;
 import flashcards.model.Deck;
 import flashcards.model.GameUsers;
 import flashcards.model.User;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +23,7 @@ import java.util.ResourceBundle;
 public class Tabs {
 
     BorderPane root;
+    @FXML AnchorPane tabs;
 
     public Tabs(BorderPane root){
 
@@ -91,12 +97,24 @@ public class Tabs {
         root.setCenter(decks);
     }
 
-    public void BTN_SHOW_DECK_FOR_LEARNING() throws Exception{
+    public void mi_close_on_action(){
+        Stage stage = (Stage) tabs.getScene().getWindow();
+        stage.close();
+    }
 
-        URL path;
-        path = getClass().getClassLoader().getResource("DeckReview.fxml");
-        Parent decks = FXMLLoader.load(path);
-        root.setCenter(decks);
+    public void mi_help_on_action() throws Exception{
+        Stage stage = new Stage();
+
+        HelpPopup h = new HelpPopup();
+        FXMLLoader loader = new FXMLLoader();
+        URL help = getClass().getClassLoader().getResource("HelpPopup.fxml");
+        loader.setLocation(help);
+        loader.setControllerFactory(iC -> h);
+
+        stage.setTitle("Guide d'utilisation");
+        stage.setResizable(false);
+        stage.setScene(new Scene(loader.load(), 600, 400));
+        stage.show();
     }
 
 }
