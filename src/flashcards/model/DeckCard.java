@@ -21,6 +21,11 @@ public class DeckCard {
      */
     public DeckCard() {}
 
+    /**
+     * Constructeur avec argument
+     * @param d
+     * @param c
+     */
     public DeckCard(Deck d, Card c) {
         this.d = d;
         this.c = c;

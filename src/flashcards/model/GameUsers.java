@@ -12,6 +12,10 @@ public class GameUsers {
     private GameUsers(){
     }
 
+    /**
+     * Récupère l'instance de l'utilisateur
+     * @return
+     */
     public static GameUsers getInstance(){
         if (GameUsers.game == null){
             GameUsers.game = new GameUsers();
@@ -19,10 +23,18 @@ public class GameUsers {
         return GameUsers.game;
     }
 
+    /**
+     * Créée un nouvel utilisateur
+     * @param username
+     */
     public void newUser(String username){
         this.user = new User(username);
     }
 
+    /**
+     * Récupère l'utilisateur courant
+     * @return
+     */
     public User getCurrentUser(){
         return this.user;
     }

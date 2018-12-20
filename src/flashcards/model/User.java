@@ -327,6 +327,11 @@ public class User {
 
     }
 
+    /**
+     * Créée un Training
+     * @param d
+     * @throws SQLException
+     */
     public void createNewTraining(Deck d) throws SQLException
     {
         this.currentTraining = new Training(this, d);
@@ -337,11 +342,20 @@ public class User {
         this.currentTraining = null;
     }
 
+    /**
+     * Récupère le training courant
+     * @return
+     */
     public Training getCurrentTraining()
     {
         return currentTraining;
     }
 
+    /**
+     * Ajoute un visite pour le jour dans la table correspondante
+     * @param d
+     * @throws SQLException
+     */
     public void add_visit(Date d) throws SQLException
     {
         QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
@@ -362,6 +376,12 @@ public class User {
         }
     }
 
+    /**
+     * Récupère le nombre d'entrée pour un jour
+     * @param d
+     * @return
+     * @throws SQLException
+     */
     public VisitePerDay get_day_entry(Date d) throws SQLException
     {
         QueryBuilder<VisitePerDay, Integer> statementBuilder = visitePerDayDao.queryBuilder();
@@ -370,6 +390,11 @@ public class User {
         return result;
     }
 
+    /**
+     * Récupère le nombre d'entrée par jour pour toutes les entrées
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Pair<String,Integer>> get_all_nbcard_days() throws SQLException
     {
         ArrayList<Pair<String,Integer>> tmp = new ArrayList<Pair<String,Integer>>();
@@ -385,6 +410,12 @@ public class User {
         return tmp;
     }
 
+    /**
+     * Récupère le nombre d'entrée par jour pour nbDays jours
+     * @param nbDays
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Pair<String,Integer>> get_all_nbcard_days(int nbDays) throws SQLException
     {
         ArrayList<Pair<String,Integer>> tmp = this.get_all_nbcard_days();
@@ -402,6 +433,12 @@ public class User {
         return tmp2;
     }
 
+    /**
+     * Suprime une carte et ses associations
+     * @param c
+     * @return
+     * @throws SQLException
+     */
     public boolean delete_card_and_its_associations(Card c) throws SQLException
     {
         int id = c.getId();
@@ -415,6 +452,12 @@ public class User {
         return false;
     }
 
+    /**
+     * Supprime un deck avec ses cartes
+     * @param d
+     * @return
+     * @throws SQLException
+     */
     public boolean delete_deck_and_its_cards(Deck d) throws SQLException
     {
         int id = d.getId();

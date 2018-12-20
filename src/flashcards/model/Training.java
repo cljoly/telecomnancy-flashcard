@@ -23,6 +23,12 @@ public class Training
     private ArrayList<Card> bad;
     private ArrayList<Card> good;
 
+    /**
+     * Constructeur de training: initialise ses paramètres
+     * @param user
+     * @param deck
+     * @throws SQLException
+     */
     public Training(User user, Deck deck) throws SQLException
     {
         this.user = user;
@@ -169,6 +175,11 @@ public class Training
         }
     }
 
+    /**
+     *
+     * Indique si le training est terminé pour la session
+     * @return
+     */
     public boolean isFinished()
     {
         if((good.isEmpty() && bad.isEmpty()) || countTot == nbCard)
