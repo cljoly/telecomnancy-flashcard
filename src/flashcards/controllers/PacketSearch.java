@@ -84,13 +84,37 @@ public class PacketSearch implements Initializable {
                 AnchorPane item = path.load();
 
                 list_of_cards_container.getChildren().add(item);
-
-
             }
 
         } catch (Exception e){
             e.printStackTrace();
         }
+
+    }
+
+    public void add_the_changes_to_the_card(){
+        try {
+            Card c = this.currentUser.get_card_recto(recto_details.getText());
+            this.currentUser.change_verso_of_card(c, verso_details.getText());
+            System.out.println(c.toString());
+
+            recto_details.clear();
+            verso_details.clear();
+
+            list_of_cards_container.getChildren().clear();
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void cancel_and_show_before(){
+
+    }
+
+    public void delete_card(){
 
     }
 
