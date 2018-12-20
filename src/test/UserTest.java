@@ -87,6 +87,13 @@ public class UserTest {
     }
 
     @Test
+    public void testChangeVerso() throws SQLException {
+        Card c = this.user.get_card_recto("France");
+        this.user.change_verso_of_card(c, "Versailles");
+        assertEquals("Versailles", this.user.get_card_recto("France").getVerso());
+    }
+
+    @Test
     public void testDeckCreation() throws SQLException {
             Deck d_eu = this.user.get_deck("Capitales eu");
             Deck d_monde = this.user.get_deck("Capitales monde");

@@ -172,6 +172,16 @@ public class User {
     }
 
     /**
+     * Modifier le verso d’une carte
+     * @param c Carte à modifier
+     * @param verso Nouveau verso
+     */
+    public void change_verso_of_card(Card c, String verso) throws SQLException {
+        c.setVerso(verso);
+        cardDao.update(c);
+    }
+
+    /**
      * Accéder à une carte enregistrée dans la base de donnée, par son recto
      * @param recto_content Recto de la carte
      * @return Première (et unique) carte correspondante

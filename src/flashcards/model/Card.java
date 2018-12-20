@@ -15,7 +15,7 @@ public class Card {
     @DatabaseField(columnName = RECTO_FIELD_NAME, unique = true)
     private String recto;
 
-    @DatabaseField(columnName = VERSO_FIELD_NAME, unique = true)
+    @DatabaseField(columnName = VERSO_FIELD_NAME)
     private String verso;
 
     @DatabaseField(columnName = MARK_FIELD_NAME)
