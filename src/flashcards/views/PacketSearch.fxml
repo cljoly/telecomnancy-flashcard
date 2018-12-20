@@ -112,7 +112,7 @@
                         <Insets left="25.0" top="30.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="delete_card" mnemonicParsing="false">
+                  <Button fx:id="delete_card" mnemonicParsing="false" onAction="#delete_card_from_app">
                      <HBox.margin>
                         <Insets left="380.0" top="20.0" />
                      </HBox.margin>

@@ -119,7 +119,20 @@ public class PacketSearch implements Initializable {
         }
     }
 
-    public void delete_card(){
+    public void delete_card_from_app(){
+        try {
+            Card c = this.currentUser.get_card_recto(recto_details.getText());
+
+            this.currentUser.delete_card_and_its_associations(c);
+
+            list_of_cards_container.getChildren().clear();
+
+            recto_details.clear();
+            verso_details.clear();
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
 
