@@ -139,6 +139,12 @@ public class User {
         return deckDao.query(deckQb.prepare());
     }
 
+    public List<DeckCard> get_all_links() throws SQLException
+    {
+        QueryBuilder<DeckCard, Integer> deckQb = deckCardDao.queryBuilder();
+        return deckCardDao.query(deckQb.prepare());
+    }
+
     /**
      * Accéder à un paquet enregistre dans la base de donnée, par son nom
      * @param deck_name Nom du paquet
