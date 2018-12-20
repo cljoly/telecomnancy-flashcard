@@ -95,6 +95,14 @@ public class UserTest {
         for (Pair<String, Integer> p : nbcard_type){
             if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 1); }
         }
+
+        this.user.setState(this.user.get_card_recto("Islande"), CardStates.Learned);
+        nbcard_type = this.user.get_all_nbcard_type();
+        for (Pair<String, Integer> p : nbcard_type){
+            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 2); }
+        }
+
+
     }
 
     @Test
