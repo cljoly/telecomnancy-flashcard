@@ -173,6 +173,23 @@ public class UserTest {
 
         assertEquals(true, this.user.isLearned(d_eu));
         assertEquals(false, this.user.isLearned(d_monde));
+    @Test
+    public void testGetAllCards() throws SQLException {
+        ArrayList<Integer> id_expected = new ArrayList();
+        id_expected.add(this.user.get_card_recto("France").getId());
+        id_expected.add(this.user.get_card_recto("Islande").getId());
+        id_expected.add(this.user.get_card_recto("Australie").getId());
+        id_expected.add(this.user.get_card_recto("Russie").getId());
+        id_expected.add(this.user.get_card_recto("Thailande").getId());
+
+        ArrayList<Integer> id = new ArrayList();
+        for (Card c : this.user.get_all_cards()) {
+            id.add(c.getId());
+        }
+
+        Collections.sort(id_expected);
+        Collections.sort(id);
+        assertEquals(id_expected, id);
     }
 
     @Test

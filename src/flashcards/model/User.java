@@ -252,6 +252,14 @@ public class User {
     }
 
     /**
+     * Liste de toutes les cartes
+     */
+    public List<Card> get_all_cards() throws SQLException {
+        QueryBuilder<Card, Integer> cardQb = cardDao.queryBuilder();
+        return cardDao.query(cardQb.prepare());
+    }
+
+    /**
      * Récupération de la note d’une carte
      * @param c Carte dont on veut la note
      * @return Note de la carte
