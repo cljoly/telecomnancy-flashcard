@@ -40,12 +40,16 @@ public class UserStats implements Initializable {
     public void btn_select_source_on_action() throws Exception{
         String nom_deck = cb_deck.getSelectionModel().getSelectedItem();
         Deck d = this.currentUser.get_deck(nom_deck);
+        int total = currentUser.get_deck_stats_about_cards(d, CardStates.NotSeen)
+                + currentUser.get_deck_stats_about_cards(d, CardStates.Learning)
+                + currentUser.get_deck_stats_about_cards(d, CardStates.Learned);
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        //pieChartData.add(new PieChart.Data("Non vu", currentUser.get_deck_stats_about_cards(d, CardStates.NotSeen)));
-        //pieChartData.add(new PieChart.Data("En cours d'apprentissage", currentUser.get_deck_stats_about_cards(d, CardStates.Learning)));
-        //pieChartData.add(new PieChart.Data("Aquis", currentUser.get_deck_stats_about_cards(d, CardStates.Learned)));
-
+        pieChartData.add(new PieChart.Data("Non vu", currentUser.get_deck_stats_about_cards(d, CardStates.NotSeen)));
+        pieChartData.add(new PieChart.Data("En cours d'apprentissage", currentUser.get_deck_stats_about_cards(d, CardStates.Learning)));
+        pieChartData.add(new PieChart.Data("Aquis", currentUser.get_deck_stats_about_cards(d, CardStates.Learned)));
+        chart_cards_per_type.setData(pieChartData);
+        lbl_cards_per_type_total.setText(String.valueOf(total));
     }
 
     /**
@@ -56,6 +60,7 @@ public class UserStats implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //////Tests//////
+        /*
         ArrayList<Pair<String, Integer>> cardNbPerDay = new ArrayList<Pair<String, Integer>>();
         cardNbPerDay.add(new Pair<>("J-7",15));
         cardNbPerDay.add(new Pair<>("J-6",12));
@@ -65,6 +70,7 @@ public class UserStats implements Initializable {
         cardNbPerDay.add(new Pair<>("J-2",12));
         cardNbPerDay.add(new Pair<>("J-1",13));
         cardNbPerDay.add(new Pair<>("J",4));
+        */
 
         /*
         ArrayList<Pair<String, Integer>> cardNbPerType = new ArrayList<Pair<String, Integer>>();
@@ -77,23 +83,23 @@ public class UserStats implements Initializable {
         this.g = GameUsers.getInstance();
         this.currentUser = this.g.getCurrentUser();
 
-        //ArrayList<Pair<String, Integer>> cardNbPerDay;
+        ArrayList<Pair<String, Integer>> cardNbPerDay;
         ArrayList<Pair<String, Integer>> cardNbPerType;
 
         int total;
 
         try {
-            // cardNbPerDay = currentUser.get_all_nbcard_days(10);
+            cardNbPerDay = currentUser.get_all_nbcard_days();
             cardNbPerType = currentUser.get_all_nbcard_type();
-            // System.out.println("DEBUG DEBUG cardnb per day 0 : "+ cardNbPerDay.get(0).getKey()+ ", with value: "+ cardNbPerDay.get(0).getValue());
-            System.out.println("DEBUG DEBUG cardnb per type 0 : "+ cardNbPerType.get(0).getKey()+ ", with value: "+ cardNbPerType.get(0).getValue());
-            System.out.println("DEBUG DEBUG cardnb per type 1 : "+ cardNbPerType.get(1).getKey()+ ", with value: "+ cardNbPerType.get(1).getValue());
-            System.out.println("DEBUG DEBUG cardnb per type 2 : "+ cardNbPerType.get(2).getKey()+ ", with value: "+ cardNbPerType.get(2).getValue());
+            //System.out.println("DEBUG DEBUG cardnb per day 0 : "+ cardNbPerDay.get(0).getKey()+ ", with value: "+ cardNbPerDay.get(0).getValue());
+            //System.out.println("DEBUG DEBUG cardnb per type 0 : "+ cardNbPerType.get(0).getKey()+ ", with value: "+ cardNbPerType.get(0).getValue());
+            //System.out.println("DEBUG DEBUG cardnb per type 1 : "+ cardNbPerType.get(1).getKey()+ ", with value: "+ cardNbPerType.get(1).getValue());
+            //System.out.println("DEBUG DEBUG cardnb per type 2 : "+ cardNbPerType.get(2).getKey()+ ", with value: "+ cardNbPerType.get(2).getValue());
 
-            /*
+
             ///////Initialising cards per day graph///////////
             chart_cards_per_day.getXAxis().setLabel("Date");
-            chart_cards_per_day.getYAxis().setLabel("Nombre de cartes");
+            chart_cards_per_day.getYAxis().setLabel("Nombre de visite");
             total = 0;
             int moyenne;
 
@@ -108,7 +114,7 @@ public class UserStats implements Initializable {
             chart_cards_per_day.setLegendVisible(false);
             lbl_cards_per_day_avg.setText(String.valueOf(moyenne));
             lbl_cards_per_day_total.setText(String.valueOf(total));
-            */
+
 
             ///////Initialising cards per type graph//////////
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
