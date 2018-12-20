@@ -94,6 +94,13 @@ public class UserTest {
     }
 
     @Test
+    public void testChangeDescription() throws SQLException {
+        Deck d = this.user.get_deck("Capitales eu");
+        this.user.change_description_of_deck(d, "EEE");
+        assertEquals("EEE", this.user.get_deck("Capitales eu").getDescription());
+    }
+
+    @Test
     public void testDeckCreation() throws SQLException {
             Deck d_eu = this.user.get_deck("Capitales eu");
             Deck d_monde = this.user.get_deck("Capitales monde");

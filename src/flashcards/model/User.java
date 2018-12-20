@@ -119,6 +119,16 @@ public class User {
         deckDao.create(d);
         return d;
     }
+    /**
+     * Modifier la description d’un paquet de carte
+     * @param d Paquet à modifier
+     * @param description Nouvelle description
+     */
+    public void change_description_of_deck(Deck d, String description) throws SQLException {
+        d.setDescription(description);
+        deckDao.update(d);
+    }
+
 
     /**
      * Liste l’ensemble des paquets contenus dans la base de donnée
