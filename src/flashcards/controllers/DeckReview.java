@@ -39,11 +39,18 @@ public class DeckReview implements Initializable {
         //TODO si le paquet ne contient plus de cartes à apprendre
         //TODO si nombre de cartes dans le paquet est égal à 0
         int nb_cartes_paquet = 0;
-        int nb_cartes_restantes_a_apprendre = 0;
-        if (nb_cartes_paquet == 0 || nb_cartes_restantes_a_apprendre ==0) {
+        int nb_cartes_restantes_a_apprendre = 1;
+        if (nb_cartes_restantes_a_apprendre == 0) {
 
             new DispErrorPopup("Vous voulez vraiment vous acharner ?", "Vous avez déjà appris toutes les cartes contenues dans ce paquet.\n\n"
             + "Vous n'avez plus besoin de l'apprendre, vous êtes assez bon, veuillez sélectionner un autre paquet pour réviser");
+
+            ((Stage) deck_review_window.getParent().getScene().getWindow()).close();
+
+        } else if (nb_cartes_paquet == 0 ) {
+
+            new DispErrorPopup("Paquet vide", "Ce paquet ne contient pas de cartes, veuillez ajouter des cartes à ce paquet afin de pouvoir commencer son apprentissage.\n"
+            + "L'ajout de carte à un paquet s'effectue dans l'onglet \"Ajouter carte(s)\"");
 
             ((Stage) deck_review_window.getParent().getScene().getWindow()).close();
 
