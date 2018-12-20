@@ -86,7 +86,6 @@ public class UserTest {
         assertEquals(this.user.get_card_recto("Russie").getMark(), 30);
     }
 
-
     @Test
     public void testGetNbOfCardsPerType() throws SQLException {
         this.user.setState(this.user.get_card_recto("France"), CardStates.Learned);
@@ -169,6 +168,14 @@ public class UserTest {
         this.user.add_card2deck(c3, d2);
         user.delete_card_and_its_associations(c1);
         user.delete_deck_and_its_cards(d2);
+        Deck d22 = user.get_deck("Capitales mondee");
+        assertEquals(d22,null);
+        Card c12 = user.get_card_recto("Francee");
+        assertEquals(c12,null);
+        Card c22 = user.get_card_recto("Islandee");
+        assertEquals(c22,null);
+        Card c32 = user.get_card_recto("Australiee");
+        assertEquals(c32,null);
     }
 
 }
