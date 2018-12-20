@@ -31,6 +31,7 @@ public class WhenADeckIsClicked implements EventHandler<ActionEvent> {
             User u = GameUsers.getInstance().getCurrentUser();
             Deck d = u.get_deck(deck_name);
             List<Card> list_of_deck_cards = u.get_card_from_deck(d);
+            list_of_cards_container.getChildren().clear();
             for (Card c : list_of_deck_cards){
 
                 FXMLLoader path = new FXMLLoader();

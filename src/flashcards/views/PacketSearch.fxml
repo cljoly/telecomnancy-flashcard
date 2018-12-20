@@ -110,7 +110,7 @@
                <content>
                   <VBox fx:id="list_of_all_decks" prefHeight="660.0" prefWidth="152.0">
                      <children>
-                        <Button minWidth="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" text="Tous les paquets" textFill="#7510a1">
+                        <Button minWidth="250.0" mnemonicParsing="false" onAction="#disp_all_cards" prefHeight="27.0" prefWidth="109.0" text="Tous les paquets" textFill="#7510a1">
                            <font>
                               <Font size="15.0" />
                            </font>
