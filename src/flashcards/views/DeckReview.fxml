@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,18 +15,18 @@
 
 <AnchorPane fx:id="deck_review_window" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckReview">
    <children>
-      <VBox layoutX="449.0" layoutY="119.0" prefHeight="620.0" prefWidth="1040.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <VBox prefHeight="615.0" prefWidth="1040.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0">
          <children>
-            <Label fx:id="lbl_review_deck_name" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1040.0" text=" ">
+            <Label fx:id="lbl_review_deck_name" alignment="CENTER" contentDisplay="CENTER" prefHeight="177.0" prefWidth="1040.0" textFill="#8317a4" underline="true">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="39.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="454.0" prefWidth="1040.0">
                <children>
-                  <GridPane>
+                  <GridPane alignment="CENTER" prefHeight="122.0" prefWidth="314.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -33,22 +35,47 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Inédits :" />
-                        <Label text="En cours :" GridPane.rowIndex="1" />
-                        <Label text="Acquis :" GridPane.rowIndex="2" />
-                        <Label fx:id="lbl_review_new_card_count" text="#NAN" textFill="#5d22dd" GridPane.columnIndex="1" />
-                        <Label fx:id="lbl_review_learning_card_count" text="#NAN" textFill="#ed7f05" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lbl_review_learnt_card_count" text="#NAN" textFill="#03b515" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Inédits :">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Label>
+                        <Label text="En cours :" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Label>
+                        <Label text="Acquis :" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_review_new_card_count" alignment="CENTER" contentDisplay="CENTER" text="#NAN" textAlignment="CENTER" textFill="#5d22dd" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_review_learning_card_count" text="#NAN" textFill="#ed7f05" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_review_learnt_card_count" text="#NAN" textFill="#03b515" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="btn_review_launch" mnemonicParsing="false" onAction="#when_learn_button_is_clicked" text="Étudier maintenant">
+                  <Button fx:id="btn_review_launch" mnemonicParsing="false" onAction="#when_learn_button_is_clicked" prefHeight="185.0" prefWidth="327.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="175.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/interface/img/learning.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets left="300.0" right="300.0" top="100.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -58,14 +85,14 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btn_review_alt_launch" mnemonicParsing="false" text="Réviser autrement">
+                  <Button fx:id="btn_review_alt_launch" mnemonicParsing="false" prefHeight="26.0" prefWidth="193.0" text="Supprimer le paquet">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets top="200.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </HBox>
          </children>
