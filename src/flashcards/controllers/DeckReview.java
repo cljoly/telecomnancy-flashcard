@@ -36,16 +36,18 @@ public class DeckReview implements Initializable {
     }
 
     public void when_learn_button_is_clicked() {
-        //TODO si nombre de cartes du deck restant à apprendre est égal à 0, on ne permet pas de lancer l'apprentissage : popup, et on revient sur l'onglet principal
-        /*int nb_cartes = 0;
-        if (nb_cartes == 0) {
+        //TODO si le paquet ne contient plus de cartes à apprendre
+        //TODO si nombre de cartes dans le paquet est égal à 0
+        int nb_cartes_paquet = 0;
+        int nb_cartes_restantes_a_apprendre = 0;
+        if (nb_cartes_paquet == 0 || nb_cartes_restantes_a_apprendre ==0) {
 
-            new DispErrorPopup("Vous voulez vous acharner ?", "Vous avez déjà appris toutes les cartes contenues dans ce paquet.\n\n"
-            + "Vous n'avez plus besoin de l'aprpendre, veuillez sélectionner un autre paquet pour réviser");
+            new DispErrorPopup("Vous voulez vraiment vous acharner ?", "Vous avez déjà appris toutes les cartes contenues dans ce paquet.\n\n"
+            + "Vous n'avez plus besoin de l'apprendre, vous êtes assez bon, veuillez sélectionner un autre paquet pour réviser");
 
-            TODO((Stage) deck_review_window.getParent().getScene().getWindow()).setScene().;
+            ((Stage) deck_review_window.getParent().getScene().getWindow()).close();
 
-        } else {*/
+        } else {
 
             try {
 
@@ -66,6 +68,6 @@ public class DeckReview implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        //}
+        }
     }
 }
