@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import javafx.util.Pair;
@@ -118,6 +119,16 @@ public class User {
         deckDao.create(d);
         return d;
     }
+    /**
+     * Modifier la description d’un paquet de carte
+     * @param d Paquet à modifier
+     * @param description Nouvelle description
+     */
+    public void change_description_of_deck(Deck d, String description) throws SQLException {
+        d.setDescription(description);
+        deckDao.update(d);
+    }
+
 
     /**
      * Liste l’ensemble des paquets contenus dans la base de donnée
@@ -142,8 +153,20 @@ public class User {
         return result;
     }
 
+    /** Crée une carte, non réversible, telle qu’elle seront conservées dans la base de donnée sous jacente
+     * @param recto Recto de la carte
+     * @param verso Verso de la carte
+     * @return Nouvelle carte créée
+     */
+    private Card create_one_card(String recto, String verso) throws SQLException {
+        Card c = new Card(recto, verso);
+        cardDao.create(c);
+        return c;
+    }
+
     /**
-     * Crée une nouvelle carte dans la base de donnée
+     * Crée une nouvelle carte dans la base de donnée. Les cartes réversible sont stockées comme deux cartes dans la
+     * base en inversant recto et verso
      * @param recto Recto de la carte (doit être unique)
      * @param verso Verso de la carte (doit être unique)
      * @param estReversible La carte est-elle réversible ?
@@ -151,9 +174,20 @@ public class User {
      * @throws SQLException En cas de problème avec la base de donnée (recto/verso non unique ou autre)
      */
     public Card create_card(String recto, String verso, boolean estReversible) throws SQLException {
-        Card c = new Card(recto, verso, FALSE);
-        cardDao.create(c);
-        return c;
+        if (estReversible) {
+            create_one_card(verso, recto);
+        }
+        return create_one_card(recto, verso);
+    }
+
+    /**
+     * Modifier le verso d’une carte
+     * @param c Carte à modifier
+     * @param verso Nouveau verso
+     */
+    public void change_verso_of_card(Card c, String verso) throws SQLException {
+        c.setVerso(verso);
+        cardDao.update(c);
     }
 
     /**
@@ -373,4 +407,49 @@ public class User {
         return false;
     }
 
+    /**
+     * Nombre de cartes dans l’état state pour le paquet deck
+     * @param deck Paquet de cartes
+     * @param cardStatType État des cartes
+     * @return int Nombre de carte correspondante
+     */
+    public int get_deck_stats_about_cards(Deck deck, CardStates cardStatType) throws SQLException {
+        GenericRawResults<String[]> raw = cardDao.queryRaw(
+                "SELECT COUNT(*) FROM Card c, DeckCard dc " +
+                        " WHERE dc." + DeckCard.CARD_ID_FIELD_NAME + " = c." +  Card.ID_FIELD_NAME +
+                        " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
+                        " AND c." + Card.STATE_FIELD_NAME + " LIKE '" + cardStatType + "'" +
+                        ""
+        );
+        List<String[]> r = raw.getResults();
+        int nb_card = -1;
+        try {
+            nb_card = Integer.parseInt(r.get(0)[0]);
+        } catch (IndexOutOfBoundsException e) {
+            nb_card = 0;
+        }
+        return nb_card;
+    }
+
+    /**
+     * Nombre de cartes total dans le paquet deck
+     * @param deck Paquet de cartes
+     * @return int Nombre de carte correspondante
+     */
+    public int get_deck_cards_number(Deck deck) throws SQLException {
+        GenericRawResults<String[]> raw = cardDao.queryRaw(
+                "SELECT COUNT(*) FROM Card c, DeckCard dc " +
+                        " WHERE dc." + DeckCard.CARD_ID_FIELD_NAME + " = c." +  Card.ID_FIELD_NAME +
+                        " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
+                        ""
+        );
+        List<String[]> r = raw.getResults();
+        int nb_card = -1;
+        try {
+            nb_card = Integer.parseInt(r.get(0)[0]);
+        } catch (IndexOutOfBoundsException e) {
+            nb_card = 0;
+        }
+        return nb_card;
+    }
 }

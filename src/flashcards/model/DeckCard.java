@@ -3,6 +3,7 @@ package flashcards.model;
 import com.j256.ormlite.field.DatabaseField;
 
 public class DeckCard {
+    public final static String ID_FIELD_NAME = "id";
     public final static String DECK_ID_FIELD_NAME = "deck_id";
     public final static String CARD_ID_FIELD_NAME = "card_id";
 

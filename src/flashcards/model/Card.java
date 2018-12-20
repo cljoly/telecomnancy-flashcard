@@ -15,11 +15,8 @@ public class Card {
     @DatabaseField(columnName = RECTO_FIELD_NAME, unique = true)
     private String recto;
 
-    @DatabaseField(columnName = VERSO_FIELD_NAME, unique = true)
+    @DatabaseField(columnName = VERSO_FIELD_NAME)
     private String verso;
-
-    @DatabaseField
-    private boolean reversible;
 
     @DatabaseField(columnName = MARK_FIELD_NAME)
     private int mark;
@@ -49,10 +46,9 @@ public class Card {
      * @param verso Verso de la carte (supposé unique parmis toutes les cartes)
      * @param reversible La carte est-elle réversible ?
      */
-    public Card(String recto, String verso, boolean reversible) {
+    public Card(String recto, String verso) {
         this.recto = recto;
         this.verso = verso;
-        this.reversible = reversible;
         this.mark = 0;
         this.state = CardStates.NotSeen;
     }
@@ -95,22 +91,6 @@ public class Card {
      */
     public void setVerso(String verso) {
         this.verso = verso;
-    }
-
-    /**
-     * Getter reversible
-     * @return reversible La carte pourra-t-elle être retournée
-     */
-    public boolean isReversible() {
-        return reversible;
-    }
-
-    /**
-     * Setter reversible
-     * @param reversible La carte pourra-t-elle être retournée
-     */
-    public void setReversible(boolean reversible) {
-        this.reversible = reversible;
     }
 
     /**
