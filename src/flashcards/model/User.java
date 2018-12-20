@@ -153,6 +153,16 @@ public class User {
         return result;
     }
 
+    /**
+     * A-t-on fini d’apprendre un paquet ?
+     * @param d le paquet
+     */
+    public boolean isLearned(Deck d) throws SQLException {
+        int nb_card_learned = this.get_deck_stats_about_cards(d, CardStates.Learned);
+        int nb_card_in_deck = this.get_deck_cards_number(d);
+        return nb_card_in_deck == nb_card_learned;
+    }
+
     /** Crée une carte, non réversible, telle qu’elle seront conservées dans la base de donnée sous jacente
      * @param recto Recto de la carte
      * @param verso Verso de la carte

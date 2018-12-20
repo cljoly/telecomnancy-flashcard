@@ -167,6 +167,15 @@ public class UserTest {
     }
 
     @Test
+    public void testIsLearned() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(true, this.user.isLearned(d_eu));
+        assertEquals(false, this.user.isLearned(d_monde));
+    }
+
+    @Test
     public void testReadAssociation() throws SQLException {
         ArrayList<String> rectosExpected = new ArrayList();
         rectosExpected.add("France");
