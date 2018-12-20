@@ -279,12 +279,16 @@ public class UserTest {
     @Test
     public void testUserData() throws SQLException
     {
-        UserData u = new UserData(this.user);
-        String json = u.toJson();
+        UserData ud = new UserData(this.user);
+        String json = ud.toJson();
         System.out.println("json======================================json");
         System.out.println(json);
-        UserData u2 = new UserData(json);
-        String json2 = u2.toJson();
+        UserData ud2 = new UserData(json);
+        user.delete_all_data();
+        ud2.fill_data_base(user);
+        String json2 = ud2.toJson();
+        System.out.println("json2======================================json2");
+        System.out.println(json2);
         assertEquals(json,json2);
     }
 }

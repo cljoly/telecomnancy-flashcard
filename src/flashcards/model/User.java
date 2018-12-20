@@ -22,6 +22,7 @@ public class User {
 
     private String username;
     private String DATABASE_URL = "jdbc:h2:file:./database/";
+    private ConnectionSource connectionSource;
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
     private Dao<VisitePerDay,Integer> visitePerDayDao;
@@ -60,11 +61,10 @@ public class User {
     private void db_init()throws Exception{
         System.out.println("Init db");
 
-        ConnectionSource connectionSource = null;
         try {
             System.out.println("Src");
             // create our data-source for the database
-            connectionSource = new JdbcConnectionSource(this.DATABASE_URL);
+            this.connectionSource = new JdbcConnectionSource(this.DATABASE_URL);
 
             // setup our database and DAOs
             System.out.println("Setup");
@@ -479,5 +479,30 @@ public class User {
             nb_card = 0;
         }
         return nb_card;
+    }
+
+    public void insert_list_cards(List<Card> cards) throws SQLException
+    {
+        System.out.println("cards~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cards");
+        System.out.println(cards);
+        cardDao.create(cards);
+    }
+
+    public void insert_list_decks(List<Deck> decks) throws SQLException
+    {
+        deckDao.create(decks);
+    }
+
+    public void insert_list_links(List<DeckCard> links) throws SQLException
+    {
+        deckCardDao.create(links);
+    }
+
+    public void delete_all_data() throws SQLException
+    {
+        deckCardDao.executeRaw("DELETE FROM DeckCard");
+        deckDao.executeRaw("DELETE FROM Deck");
+        cardDao.executeRaw("DELETE FROM Card");
+        visitePerDayDao.executeRaw("DELETE FROM VisitePerDay");
     }
 }

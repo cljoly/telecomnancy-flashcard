@@ -3,6 +3,7 @@ package flashcards.model;
 import com.google.gson.Gson;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 public class UserData
@@ -21,13 +22,24 @@ public class UserData
     public UserData(String json)
     {
         Gson gson = new Gson();
-        gson.fromJson(json,UserData.class);
+        UserData ud = gson.fromJson(json,UserData.class);
+        this.cards = ud.cards;
+        this.decks = ud.decks;
+        this.links = ud.links;
     }
 
     public String toJson()
     {
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+
+    public void fill_data_base(User u) throws SQLException
+    {
+        //Collections.sort(cards);
+        u.insert_list_cards(this.cards);
+        u.insert_list_decks(this.decks);
+        u.insert_list_links(this.links);
     }
 
 }
