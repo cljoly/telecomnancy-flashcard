@@ -173,6 +173,8 @@ public class UserTest {
 
         assertEquals(true, this.user.isLearned(d_eu));
         assertEquals(false, this.user.isLearned(d_monde));
+    }
+
     @Test
     public void testGetAllCards() throws SQLException {
         ArrayList<Integer> id_expected = new ArrayList();
