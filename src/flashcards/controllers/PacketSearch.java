@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -27,7 +28,22 @@ public class PacketSearch implements Initializable {
     private User currentUser;
 
     @FXML
-    VBox list_of_cards_container;
+    private VBox list_of_cards_container;
+
+    @FXML
+    private TextArea recto_details;
+
+    @FXML
+    private TextArea verso_details;
+
+    @FXML
+    private Button add_change_to_card;
+
+    @FXML
+    private Button unsave_changes;
+
+    @FXML
+    private Button delete_card;
 
 
     public PacketSearch(){
@@ -47,7 +63,7 @@ public class PacketSearch implements Initializable {
                 b.setMinWidth(250);
                 b.setPrefWidth(29);
 
-                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, list_of_cards_container));
+                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, list_of_cards_container, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
 
                 list_of_all_decks.getChildren().add(b);
             }
@@ -63,7 +79,7 @@ public class PacketSearch implements Initializable {
 
                 FXMLLoader path = new FXMLLoader();
                 path.setLocation(getClass().getClassLoader().getResource("Show_a_card.fxml"));
-                path.setControllerFactory(iC -> new Show_a_card(c));
+                path.setControllerFactory(iC -> new Show_a_card(c, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
 
                 AnchorPane item = path.load();
 

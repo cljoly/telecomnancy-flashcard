@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,7 +25,7 @@
         <rowConstraints>
           <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="125.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <ScrollPane>
@@ -60,7 +62,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextArea prefHeight="99.0" prefWidth="660.0" />
+                        <TextArea fx:id="recto_details" prefHeight="99.0" prefWidth="660.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -73,7 +75,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextArea prefHeight="73.0" prefWidth="660.0" />
+                        <TextArea fx:id="verso_details" prefHeight="73.0" prefWidth="660.0" />
                      </children>
                   </HBox>
                   <Label text="Détails de la carte sélectionnée :" textFill="#7510a1">
@@ -86,18 +88,29 @@
                   </Label>
                </children>
             </GridPane>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <HBox minWidth="20.0" prefHeight="20.0" prefWidth="804.0" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" text="Valider">
+                  <Button fx:id="add_change_to_card" mnemonicParsing="false" text="Valider">
                      <HBox.margin>
                         <Insets left="100.0" top="30.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Annuler">
+                  <Button fx:id="unsave_changes" mnemonicParsing="false" text="Annuler">
                      <HBox.margin>
-                        <Insets left="5.0" top="30.0" />
+                        <Insets left="25.0" top="30.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="delete_card" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="380.0" top="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/interface/img/delete.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </HBox>
          </children>

@@ -10,7 +10,7 @@
    <children>
       <HBox layoutX="93.0" layoutY="124.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="card_button" minHeight="24.0" minWidth="189.0" mnemonicParsing="false" text="Carte :" textFill="#619e27">
+            <Button fx:id="card_button" minHeight="24.0" minWidth="189.0" mnemonicParsing="false" onAction="#show_card_details" text="Carte :" textFill="#619e27">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
