@@ -108,7 +108,8 @@ public class UserStats implements Initializable {
                 total = total + p.getValue();
                 series1.getData().add(new XYChart.Data(p.getKey(), p.getValue()));
             }
-            moyenne = total/cardNbPerDay.size();
+            if (cardNbPerDay.size() != 0) {moyenne = total/cardNbPerDay.size();}
+            else {moyenne = 0;}
 
             chart_cards_per_day.getData().add(series1);
             chart_cards_per_day.setLegendVisible(false);
