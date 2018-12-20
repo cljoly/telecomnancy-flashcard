@@ -1,6 +1,7 @@
 import flashcards.model.CardStates;
 import javafx.util.Pair;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 import org.junit.Before;
 
@@ -16,13 +17,15 @@ import java.util.Date;
 import java.util.Collections;
 import java.util.List;
 
+import static flashcards.model.CardStates.Learned;
+import static flashcards.model.CardStates.NotSeen;
+import static flashcards.model.CardStates.Learning;
 
 public class UserTest {
 
     private User user;
 
     @Before
-
     public void init() throws SQLException, ParseException {
         StringBuilder sb = new StringBuilder();
         sb.append("test_junit-");
@@ -57,6 +60,13 @@ public class UserTest {
         this.user.add_visit(date);
         this.user.add_visit(date);
 
+        this.user.setState(c1, Learned);
+        this.user.setState(c2, Learned);
+        this.user.setState(c3, NotSeen);
+        this.user.setState(c4, Learning);
+        this.user.setState(c5, NotSeen);
+
+        System.out.println("End @Before");
     }
 
     @Test
@@ -67,6 +77,27 @@ public class UserTest {
         assertEquals(this.user.get_card_recto("Australie").getVerso(), "Canberra");
         assertEquals(this.user.get_card_recto("Russie").getVerso(), "Moscou");
         assertEquals(this.user.get_card_recto("Thailande").getVerso(), "Bangkoq");
+    }
+
+    @Test
+    public void testCardReversible() throws SQLException {
+        Card c = this.user.create_card("Luxembourg", "Luxembourg Ville", true);
+        assertEquals(c.getId(), this.user.get_card_recto("Luxembourg").getId());
+        assertNotEquals(c.getId(), this.user.get_card_recto("Luxembourg Ville").getId());
+    }
+
+    @Test
+    public void testChangeVerso() throws SQLException {
+        Card c = this.user.get_card_recto("France");
+        this.user.change_verso_of_card(c, "Versailles");
+        assertEquals("Versailles", this.user.get_card_recto("France").getVerso());
+    }
+
+    @Test
+    public void testChangeDescription() throws SQLException {
+        Deck d = this.user.get_deck("Capitales eu");
+        this.user.change_description_of_deck(d, "EEE");
+        assertEquals("EEE", this.user.get_deck("Capitales eu").getDescription());
     }
 
     @Test
@@ -89,11 +120,10 @@ public class UserTest {
 
     @Test
     public void testGetNbOfCardsPerType() throws SQLException {
-        this.user.setState(this.user.get_card_recto("France"), CardStates.Learned);
         ArrayList<Pair<String, Integer>> nbcard_type = this.user.get_all_nbcard_type();
 
         for (Pair<String, Integer> p : nbcard_type){
-            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 1); }
+            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(),2); }
         }
     }
 
@@ -137,6 +167,34 @@ public class UserTest {
     }
 
     @Test
+    public void testIsLearned() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(true, this.user.isLearned(d_eu));
+        assertEquals(false, this.user.isLearned(d_monde));
+    }
+
+    @Test
+    public void testGetAllCards() throws SQLException {
+        ArrayList<Integer> id_expected = new ArrayList();
+        id_expected.add(this.user.get_card_recto("France").getId());
+        id_expected.add(this.user.get_card_recto("Islande").getId());
+        id_expected.add(this.user.get_card_recto("Australie").getId());
+        id_expected.add(this.user.get_card_recto("Russie").getId());
+        id_expected.add(this.user.get_card_recto("Thailande").getId());
+
+        ArrayList<Integer> id = new ArrayList();
+        for (Card c : this.user.get_all_cards()) {
+            id.add(c.getId());
+        }
+
+        Collections.sort(id_expected);
+        Collections.sort(id);
+        assertEquals(id_expected, id);
+    }
+
+    @Test
     public void testReadAssociation() throws SQLException {
         ArrayList<String> rectosExpected = new ArrayList();
         rectosExpected.add("France");
@@ -154,4 +212,39 @@ public class UserTest {
         assertEquals(rectosExpected,rectos);
     }
 
+    @Test
+    public void testDeckStatCardNotSeen() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(0, this.user.get_deck_stats_about_cards(d_eu, NotSeen));
+        assertEquals(2, this.user.get_deck_stats_about_cards(d_monde, NotSeen));
+    }
+
+    @Test
+    public void testDeckStatCardLearning() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(0, this.user.get_deck_stats_about_cards(d_eu, Learning));
+        assertEquals(1, this.user.get_deck_stats_about_cards(d_monde, Learning));
+    }
+
+    @Test
+    public void testDeckStatCardLearned() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(2, this.user.get_deck_stats_about_cards(d_eu, Learned));
+        assertEquals(1, this.user.get_deck_stats_about_cards(d_monde, Learned));
+    }
+
+    @Test
+    public void testDeckCardsNumber() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(2, this.user.get_deck_cards_number(d_eu));
+        assertEquals(4, this.user.get_deck_cards_number(d_monde));
+    }
 }
