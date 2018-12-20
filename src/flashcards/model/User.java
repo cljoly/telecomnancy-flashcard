@@ -370,4 +370,26 @@ public class User {
         }
         return nb_card;
     }
+
+    /**
+     * Nombre de cartes total dans le paquet deck
+     * @param deck Paquet de cartes
+     * @return int Nombre de carte correspondante
+     */
+    public int get_deck_cards_number(Deck deck) throws SQLException {
+        GenericRawResults<String[]> raw = cardDao.queryRaw(
+                "SELECT COUNT(*) FROM Card c, DeckCard dc " +
+                        " WHERE dc." + DeckCard.CARD_ID_FIELD_NAME + " = c." +  Card.ID_FIELD_NAME +
+                        " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
+                        ""
+        );
+        List<String[]> r = raw.getResults();
+        int nb_card = -1;
+        try {
+            nb_card = Integer.parseInt(r.get(0)[0]);
+        } catch (IndexOutOfBoundsException e) {
+            nb_card = 0;
+        }
+        return nb_card;
+    }
 }

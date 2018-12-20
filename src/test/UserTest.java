@@ -190,4 +190,12 @@ public class UserTest {
         assertEquals(1, this.user.get_deck_stats_about_cards(d_monde, Learned));
     }
 
+    @Test
+    public void testDeckCardsNumber() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals(2, this.user.get_deck_cards_number(d_eu));
+        assertEquals(4, this.user.get_deck_cards_number(d_monde));
+    }
 }
