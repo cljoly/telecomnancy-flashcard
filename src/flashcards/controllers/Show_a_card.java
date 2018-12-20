@@ -13,7 +13,9 @@ public class Show_a_card implements Initializable {
 
     private Card card;
     @FXML
-    private Button card_recto;
+    private Button card_button;
+    @FXML
+    private Label card_recto;
     @FXML
     private Label card_verso;
 
