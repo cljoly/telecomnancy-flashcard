@@ -1,13 +1,9 @@
-import flashcards.model.CardStates;
+import flashcards.model.*;
 import javafx.util.Pair;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
-
-import flashcards.model.User;
-import flashcards.model.Card;
-import flashcards.model.Deck;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -278,5 +274,17 @@ public class UserTest {
 
         assertEquals(2, this.user.get_deck_cards_number(d_eu));
         assertEquals(4, this.user.get_deck_cards_number(d_monde));
+    }
+
+    @Test
+    public void testUserData() throws SQLException
+    {
+        UserData u = new UserData(this.user);
+        String json = u.toJson();
+        System.out.println("json======================================json");
+        System.out.println(json);
+        UserData u2 = new UserData(json);
+        String json2 = u2.toJson();
+        assertEquals(json,json2);
     }
 }
