@@ -143,8 +143,21 @@ public class User {
         return result;
     }
 
+    /** Crée une carte, non réversible, telle qu’elle seront conservées dans la base de donnée sous jacente
+     * @param recto Recto de la carte
+     * @param verso Verso de la carte
+     * @return Nouvelle carte créée
+     */
+
+    private Card create_one_card(String recto, String verso) throws SQLException {
+        Card c = new Card(recto, verso);
+        cardDao.create(c);
+        return c;
+    }
+
     /**
-     * Crée une nouvelle carte dans la base de donnée
+     * Crée une nouvelle carte dans la base de donnée. Les cartes réversible sont stockées comme deux cartes dans la
+     * base en inversant recto et verso
      * @param recto Recto de la carte (doit être unique)
      * @param verso Verso de la carte (doit être unique)
      * @param estReversible La carte est-elle réversible ?
@@ -152,9 +165,10 @@ public class User {
      * @throws SQLException En cas de problème avec la base de donnée (recto/verso non unique ou autre)
      */
     public Card create_card(String recto, String verso, boolean estReversible) throws SQLException {
-        Card c = new Card(recto, verso, FALSE);
-        cardDao.create(c);
-        return c;
+        if (estReversible) {
+            create_one_card(verso, recto);
+        }
+        return create_one_card(recto, verso);
     }
 
     /**

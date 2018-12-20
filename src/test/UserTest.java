@@ -80,6 +80,13 @@ public class UserTest {
     }
 
     @Test
+    public void testCardReversible() throws SQLException {
+        Card c = this.user.create_card("Luxembourg", "Luxembourg Ville", true);
+        assertEquals(c.getId(), this.user.get_card_recto("Luxembourg").getId());
+        assertNotEquals(c.getId(), this.user.get_card_recto("Luxembourg Ville").getId());
+    }
+
+    @Test
     public void testDeckCreation() throws SQLException {
             Deck d_eu = this.user.get_deck("Capitales eu");
             Deck d_monde = this.user.get_deck("Capitales monde");
