@@ -26,7 +26,6 @@ public class UserTest {
     private User user;
 
     @Before
-
     public void init() throws SQLException, ParseException {
         StringBuilder sb = new StringBuilder();
         sb.append("test_junit-");
@@ -67,6 +66,7 @@ public class UserTest {
         this.user.setState(c4, Learning);
         this.user.setState(c5, NotSeen);
 
+        System.out.println("End @Before");
     }
 
     @Test
@@ -168,8 +168,8 @@ public class UserTest {
         Deck d_eu = this.user.get_deck("Capitales eu");
         Deck d_monde = this.user.get_deck("Capitales monde");
 
-        assertEquals("2", this.user.get_deck_stat_about_card(d_eu, NotSeen));
-        assertEquals("0", this.user.get_deck_stat_about_card(d_monde, NotSeen));
+        assertEquals(0, this.user.get_deck_stats_about_cards(d_eu, NotSeen));
+        assertEquals(2, this.user.get_deck_stats_about_cards(d_monde, NotSeen));
     }
 
     @Test
@@ -177,8 +177,8 @@ public class UserTest {
         Deck d_eu = this.user.get_deck("Capitales eu");
         Deck d_monde = this.user.get_deck("Capitales monde");
 
-        assertEquals("0", this.user.get_deck_stat_about_card(d_eu, Learning));
-        assertEquals("1", this.user.get_deck_stat_about_card(d_monde, Learning));
+        assertEquals(0, this.user.get_deck_stats_about_cards(d_eu, Learning));
+        assertEquals(1, this.user.get_deck_stats_about_cards(d_monde, Learning));
     }
 
     @Test
@@ -186,8 +186,8 @@ public class UserTest {
         Deck d_eu = this.user.get_deck("Capitales eu");
         Deck d_monde = this.user.get_deck("Capitales monde");
 
-        assertEquals("0", this.user.get_deck_stat_about_card(d_eu, Learned));
-        assertEquals("2", this.user.get_deck_stat_about_card(d_monde, Learned));
+        assertEquals(2, this.user.get_deck_stats_about_cards(d_eu, Learned));
+        assertEquals(1, this.user.get_deck_stats_about_cards(d_monde, Learned));
     }
 
 }

@@ -350,18 +350,24 @@ public class User {
     /**
      * Nombre de cartes dans l’état state pour le paquet deck
      * @param deck Paquet de cartes
-     * @param state État des cartes
+     * @param cardStatType État des cartes
      * @return int Nombre de carte correspondante
      */
-    public String get_deck_stat_about_card(Deck deck, CardStates cardStatType) throws SQLException {
+    public int get_deck_stats_about_cards(Deck deck, CardStates cardStatType) throws SQLException {
         GenericRawResults<String[]> raw = cardDao.queryRaw(
-                "SELECT COUNT(Card.state) FROM deckCard " +
-                        " JOIN Card ON Card.card_id = DeckCard." + DeckCard.CARD_ID_FIELD_NAME +
-                        " WHERE deckCard." + DeckCard.CARD_ID_FIELD_NAME + " = " + deck.getId() +
-                        " AND Card." + Card.STATE_FIELD_NAME + " = " + cardStatType +
-                        " GROUP BY Card.state"
+                "SELECT COUNT(*) FROM Card c, DeckCard dc " +
+                        " WHERE dc." + DeckCard.CARD_ID_FIELD_NAME + " = c." +  Card.ID_FIELD_NAME +
+                        " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
+                        " AND c." + Card.STATE_FIELD_NAME + " LIKE '" + cardStatType + "'" +
+                        ""
         );
         List<String[]> r = raw.getResults();
-        return (r.get(1))[0];
+        int nb_card = -1;
+        try {
+            nb_card = Integer.parseInt(r.get(0)[0]);
+        } catch (IndexOutOfBoundsException e) {
+            nb_card = 0;
+        }
+        return nb_card;
     }
 }
