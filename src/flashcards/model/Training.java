@@ -1,7 +1,10 @@
 package flashcards.model;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import static flashcards.model.CardStates.Learned;
@@ -94,8 +97,14 @@ public class Training
      * @param f appréciation de l'utilisateur
      * @throws SQLException
      */
-    public void save_answer(Card c, Faces f) throws SQLException
+    public void save_answer(Card c, Faces f) throws SQLException, ParseException
     {
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        String str = formater.format(date);
+        date = formater.parse(str);
+        this.user.add_visit(date);
         if(Faces.FaceFrown.equals(f) && c != null)
         {
             if(c.getMark() >= lowRange)

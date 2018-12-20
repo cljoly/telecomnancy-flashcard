@@ -154,4 +154,21 @@ public class UserTest {
         assertEquals(rectosExpected,rectos);
     }
 
+    @Test
+    public void testDelete() throws SQLException
+    {
+        Deck d1 = this.user.create_deck("Capitales eue", "Espace Économique Européene");
+        Deck d2 = this.user.create_deck("Capitales mondee", "Reste du mondee");
+
+        Card c1 = this.user.create_card("Francee", "Parise", false);
+        Card c2 = this.user.create_card("Islandee", "Reykjavice", false);
+        Card c3 = this.user.create_card("Australiee", "Canberrae", false);
+
+        this.user.add_card2deck(c1, d1);
+        this.user.add_card2deck(c2, d2);
+        this.user.add_card2deck(c3, d2);
+        user.delete_card_and_its_associations(c1);
+        user.delete_deck_and_its_cards(d2);
+    }
+
 }
