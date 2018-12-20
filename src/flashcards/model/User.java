@@ -398,6 +398,33 @@ public class User {
         return tmp2;
     }
 
+    public boolean delete_card_and_its_associations(Card c) throws SQLException
+    {
+        int id = c.getId();
+        deckCardDao.executeRaw("DELETE FROM DeckCard WHERE " + DeckCard.CARD_ID_FIELD_NAME + " = " + id + ";");
+        cardDao.executeRaw("DELETE FROM Card WHERE " + Card.ID_FIELD_NAME + "=" + id + ";");
+        c = null;
+        if(c == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean delete_deck_and_its_cards(Deck d) throws SQLException
+    {
+        int id = d.getId();
+        cardDao.executeRaw("DELETE FROM Card WHERE " + Card.ID_FIELD_NAME + " IN (SELECT " + DeckCard.CARD_ID_FIELD_NAME + " FROM DeckCard WHERE " + DeckCard.DECK_ID_FIELD_NAME + "=" + id + ");" );
+        deckCardDao.executeRaw("DELETE FROM DeckCard WHERE " + DeckCard.DECK_ID_FIELD_NAME + "=" + id + ";");
+        deckDao.executeRaw("DELETE FROM Deck WHERE " + Deck.ID_FIELD_NAME + "=" + id + ";");
+        d = null;
+        if(d == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Nombre de cartes dans l’état state pour le paquet deck
      * @param deck Paquet de cartes
