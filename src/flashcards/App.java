@@ -1,6 +1,7 @@
 package flashcards;
 
 
+import flashcards.controllers.Packets;
 import flashcards.model.*;
 import flashcards.controllers.Tabs;
 import javafx.application.Application;
@@ -29,17 +30,19 @@ public class App extends Application {
         BorderPane root = new BorderPane();
 
         Tabs o = new Tabs(root);
-
         FXMLLoader loader = new FXMLLoader();
         URL coucou = getClass().getClassLoader().getResource("Tabs.fxml");
         loader.setLocation(coucou);
         loader.setControllerFactory(iC -> o);
         root.setTop(loader.load());
 
+        Packets p = new Packets(root);
+        FXMLLoader paquets = new FXMLLoader();
+        URL paquet_url = getClass().getClassLoader().getResource("Packets.fxml");
+        paquets.setLocation(paquet_url);
+        paquets.setControllerFactory(iC -> p);
+        root.setCenter(paquets.load());
 
-        path = getClass().getClassLoader().getResource("Packets.fxml");
-        Parent decks = FXMLLoader.load(path);
-        root.setCenter(decks);
 
         primaryStage.setTitle("Memscarlo");
         primaryStage.setResizable(false);

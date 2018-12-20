@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,27 +35,37 @@ public class DeckReview implements Initializable {
 
     }
 
-    public void when_learn_button_is_clicked(){
+    public void when_learn_button_is_clicked() {
         //TODO si nombre de cartes du deck restant à apprendre est égal à 0, on ne permet pas de lancer l'apprentissage : popup, et on revient sur l'onglet principal
+        /*int nb_cartes = 0;
+        if (nb_cartes == 0) {
 
-        try {
+            new DispErrorPopup("Vous voulez vous acharner ?", "Vous avez déjà appris toutes les cartes contenues dans ce paquet.\n\n"
+            + "Vous n'avez plus besoin de l'aprpendre, veuillez sélectionner un autre paquet pour réviser");
 
-            GameUsers.getInstance().getCurrentUser().createNewTraining(this.deck);
-            Training training = GameUsers.getInstance().getCurrentUser().getCurrentTraining();
+            TODO((Stage) deck_review_window.getParent().getScene().getWindow()).setScene().;
 
-            FXMLLoader recto = new FXMLLoader();
-            recto.setLocation(getClass().getClassLoader().getResource("TestCardRecto.fxml"));
-            recto.setControllerFactory(iC -> new TestCardRecto(training));
+        } else {*/
 
-            //chargement de l'anchor pane deck review
-            AnchorPane content = recto.load();
+            try {
 
-            //lien entre popup et deck review
-            ((BorderPane) deck_review_window.getParent().getScene().getRoot()).setCenter(content);
+                GameUsers.getInstance().getCurrentUser().createNewTraining(this.deck);
+                Training training = GameUsers.getInstance().getCurrentUser().getCurrentTraining();
+
+                FXMLLoader recto = new FXMLLoader();
+                recto.setLocation(getClass().getClassLoader().getResource("TestCardRecto.fxml"));
+                recto.setControllerFactory(iC -> new TestCardRecto(training));
+
+                //chargement de l'anchor pane deck review
+                AnchorPane content = recto.load();
+
+                //lien entre popup et deck review
+                ((BorderPane) deck_review_window.getParent().getScene().getRoot()).setCenter(content);
 
 
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        //}
     }
 }
