@@ -30,11 +30,19 @@ public class Card {
     public Card() {
     }
 
+    /**
+     * Renvoie l'état de la carte
+     * @return
+     */
     public CardStates getState()
     {
         return state;
     }
 
+    /**
+     * Paramètre l'état d'une carte
+     * @param state
+     */
     public void setState(CardStates state)
     {
         this.state = state;

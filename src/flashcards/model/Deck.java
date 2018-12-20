@@ -20,6 +20,11 @@ public class Deck  {
      */
     public Deck() {}
 
+    /**Constructeur avec argument pour ormlite
+     *
+     * @param nom
+     * @param description
+     */
     public Deck(String nom, String description) {
         this.nom = nom;
         this.description = description;
