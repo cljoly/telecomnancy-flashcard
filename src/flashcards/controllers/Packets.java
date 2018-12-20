@@ -33,13 +33,15 @@ public class Packets implements Initializable {
     private GameUsers g;
     private User currentUser;
     private List<Deck> listOfAllDecks;
+    private BorderPane root;
 
     @FXML
     private TableColumn paquets_column;
     @FXML
     private TableView home_table;
 
-    public Packets() {
+    public Packets(BorderPane root) {
+        this.root = root;
     }
 
     @Override

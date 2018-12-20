@@ -31,10 +31,13 @@ public class Tabs {
     public void BTN_DECKS_ON_ACTION() throws Exception{
         System.out.println("decks");
 
-        URL path;
-        path = getClass().getClassLoader().getResource("Packets.fxml");
-        Parent decks = FXMLLoader.load(path);
-        root.setCenter(decks);
+        Packets p = new Packets(this.root);
+        FXMLLoader paquets_onglet = new FXMLLoader();
+        URL paquet_url = getClass().getClassLoader().getResource("Packets.fxml");
+        paquets_onglet.setLocation(paquet_url);
+        paquets_onglet.setControllerFactory(iC -> p);
+        this.root.setCenter(paquets_onglet.load());
+
     }
 
     /**
