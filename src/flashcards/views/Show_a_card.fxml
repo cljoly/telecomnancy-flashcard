@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="25.0" minWidth="600.0" prefHeight="25.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.Show_a_card">
+   <children>
+      <HBox layoutX="93.0" layoutY="124.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" maxHeight="32.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="32.0" prefWidth="100.0" text="Carte :" textAlignment="CENTER" textFill="#619e27" underline="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="card_recto" alignment="CENTER" minHeight="24.0" minWidth="250.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="250.0" />
+            <Label fx:id="card_verso" minWidth="100.0" prefHeight="35.0" prefWidth="256.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

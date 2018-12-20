@@ -23,6 +23,9 @@ public class PacketSearch implements Initializable {
     private List<Deck> listOfAllDecks;
     private User currentUser;
 
+    @FXML
+    VBox list_of_cards_container;
+
 
     public PacketSearch(){
         this.currentUser = GameUsers.getInstance().getCurrentUser();
@@ -35,12 +38,13 @@ public class PacketSearch implements Initializable {
         try{
             this.listOfAllDecks = this.currentUser.get_all_decks();
             for (Deck d : this.listOfAllDecks){
+
                 Button b = new Button();
                 b.setText(d.getNom());
                 b.setMinWidth(250);
                 b.setPrefWidth(29);
 
-                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b));
+                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, list_of_cards_container));
 
                 list_of_all_decks.getChildren().add(b);
             }
