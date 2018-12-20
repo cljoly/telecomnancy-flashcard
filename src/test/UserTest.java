@@ -1,6 +1,7 @@
 import flashcards.model.CardStates;
 import javafx.util.Pair;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 import org.junit.Before;
 
@@ -16,6 +17,9 @@ import java.util.Date;
 import java.util.Collections;
 import java.util.List;
 
+import static flashcards.model.CardStates.Learned;
+import static flashcards.model.CardStates.NotSeen;
+import static flashcards.model.CardStates.Learning;
 
 public class UserTest {
 
@@ -57,6 +61,12 @@ public class UserTest {
         this.user.add_visit(date);
         this.user.add_visit(date);
 
+        this.user.setState(c1, Learned);
+        this.user.setState(c2, Learned);
+        this.user.setState(c3, NotSeen);
+        this.user.setState(c4, Learning);
+        this.user.setState(c5, NotSeen);
+
     }
 
     @Test
@@ -89,11 +99,10 @@ public class UserTest {
 
     @Test
     public void testGetNbOfCardsPerType() throws SQLException {
-        this.user.setState(this.user.get_card_recto("France"), CardStates.Learned);
         ArrayList<Pair<String, Integer>> nbcard_type = this.user.get_all_nbcard_type();
 
         for (Pair<String, Integer> p : nbcard_type){
-            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(), 1); }
+            if (p.getKey() == "Aquis") { assertEquals((int) p.getValue(),2); }
         }
     }
 
@@ -152,6 +161,33 @@ public class UserTest {
         Collections.sort(rectosExpected);
         Collections.sort(rectos);
         assertEquals(rectosExpected,rectos);
+    }
+
+    @Test
+    public void testDeckStatCardNotSeen() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals("2", this.user.get_deck_stat_about_card(d_eu, NotSeen));
+        assertEquals("0", this.user.get_deck_stat_about_card(d_monde, NotSeen));
+    }
+
+    @Test
+    public void testDeckStatCardLearning() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals("0", this.user.get_deck_stat_about_card(d_eu, Learning));
+        assertEquals("1", this.user.get_deck_stat_about_card(d_monde, Learning));
+    }
+
+    @Test
+    public void testDeckStatCardLearned() throws SQLException {
+        Deck d_eu = this.user.get_deck("Capitales eu");
+        Deck d_monde = this.user.get_deck("Capitales monde");
+
+        assertEquals("0", this.user.get_deck_stat_about_card(d_eu, Learned));
+        assertEquals("2", this.user.get_deck_stat_about_card(d_monde, Learned));
     }
 
 }

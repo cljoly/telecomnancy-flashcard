@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import javafx.util.Pair;
@@ -346,4 +347,21 @@ public class User {
         return tmp2;
     }
 
+    /**
+     * Nombre de cartes dans l’état state pour le paquet deck
+     * @param deck Paquet de cartes
+     * @param state État des cartes
+     * @return int Nombre de carte correspondante
+     */
+    public String get_deck_stat_about_card(Deck deck, CardStates cardStatType) throws SQLException {
+        GenericRawResults<String[]> raw = cardDao.queryRaw(
+                "SELECT COUNT(Card.state) FROM deckCard " +
+                        " JOIN Card ON Card.card_id = DeckCard." + DeckCard.CARD_ID_FIELD_NAME +
+                        " WHERE deckCard." + DeckCard.CARD_ID_FIELD_NAME + " = " + deck.getId() +
+                        " AND Card." + Card.STATE_FIELD_NAME + " = " + cardStatType +
+                        " GROUP BY Card.state"
+        );
+        List<String[]> r = raw.getResults();
+        return (r.get(1))[0];
+    }
 }
