@@ -1,5 +1,6 @@
 package flashcards.model;
 
+import com.google.gson.Gson;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.dao.GenericRawResults;
@@ -504,5 +505,26 @@ public class User {
         deckDao.executeRaw("DELETE FROM Deck");
         cardDao.executeRaw("DELETE FROM Card");
         visitePerDayDao.executeRaw("DELETE FROM VisitePerDay");
+    }
+
+    public String export_card_in_deck(Deck d) throws SQLException
+    {
+        UserDeckData udd = new UserDeckData(d, this.get_card_from_deck(d));
+        Gson gson = new Gson();
+
+        return gson.toJson(udd);
+    }
+
+    public void import_card_in_deck(String s) throws SQLException
+    {
+        Gson gson = new Gson();
+        UserDeckData udd = gson.fromJson(s,UserDeckData.class);
+        deckDao.create(udd.getDeck());
+        for(Card c : udd.getCards())
+        {
+            cardDao.create(c);
+            this.add_card2deck(c,this.get_deck(udd.getDeck().getNom()));
+            System.out.println(c);
+        }
     }
 }

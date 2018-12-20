@@ -275,7 +275,7 @@ public class UserTest {
         assertEquals(2, this.user.get_deck_cards_number(d_eu));
         assertEquals(4, this.user.get_deck_cards_number(d_monde));
     }
-
+    /*
     @Test
     public void testUserData() throws SQLException
     {
@@ -290,5 +290,26 @@ public class UserTest {
         System.out.println("json2======================================json2");
         System.out.println(json2);
         assertEquals(json,json2);
+    }
+    */
+
+    @Test
+    public void testDeckExportImport() throws SQLException
+    {
+        Deck d1 = user.get_deck("Capitales eu");
+        String json = user.export_card_in_deck(d1);
+        System.out.println("json======================================json");
+        System.out.println(json);
+        user.delete_deck_and_its_cards(d1);
+        user.import_card_in_deck(json);
+
+        assertNotEquals(user.get_deck("Capitales eu"),null);
+        System.out.println("json======================================json");
+        System.out.println(user.get_deck("Capitales eu"));
+        for (Card c: user.get_card_from_deck(user.get_deck("Capitales eu")))
+        {
+            System.out.println(c);
+        }
+        System.out.println("fin");
     }
 }
