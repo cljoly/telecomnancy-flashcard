@@ -158,7 +158,6 @@ public class User {
      * @param verso Verso de la carte
      * @return Nouvelle carte créée
      */
-
     private Card create_one_card(String recto, String verso) throws SQLException {
         Card c = new Card(recto, verso);
         cardDao.create(c);
