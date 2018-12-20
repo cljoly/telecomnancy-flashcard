@@ -336,6 +336,10 @@ public class User {
     public ArrayList<Pair<String,Integer>> get_all_nbcard_days(int nbDays) throws SQLException
     {
         ArrayList<Pair<String,Integer>> tmp = this.get_all_nbcard_days();
+        if(tmp.size() <= nbDays)
+        {
+            nbDays = tmp.size();
+        }
         int lim = tmp.size();
         int deb = lim - nbDays;
         ArrayList<Pair<String,Integer>> tmp2 = new ArrayList<Pair<String,Integer>>();
