@@ -107,7 +107,7 @@
                         <Insets left="100.0" top="30.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="unsave_changes" mnemonicParsing="false" text="Annuler">
+                  <Button fx:id="unsave_changes" mnemonicParsing="false" onAction="#cancel_and_show_before" text="Annuler">
                      <HBox.margin>
                         <Insets left="25.0" top="30.0" />
                      </HBox.margin>

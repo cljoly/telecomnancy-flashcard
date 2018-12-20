@@ -111,7 +111,12 @@ public class PacketSearch implements Initializable {
     }
 
     public void cancel_and_show_before(){
-
+        try {
+            Card c = this.currentUser.get_card_recto(recto_details.getText());
+            verso_details.setText(c.getVerso());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void delete_card(){
