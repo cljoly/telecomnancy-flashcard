@@ -1,11 +1,11 @@
 
 
 .root {
-    -fx-background-image: url("img/christmas_lighter.jpg");
+    -fx-background-color: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 
 .sub {
-    -fx-background-image: url("img/christmas_lighter.jpg");
+    -fx-background-color: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 
 .label1 {
