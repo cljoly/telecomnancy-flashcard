@@ -161,4 +161,16 @@ public class PacketSearch implements Initializable {
 
     }
 
+    public void export_the_deck(){
+        try {
+            Deck d = GameUsers.getInstance().getCurrentUser().get_deck(deck_name.getText());
+            String json = GameUsers.getInstance().getCurrentUser().export_card_in_deck(d);
+            String nom_fichier = "Export_paquets/" + d.getNom() + ".json";
+            GameUsers.getInstance().getCurrentUser().save_file(nom_fichier, json);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

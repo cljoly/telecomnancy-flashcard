@@ -183,7 +183,7 @@
                               <Insets top="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="85.0" text="Exporter">
+                        <Button mnemonicParsing="false" onAction="#export_the_deck" prefHeight="43.0" prefWidth="85.0" text="Exporter">
                            <HBox.margin>
                               <Insets left="50.0" top="20.0" />
                            </HBox.margin>
