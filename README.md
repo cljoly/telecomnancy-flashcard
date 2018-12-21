@@ -5,6 +5,8 @@ adossé à une base de données. L'interface graphique supporte la création de 
 
 Nous avons utilisé une **base de donnée** et testé avec **JUnit**. L’intégration continue (**Gitlab CI**) a été utilisé pour contrôler la bonne exécution des phases de compilation et de test.
 
+Enfin, le dernier jour a été en grande partie consacré au test de l’application et à la gestion des cas limites (appuit sur le boutton de modification de description d’une carte quand aucune carte n’est sélectionnée par exemple).
+
 ## Lancement de l’application
 
 Nous avons développé Memscarlo avec Java 8. Pour la lancer, faire :

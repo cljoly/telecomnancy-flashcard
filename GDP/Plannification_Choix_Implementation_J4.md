@@ -19,7 +19,11 @@ L’interface d’affichage des statistiques a été spécifiée. L’idée de b
 d’utiliser deux graphiques, l’un pour le nombre de carte vue pour chaque jour et
 l’autre illustrant les états des cartes dans chaque paquet (apprises, en cours d’apprentissage, jamais vues…).
 
-![Spécification de l’interface des statistiques]
+![Spécification de l’interface des statistiques](./statistiques.png)
+
+Le digramme en bare donne le nombre de cartes vues dans une journée, pour l’ensemble des paquets de l’utilisateur.
+
+Le digramme en secteur donne le nombre de carte dans chaque état pour un paquet donné.
 
 ## Bilan de la journée
 

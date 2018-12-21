@@ -23,4 +23,6 @@ crérions à partir de rien.
 - Correction de la suppression des paquets dans l’interface (Laury)
 - Documentation de notre travail (Clément)
 - Amélioration de l’esthétique de l’interface (Lucas)
+- Test complet de l’application et gestion des erreurs dans les cas limites (appuit sur le boutton supprimer quand aucun paquet n’est sélectionné.)
+- Test complet de l’application et gestion des erreurs dans les cas limites (appuit sur le boutton de suppression d’un paquet quand aucun paquet n’est sélectionné par exemple)
 
