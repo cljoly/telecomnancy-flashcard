@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
@@ -38,15 +39,35 @@
             </MenuBar>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BTN_DECKS_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Paquets">
+                  <Button mnemonicParsing="false" onAction="#BTN_DECKS_ON_ACTION" stylesheets="@mainStylesheet.css" text="Paquets">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <styleClass>
+                        <String fx:value="button-tab" />
+                        <String fx:value="label1" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#BTN_ADD_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Ajouter carte(s) " />
-                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Créer un paquet" />
-                  <Button mnemonicParsing="false" onAction="#BTN_BROWSE_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Parcourir paquets" />
-                  <Button mnemonicParsing="false" onAction="#BTN_STATS_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Statistiques" />
+                  <Button mnemonicParsing="false" onAction="#BTN_ADD_ON_ACTION" stylesheets="@mainStylesheet.css" text="Ajouter carte(s) ">
+                     <styleClass>
+                        <String fx:value="button-tab" />
+                        <String fx:value="label1" />
+                     </styleClass></Button>
+                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" stylesheets="@mainStylesheet.css" text="Créer un paquet">
+                     <styleClass>
+                        <String fx:value="button-tab" />
+                        <String fx:value="label1" />
+                     </styleClass></Button>
+                  <Button mnemonicParsing="false" onAction="#BTN_BROWSE_ON_ACTION" stylesheets="@mainStylesheet.css" text="Parcourir paquets">
+                     <styleClass>
+                        <String fx:value="button-tab" />
+                        <String fx:value="label1" />
+                     </styleClass></Button>
+                  <Button mnemonicParsing="false" onAction="#BTN_STATS_ON_ACTION" stylesheets="@mainStylesheet.css" text="Statistiques">
+                     <styleClass>
+                        <String fx:value="button-tab" />
+                        <String fx:value="label1" />
+                     </styleClass></Button>
                </children>
                <GridPane.margin>
                   <Insets />
