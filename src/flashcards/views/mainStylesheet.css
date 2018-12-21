@@ -20,6 +20,11 @@
     -fx-font-weight: bold;
 }
 
+.text-big {
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+}
+
 .button:hover {
     -fx-background-color: linear-gradient(#a5a5a5, #eaefee);
 }
@@ -38,6 +43,10 @@
 
 .button-tab:focused {
     -fx-background-color: linear-gradient(#a5a5a5, #eaefee);
+}
+
+.scroll-interior {
+    -fx-background-color: #ffecd2;
 }
 
 .scrollborder{
