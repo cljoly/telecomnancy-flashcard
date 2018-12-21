@@ -47,6 +47,7 @@ public class App extends Application {
         primaryStage.setTitle("Memscarlo");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 1080, 720));
+        primaryStage.getScene().getStylesheets().add("mainStylesheet.css");
         primaryStage.show();
     }
 
