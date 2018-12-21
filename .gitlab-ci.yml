@@ -1,4 +1,4 @@
-image: gradle:jdk8
+image: lombold/jdk8-openjfx-gradle
 
 build:
   script:
