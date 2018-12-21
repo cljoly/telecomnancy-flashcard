@@ -25,8 +25,9 @@ public class WhenADeckIsClicked implements EventHandler<ActionEvent> {
     private TextArea recto_details, verso_details;
     private Button add_change_to_card, unsave_changes, delete_card;
     private Label deck_name;
+    private TextArea deck_description;
 
-    public WhenADeckIsClicked(Button button, Label deck_name, VBox list_of_cards_container, TextArea recto_details, TextArea verso_details, Button add_change_to_card, Button unsave_changes, Button delete_card) {
+    public WhenADeckIsClicked(Button button, Label deck_name, TextArea deck_description, VBox list_of_cards_container, TextArea recto_details, TextArea verso_details, Button add_change_to_card, Button unsave_changes, Button delete_card) {
         this.b = button;
         this.list_of_cards_container = list_of_cards_container;
         this.recto_details = recto_details;
@@ -35,6 +36,7 @@ public class WhenADeckIsClicked implements EventHandler<ActionEvent> {
         this.unsave_changes = unsave_changes;
         this.delete_card = delete_card;
         this.deck_name = deck_name;
+        this.deck_description = deck_description;
     }
 
     @Override
@@ -59,6 +61,7 @@ public class WhenADeckIsClicked implements EventHandler<ActionEvent> {
             }
 
             this.deck_name.setText(deckName);
+            this.deck_description.setText(d.getDescription());
 
         } catch (Exception e){
             e.printStackTrace();

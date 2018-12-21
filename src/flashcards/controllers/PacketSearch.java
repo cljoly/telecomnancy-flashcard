@@ -52,6 +52,8 @@ public class PacketSearch implements Initializable {
 
     @FXML
     private Label deck_name;
+    @FXML
+    private TextArea deck_description;
 
 
     public PacketSearch(BorderPane root){
@@ -69,7 +71,7 @@ public class PacketSearch implements Initializable {
                 b.setText(d.getNom());
                 b.setMinWidth(250);
                 b.setPrefWidth(29);
-                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, deck_name, list_of_cards_container, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
+                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, deck_name, deck_description, list_of_cards_container, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
 
                 list_of_all_decks.getChildren().add(b);
             }
