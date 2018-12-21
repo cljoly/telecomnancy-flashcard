@@ -1,23 +1,40 @@
-image: gradle:jdk8
+image: lombold/jdk8-openjfx-gradle
+
+stages:
+  - build
+  - test
+  - prod
 
 build:
+  stage: build
   script:
     - gradle build
 
 test:
+  stage: test
   script:
   - gradle test
   allow_failure: true
 
 jar:
+  stage: prod
   script:
   - gradle jar
   artifacts:
     paths:
     - build/libs/
   allow_failure: true
+  artifacts:
+    paths:
+    - build/libs/codingweek-1.0-SNAPSHOT.jar
+    expire_in: 1 week
 
 javadoc:
+  stage: prod
   script:
   - gradle javadoc
   allow_failure: true
+  artifacts:
+    paths:
+    - build/docs/javadoc/
+    expire_in: 1 week
