@@ -1,4 +1,4 @@
-# Jour 2 : spécification et choix d'implémentation
+# Jour 3 : spécification et choix d'implémentation
 
 ## Scrum matinal : 
 Nous avons fait le point sur le travail qui avait été fait hier soir et dans la journée.
