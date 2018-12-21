@@ -26,6 +26,12 @@
     -fx-font-size: 18px;
 }
 
+
+.text-big2 {
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+}
+
 .button:hover {
     -fx-background-color: linear-gradient(#a5a5a5, #eaefee);
 }
