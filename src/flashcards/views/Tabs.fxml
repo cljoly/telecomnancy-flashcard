@@ -38,15 +38,15 @@
             </MenuBar>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BTN_DECKS_ON_ACTION" text="Paquets">
+                  <Button mnemonicParsing="false" onAction="#BTN_DECKS_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Paquets">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#BTN_ADD_ON_ACTION" text="Ajouter carte(s) " />
-                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" text="Créer un paquet" />
-                  <Button mnemonicParsing="false" onAction="#BTN_BROWSE_ON_ACTION" text="Parcourir paquets" />
-                  <Button mnemonicParsing="false" onAction="#BTN_STATS_ON_ACTION" text="Statistiques" />
+                  <Button mnemonicParsing="false" onAction="#BTN_ADD_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Ajouter carte(s) " />
+                  <Button mnemonicParsing="false" onAction="#BTN_CREATE_DECK_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Créer un paquet" />
+                  <Button mnemonicParsing="false" onAction="#BTN_BROWSE_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Parcourir paquets" />
+                  <Button mnemonicParsing="false" onAction="#BTN_STATS_ON_ACTION" styleClass="button-tab" stylesheets="@mainStylesheet.css" text="Statistiques" />
                </children>
                <GridPane.margin>
                   <Insets />

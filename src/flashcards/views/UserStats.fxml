@@ -18,11 +18,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.UserStats">
+<AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.UserStats">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1080.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1080.0" styleClass="scrollborder" stylesheets="@mainStylesheet.css" vbarPolicy="ALWAYS">
          <content>
-            <GridPane alignment="CENTER" prefWidth="1065.0">
+            <GridPane alignment="CENTER" prefWidth="1065.0" styleClass="sub" stylesheets="@mainStylesheet.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,7 +42,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="1144.0" text="Compte rendu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="1144.0" styleClass="title" stylesheets="@mainStylesheet.css" text="Compte rendu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -89,7 +89,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" prefHeight="180.0" prefWidth="1105.0" text="Type de cartes" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label alignment="CENTER" prefHeight="180.0" prefWidth="1105.0" styleClass="title" stylesheets="@mainStylesheet.css" text="Type de cartes" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

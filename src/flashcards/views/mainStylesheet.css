@@ -1,0 +1,45 @@
+
+
+.root {
+    -fx-background-image: url("img/christmas_lighter.jpg");
+}
+
+.sub {
+    -fx-background-image: url("img/christmas_lighter.jpg");
+}
+
+.label {
+    -fx-font-family: "Arial";
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.title {
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#a5a5a5, #eaefee);
+}
+
+.button-tab {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-border-radius: 0 0 7 7;
+    -fx-background-radius: 0 0 7 7;
+}
+
+.button-tab:focused {
+    -fx-background-color: linear-gradient(#a5a5a5, #eaefee);
+}
+
+.scrollborder{
+    -fx-border-color: black;
+}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,6 +21,9 @@
                   <TableColumn prefWidth="75.0" text="Inédits" />
                   <TableColumn prefWidth="75.0" text="Actions" />
               </columns>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </TableView>
          </content>
       </ScrollPane>

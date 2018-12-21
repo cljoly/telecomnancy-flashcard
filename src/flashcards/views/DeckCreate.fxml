@@ -28,7 +28,7 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <Label text="Création d'un nouveau paquet" textAlignment="CENTER" textOverrun="CLIP" BorderPane.alignment="CENTER">
+                  <Label styleClass="title" stylesheets="@mainStylesheet.css" text="Création d'un nouveau paquet" textAlignment="CENTER" textOverrun="CLIP" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets />
                      </BorderPane.margin>
@@ -42,7 +42,7 @@
                <center>
                   <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label text="Nom : ">
+                        <Label prefWidth="150.0" text="Nom : ">
                            <HBox.margin>
                               <Insets left="20.0" right="30.0" />
                            </HBox.margin>
@@ -54,11 +54,11 @@
             </BorderPane>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label text="Description : ">
+                  <Label prefWidth="300.0" text="Description : ">
                      <HBox.margin>
                         <Insets left="20.0" right="30.0" />
                      </HBox.margin></Label>
-                  <TextArea fx:id="deck_description" prefHeight="110.0" prefWidth="900.0">
+                  <TextArea fx:id="deck_description" prefHeight="470.0" prefWidth="1005.0">
                      <HBox.margin>
                         <Insets bottom="20.0" />
                      </HBox.margin>
@@ -75,8 +75,17 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#createDeck" text="Valider" />
-                        <Button mnemonicParsing="false" onAction="#clean_fields" text="Annuler" />
+                        <Button mnemonicParsing="false" onAction="#createDeck" styleClass="button2" stylesheets="@mainStylesheet.css" text="Valider">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></Button>
+                        <Button mnemonicParsing="false" onAction="#clean_fields" styleClass="button2" stylesheets="@mainStylesheet.css" text="Annuler">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin></Button>
                      </children>
                   </HBox>
                   <Label fx:id="deck_create_msg" text=" " />
