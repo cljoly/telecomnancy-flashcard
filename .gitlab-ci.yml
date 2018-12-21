@@ -34,3 +34,7 @@ javadoc:
   script:
   - gradle javadoc
   allow_failure: true
+  artifacts:
+    paths:
+    - build/docs/javadoc/
+    expire_in: 1 week
