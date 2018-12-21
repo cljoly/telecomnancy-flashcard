@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
@@ -39,6 +36,8 @@ public class Packets implements Initializable {
     private TableColumn paquets_column;
     @FXML
     private TableView home_table;
+    @FXML
+    private TextField path_import;
 
     public Packets(BorderPane root) {
         this.root = root;
@@ -66,7 +65,7 @@ public class Packets implements Initializable {
 
                                 super.updateItem(item, empty);
                                 btn.setText(item);
-                                btn.setPrefWidth(450);
+                                btn.setPrefWidth(677);
                                 if (empty) {
                                     setGraphic(null);
                                     setText(null);
@@ -132,4 +131,31 @@ public class Packets implements Initializable {
         //paquets.getItems().setAll("Aucun");
 
     }
+
+    public void import_deck_from_path(){
+        if (path_import.getText().isEmpty()){
+            new DispErrorPopup("Erreur", "Veuillez spécifier un chemin de fichier");
+        } else {
+            try {
+                String text = path_import.getText();
+                String content = GameUsers.getInstance().getCurrentUser().read_file(text);
+                GameUsers.getInstance().getCurrentUser().import_card_in_deck(content);
+
+                Packets p = new Packets(this.root);
+                FXMLLoader paquets_onglet = new FXMLLoader();
+                URL paquet_url = getClass().getClassLoader().getResource("Packets.fxml");
+                paquets_onglet.setLocation(paquet_url);
+                paquets_onglet.setControllerFactory(iC -> p);
+                this.root.setCenter(paquets_onglet.load());
+
+
+            } catch(Exception e){
+                new DispErrorPopup("Erreur", "Fichier non existant ou chemin absolu non valable\n"
+                + "Veuillez veiller à bien rentrer un chemin qui est absolu");
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.PacketSearch">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.PacketSearch">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -32,7 +32,7 @@
          <children>
             <ScrollPane>
                <content>
-                  <VBox fx:id="list_of_cards_container" minHeight="233.0" minWidth="780.0" prefHeight="233.0" prefWidth="789.0" />
+                  <VBox fx:id="list_of_cards_container" minHeight="233.0" minWidth="780.0" prefHeight="233.0" prefWidth="789.0" styleClass="scroll-interior" stylesheets="@mainStylesheet.css" />
                </content>
             </ScrollPane>
             <GridPane prefHeight="221.0" prefWidth="809.0" GridPane.rowIndex="1">
@@ -127,7 +127,7 @@
                      <graphic>
                         <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../res/interface/img/delete.jpg" />
+                              <Image url="@../../../res/interface/img/delete.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -175,7 +175,7 @@
                            <graphic>
                               <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../res/interface/img/delete.jpg" />
+                                    <Image url="@../../../res/interface/img/delete.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -200,7 +200,7 @@
          <children>
             <ScrollPane minWidth="265.0" prefHeight="660.0" prefWidth="185.0">
                <content>
-                  <VBox fx:id="list_of_all_decks" prefHeight="660.0" prefWidth="152.0">
+                  <VBox fx:id="list_of_all_decks" prefHeight="660.0" prefWidth="152.0" styleClass="scroll-interior" stylesheets="@mainStylesheet.css">
                      <children>
                         <Button minWidth="250.0" mnemonicParsing="false" onAction="#disp_all_cards" prefHeight="27.0" prefWidth="109.0" text="Tous les paquets" textFill="#7510a1">
                            <font>
