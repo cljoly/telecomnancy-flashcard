@@ -20,8 +20,9 @@
     -fx-font-weight: bold;
 }
 
+
 .text-big {
-    -fx-text-fill: black;
+    -fx-text-fill: #611f80;
     -fx-font-size: 18px;
 }
 
