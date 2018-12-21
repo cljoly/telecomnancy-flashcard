@@ -40,7 +40,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label styleClass="label1" stylesheets="@mainStylesheet.css" text="Recto :">
+                  <Label styleClass="text-big" stylesheets="@mainStylesheet.css" text="Recto :">
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" right="20.0" top="25.0" />
                      </HBox.margin>
@@ -54,7 +54,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label styleClass="label1" stylesheets="@mainStylesheet.css" text="Verso :">
+                  <Label styleClass="text-big" stylesheets="@mainStylesheet.css" text="Verso :">
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" right="20.0" top="25.0" />
                      </HBox.margin>
@@ -68,7 +68,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label styleClass="label1" stylesheets="@mainStylesheet.css" text="Réversible">
+                  <Label styleClass="text-big" stylesheets="@mainStylesheet.css" text="Réversible">
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" top="20.0" />
                      </HBox.margin>
@@ -90,7 +90,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Label styleClass="label1" stylesheets="@mainStylesheet.css" text="Paquet">
+                  <Label styleClass="text-big" stylesheets="@mainStylesheet.css" text="Paquet">
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" right="20.0" top="27.0" />
                      </HBox.margin>
