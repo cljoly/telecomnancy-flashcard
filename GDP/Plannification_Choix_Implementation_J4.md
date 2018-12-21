@@ -4,7 +4,7 @@
 
 - Simplifier l’onglet de recherche : retirer les filtres **Laury**
 - Changer la création des cartes réversible **Laury**
-- Màj des 
+- Màj des popups d’erreurs là où cela est nécessaire. **Laury**
 - Extraction d’information de la base (méthdes dans User)
   - nombre de carte par paquet et par état **Clément**
   - nombre de carte total **Clément**
@@ -19,7 +19,7 @@ L’interface d’affichage des statistiques a été spécifiée. L’idée de b
 d’utiliser deux graphiques, l’un pour le nombre de carte vue pour chaque jour et
 l’autre illustrant les états des cartes dans chaque paquet (apprises, en cours d’apprentissage, jamais vues…).
 
-![Spécification de l’interface des statistiques](./statistiques.png)
+![Spécification de l’interface des statistiques](./statistiques.jpg)
 
 Le digramme en bare donne le nombre de cartes vues dans une journée, pour l’ensemble des paquets de l’utilisateur.
 
