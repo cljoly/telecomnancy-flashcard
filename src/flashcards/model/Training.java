@@ -36,7 +36,29 @@ public class Training
         bad = new ArrayList<Card>();
         good = new ArrayList<Card>();
         nbCard = 20;
-        countTot = 0;
+        for(Card c : user.get_card_from_deck(deck))
+        {
+            if(c.getMark() == 0)
+            {
+                //System.out.println(c);
+                bad.add(c);
+            }
+            else if(c.getMark() < highRange && c.getMark() >= lowRange)
+            {
+                //System.out.println(c);
+                good.add(c);
+            }
+        }
+    }
+
+    public Training(User user, Deck deck,int nbCard, int nbRepeat) throws SQLException
+    {
+        this.user = user;
+        this.deck = deck;
+        this.nbCard = nbCard;
+        this.highRange = nbRepeat;
+        this.bad = new ArrayList<Card>();
+        this.good = new ArrayList<Card>();
         for(Card c : user.get_card_from_deck(deck))
         {
             if(c.getMark() == 0)

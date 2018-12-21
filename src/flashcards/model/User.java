@@ -1,5 +1,6 @@
 package flashcards.model;
 
+import com.google.gson.Gson;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.dao.GenericRawResults;
@@ -11,6 +12,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import javafx.util.Pair;
 
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +24,7 @@ public class User {
 
     private String username;
     private String DATABASE_URL = "jdbc:h2:file:./database/";
+    private ConnectionSource connectionSource;
     private Dao<Card, Integer> cardDao;
     private Dao<Deck, Integer> deckDao;
     private Dao<VisitePerDay,Integer> visitePerDayDao;
@@ -60,11 +63,10 @@ public class User {
     private void db_init()throws Exception{
         System.out.println("Init db");
 
-        ConnectionSource connectionSource = null;
         try {
             System.out.println("Src");
             // create our data-source for the database
-            connectionSource = new JdbcConnectionSource(this.DATABASE_URL);
+            this.connectionSource = new JdbcConnectionSource(this.DATABASE_URL);
 
             // setup our database and DAOs
             System.out.println("Setup");
@@ -137,6 +139,12 @@ public class User {
     public List<Deck> get_all_decks() throws SQLException {
         QueryBuilder<Deck, Integer> deckQb = deckDao.queryBuilder();
         return deckDao.query(deckQb.prepare());
+    }
+
+    public List<DeckCard> get_all_links() throws SQLException
+    {
+        QueryBuilder<DeckCard, Integer> deckQb = deckCardDao.queryBuilder();
+        return deckCardDao.query(deckQb.prepare());
     }
 
     /**
@@ -337,6 +345,11 @@ public class User {
         this.currentTraining = new Training(this, d);
     }
 
+    public void createNewTraining(Deck d, int nbCard, int nbRepeat) throws SQLException
+    {
+        this.currentTraining = new Training(this, d, nbCard, nbRepeat);
+    }
+
     public void finishTraining()
     {
         this.currentTraining = null;
@@ -486,14 +499,7 @@ public class User {
                         " AND c." + Card.STATE_FIELD_NAME + " LIKE '" + cardStatType + "'" +
                         ""
         );
-        List<String[]> r = raw.getResults();
-        int nb_card = -1;
-        try {
-            nb_card = Integer.parseInt(r.get(0)[0]);
-        } catch (IndexOutOfBoundsException e) {
-            nb_card = 0;
-        }
-        return nb_card;
+        return listString(raw);
     }
 
     /**
@@ -508,6 +514,11 @@ public class User {
                         " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
                         ""
         );
+        return listString(raw);
+    }
+
+    private int listString(GenericRawResults<String[]> raw) throws SQLException
+    {
         List<String[]> r = raw.getResults();
         int nb_card = -1;
         try {
@@ -516,5 +527,74 @@ public class User {
             nb_card = 0;
         }
         return nb_card;
+    }
+
+    public void insert_list_cards(List<Card> cards) throws SQLException
+    {
+        System.out.println("cards~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cards");
+        System.out.println(cards);
+        cardDao.create(cards);
+    }
+
+    public void insert_list_decks(List<Deck> decks) throws SQLException
+    {
+        deckDao.create(decks);
+    }
+
+    public void insert_list_links(List<DeckCard> links) throws SQLException
+    {
+        deckCardDao.create(links);
+    }
+
+    public void delete_all_data() throws SQLException
+    {
+        deckCardDao.executeRaw("DELETE FROM DeckCard");
+        deckDao.executeRaw("DELETE FROM Deck");
+        cardDao.executeRaw("DELETE FROM Card");
+        visitePerDayDao.executeRaw("DELETE FROM VisitePerDay");
+    }
+
+    public String export_card_in_deck(Deck d) throws SQLException
+    {
+        UserDeckData udd = new UserDeckData(d, this.get_card_from_deck(d));
+        Gson gson = new Gson();
+
+        return gson.toJson(udd);
+    }
+
+    public void import_card_in_deck(String s) throws SQLException
+    {
+        Gson gson = new Gson();
+        UserDeckData udd = gson.fromJson(s,UserDeckData.class);
+        deckDao.create(udd.getDeck());
+        for(Card c : udd.getCards())
+        {
+            cardDao.create(c);
+            this.add_card2deck(c,this.get_deck(udd.getDeck().getNom()));
+            System.out.println(c);
+        }
+    }
+
+    public void save_file(String path, String json) throws IOException
+    {
+        //path = path.concat(".json");
+        File file = new File(path);
+        if(!file.exists())
+        {
+            if(file.createNewFile()) System.out.println("Fichier créé avec succès");
+        }
+        PrintWriter writer = new PrintWriter(path);
+        writer.println(json);
+        writer.close();
+    }
+
+    public String read_file(String path) throws IOException
+    {
+        InputStream stream = new FileInputStream(path);
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader buff = new BufferedReader(reader);
+        String json = buff.readLine();
+        buff.close();
+        return json;
     }
 }
