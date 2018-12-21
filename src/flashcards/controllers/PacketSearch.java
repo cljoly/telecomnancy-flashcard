@@ -10,8 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -45,10 +48,15 @@ public class PacketSearch implements Initializable {
     @FXML
     private Button delete_card;
 
+    private BorderPane root;
 
-    public PacketSearch(){
+    @FXML
+    private Label deck_name;
+
+
+    public PacketSearch(BorderPane root){
         this.currentUser = GameUsers.getInstance().getCurrentUser();
-
+        this.root = root;
     }
 
 
@@ -57,13 +65,11 @@ public class PacketSearch implements Initializable {
         try{
             this.listOfAllDecks = this.currentUser.get_all_decks();
             for (Deck d : this.listOfAllDecks){
-
                 Button b = new Button();
                 b.setText(d.getNom());
                 b.setMinWidth(250);
                 b.setPrefWidth(29);
-
-                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, list_of_cards_container, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
+                b.addEventHandler(ActionEvent.ACTION, new WhenADeckIsClicked(b, deck_name, list_of_cards_container, recto_details, verso_details, add_change_to_card, unsave_changes, delete_card));
 
                 list_of_all_decks.getChildren().add(b);
             }
@@ -130,6 +136,23 @@ public class PacketSearch implements Initializable {
             recto_details.clear();
             verso_details.clear();
 
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void delete_selected_deck(){
+        try {
+            Deck d = GameUsers.getInstance().getCurrentUser().get_deck(deck_name.getText());
+            GameUsers.getInstance().getCurrentUser().delete_deck_and_its_cards(d);
+            URL path = getClass().getClassLoader().getResource("PacketSearch.fxml");
+            FXMLLoader deck = new FXMLLoader();
+            deck.setLocation(path);
+            deck.setControllerFactory(iC -> new PacketSearch(this.root));
+            //Parent decks = FXMLLoader.load(path);
+            this.root.setCenter(deck.load());
         } catch(Exception e){
             e.printStackTrace();
         }

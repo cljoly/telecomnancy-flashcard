@@ -23,8 +23,10 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="404.0" minHeight="10.0" prefHeight="250.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="413.0" minHeight="10.0" prefHeight="125.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -74,7 +76,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="recto_details" editable="false" prefHeight="99.0" prefWidth="660.0" />
+                        <TextArea fx:id="recto_details" editable="false" minHeight="50.0" prefHeight="50.0" prefWidth="660.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -87,7 +89,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="verso_details" prefHeight="73.0" prefWidth="660.0" />
+                        <TextArea fx:id="verso_details" minHeight="50.0" prefHeight="50.0" prefWidth="660.0" />
                      </children>
                   </HBox>
                   <Label text="Détails de la carte sélectionnée :" textFill="#7510a1">
@@ -104,17 +106,17 @@
                <children>
                   <Button fx:id="add_change_to_card" mnemonicParsing="false" onAction="#add_the_changes_to_the_card" text="Valider">
                      <HBox.margin>
-                        <Insets left="100.0" top="30.0" />
+                        <Insets left="100.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="unsave_changes" mnemonicParsing="false" onAction="#cancel_and_show_before" text="Annuler">
                      <HBox.margin>
-                        <Insets left="25.0" top="30.0" />
+                        <Insets left="25.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="delete_card" mnemonicParsing="false" onAction="#delete_card_from_app">
                      <HBox.margin>
-                        <Insets left="380.0" top="20.0" />
+                        <Insets left="380.0" top="5.0" />
                      </HBox.margin>
                      <graphic>
                         <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -123,6 +125,34 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
+               </children>
+            </HBox>
+            <HBox GridPane.rowIndex="3">
+               <children>
+                  <Label text="Détails du paquet sélectionné :" textFill="#7510a1">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="deck_name" textFill="#7510a1">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Button fx:id="delete_deck" mnemonicParsing="false" onAction="#delete_selected_deck" prefHeight="62.0" prefWidth="244.0" text="Supprimer paquet" />
                </children>
             </HBox>
          </children>

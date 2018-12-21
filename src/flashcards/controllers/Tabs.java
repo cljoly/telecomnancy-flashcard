@@ -68,11 +68,14 @@ public class Tabs {
     public void BTN_BROWSE_ON_ACTION() throws Exception{
         System.out.println("Browse decks");
 
-        URL path;
-        path = getClass().getClassLoader().getResource("PacketSearch.fxml");
-        Parent decks = FXMLLoader.load(path);
-        root.setCenter(decks);
+        URL path = getClass().getClassLoader().getResource("PacketSearch.fxml");
+        FXMLLoader deck = new FXMLLoader();
+        deck.setLocation(path);
+        deck.setControllerFactory(iC -> new PacketSearch(this.root));
+        //Parent decks = FXMLLoader.load(path);
+        root.setCenter(deck.load());
     }
+
     /**
      * Réaction au clic sur un bouton permettant d'afficher l'onglet de présentation des statistiques
      */
