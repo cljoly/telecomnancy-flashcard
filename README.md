@@ -3,9 +3,10 @@
 Notre application dispose d’une interface graphique et du modèle
 adossé à une base de données. L'application supporte la création de 
 paquets et de cartes, leur modification, ainsi que l'apprentissage de paquets avec le 
-[système de Leitner](https://fr.wikipedia.org/wiki/Syst%C3%A8me_Leitner). De plus, il est possible de créer une carte qui soit réversible. Aussi l'utilisateur a la possibilité d'exporter les paquets créées, ainsi que d'importer des paquets sous format JSON.
+[système de Leitner](https://fr.wikipedia.org/wiki/Syst%C3%A8me_Leitner). 
+De plus, il est possible de créer une carte qui soit réversible. Aussi l'utilisateur a la possibilité d'exporter les paquets créées, ainsi que d'importer des paquets sous format JSON.
+Enfin, l'utilisateur peut consulter ses statistiques dans un onglet particulier.
 
-Nous avons utilisé une **base de données** avec l’ORM **ORMLite**, dont toutes les fonctions associées sont testées avec **JUnit**. L’intégration continue (**Gitlab CI**) a été utilisée pour contrôler la bonne exécution des phases de compilation et de test.
 
 
 ## Lancement de l’application
@@ -46,6 +47,10 @@ L'utilisation d'un ORM nous a permis notamment de garder les données de l'utili
 
 Ainsi, nous avons pu utiliser des requêtes SQL pour accéder aux éléments de la base de données et pour les inserer dedans plutôt que de devoir créer des fonctions d'écriture et de lecture dans  un fichier qui impacterait fortement les performances et obligerait à lire et écrire dans un fichier.
 
+## Tests 
+
+Toutes les fonctions associées à la base de données sont testées avec **JUnit**.
+
 ## Lien entre la base de données et l'interface utilisateur
 
 Pour utiliser et lier la partie interface à la partie modèle principalement conçue autour de la base de données nous avons appliqué le design pattern Façade à la classe **User**. Ainsi toutes les intéractions entre le modèle et l'interface se font grâce à une instance de **User** ce qui nous permet également de mettre à jour la base de données en conséquences en plus des instances des autres classes.
@@ -54,6 +59,9 @@ Pour utiliser et lier la partie interface à la partie modèle principalement co
 
 Dans l'objectif de pouvoir récépurer l'utilisateur courant quel que soit le module ou la classe dans laquelle on se situe, nous avons appliqué le design patter Singleton à la classe **GameUser**. L'élément clé de cette méthode et que grâce à la fonction *static* de cette classe nous pouvons récupérer le joueur courant. 
 
+## Intégration continue 
+
+L’intégration continue (**Gitlab CI**) a été utilisée pour contrôler la bonne exécution des phases de compilation et de test. Elle permet aussi de générer un .JAR de notre application sous la forme d'un artefact
 
 
 
