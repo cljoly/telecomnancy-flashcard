@@ -20,9 +20,9 @@
 
 <AnchorPane prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.UserStats">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1080.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1080.0" styleClass="scrollborder" stylesheets="@mainStylesheet.css" vbarPolicy="ALWAYS">
          <content>
-            <GridPane alignment="CENTER" prefWidth="1065.0">
+            <GridPane alignment="CENTER" prefWidth="1065.0" styleClass="sub" stylesheets="@mainStylesheet.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,12 +42,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="1144.0" text="Compte rendu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="1144.0" styleClass="title" stylesheets="@mainStylesheet.css" text="Compte rendu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="217.0" prefWidth="1212.0" text="Nombre de cartes visitées par jour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER" prefHeight="217.0" prefWidth="1212.0" styleClass="label1" stylesheets="@mainStylesheet.css" text="Nombre de cartes visitées par jour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <BarChart fx:id="chart_cards_per_day" maxHeight="300.0" maxWidth="880.0" prefHeight="300.0" prefWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
@@ -69,8 +69,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="669.0" text="Total : " />
-                        <Label alignment="CENTER_RIGHT" prefHeight="109.0" prefWidth="806.0" text="Moyenne/jour : " GridPane.rowIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="669.0" styleClass="label1" stylesheets="@mainStylesheet.css" text="Total : " />
+                        <Label alignment="CENTER_RIGHT" prefHeight="109.0" prefWidth="806.0" styleClass="label1" stylesheets="@mainStylesheet.css" text="Moyenne/jour : " GridPane.rowIndex="1" />
                         <Label fx:id="lbl_cards_per_day_total" prefHeight="204.0" prefWidth="687.0" text="#NAN" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
@@ -89,12 +89,12 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" prefHeight="180.0" prefWidth="1105.0" text="Type de cartes" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label alignment="CENTER" prefHeight="180.0" prefWidth="1105.0" styleClass="title" stylesheets="@mainStylesheet.css" text="Type de cartes" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="170.0" prefWidth="1215.0" text="La part de chaque type de cartes dans vos deck" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label alignment="CENTER" prefHeight="170.0" prefWidth="1215.0" styleClass="label1" stylesheets="@mainStylesheet.css" text="La part de chaque type de cartes dans vos paquets" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <HBox prefHeight="562.0" prefWidth="1409.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
                         <VBox prefHeight="370.0" prefWidth="200.0">
@@ -140,7 +140,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="669.0" text="Total : " />
+                        <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="669.0" styleClass="label1" stylesheets="@mainStylesheet.css" text="Total : " />
                         <Label fx:id="lbl_cards_per_type_total" prefHeight="204.0" prefWidth="687.0" text="#NAN" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
