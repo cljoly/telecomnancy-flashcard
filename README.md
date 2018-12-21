@@ -40,6 +40,11 @@ $ ./gradlew javadoc
 - Lucas Fenouillet
 - Clément Joly
 
+# Vidéo de présentation de l'application
+
+Cliquez [ici](https://youtu.be/96t9Iy3vq5A) pour visualiser la vidéo de présentation de notre application. Bon visionnage ! :-)
+
+
 # Fondements de l'applications
 
 ## Utilisation d'une base de données
