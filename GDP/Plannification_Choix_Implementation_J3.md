@@ -21,6 +21,3 @@ Nous avons défini les tâches de travail à effectuer aujourd'hui :
 - Clément : réalisation de tests, et implémentation des fonctions d'accès à la base de données dont les membres du groupe auront besoin ou ont déjà besoin
 - Laury : continuer l'ajout des fonctionnalités sur l'interface graphique
 
-
-## Bilan de la journée
-
