@@ -213,10 +213,12 @@ public class PacketSearch implements Initializable {
                 String json = GameUsers.getInstance().getCurrentUser().export_card_in_deck(d);
                 String nom_fichier = "Export_paquets/" + d.getNom() + ".json";
                 GameUsers.getInstance().getCurrentUser().save_file(nom_fichier, json);
+                new DispSuccessPopup("Succès", "Paquet exporté avec succès");
             }
 
         } catch (Exception e){
             e.printStackTrace();
+            new DispErrorPopup("Erreur", "Le paquet est déjà exporté");
         }
     }
 

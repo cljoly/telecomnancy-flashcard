@@ -24,11 +24,16 @@ public class DeckCreate {
         GameUsers g = GameUsers.getInstance();
         User user = g.getCurrentUser();
         try {
-            user.create_deck(deck_name.getText(), deck_description.getText());
-            System.out.println("Paquet créé et ajouté à la BD");
-            String content = ("Nom : " + deck_name.getText() + "\n\nDescription : \n" + deck_description.getText());
-            new DispSuccessPopup("Paquet créé avec succès", content);
-            clean_fields();
+            if (deck_name.getText().isEmpty()){
+                new DispErrorPopup("Erreur", "Veuillez indiquer un nom de paquet");
+            } else {
+
+                user.create_deck(deck_name.getText(), deck_description.getText());
+                System.out.println("Paquet créé et ajouté à la BD");
+                String content = ("Nom : " + deck_name.getText() + "\n\nDescription : \n" + deck_description.getText());
+                new DispSuccessPopup("Paquet créé avec succès", content);
+                clean_fields();
+            }
         } catch (SQLException e){
             new DispErrorPopup("Erreur de création du paquet", "Un paquet déjà existant porte le même nom, sa création est donc impossible");
         }
