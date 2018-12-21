@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -24,7 +25,11 @@
          <content>
             <TableView fx:id="home_table" prefHeight="200.0" prefWidth="200.0" styleClass="scroll-interior" stylesheets="@mainStylesheet.css">
               <columns>
-                <TableColumn fx:id="paquets_column" maxWidth="677.0" minWidth="450.0" prefWidth="677.0" styleClass="scroll-interior" text="Paquets" />
+                <TableColumn fx:id="paquets_column" maxWidth="677.0" minWidth="450.0" prefWidth="677.0" text="Paquets">
+                     <styleClass>
+                        <String fx:value="scroll-interior" />
+                        <String fx:value="text-big2" />
+                     </styleClass></TableColumn>
               </columns>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
