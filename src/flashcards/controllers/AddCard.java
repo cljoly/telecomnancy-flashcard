@@ -55,15 +55,29 @@ public class AddCard implements Initializable{
     public void createCard(){
 
         try {
-            Card c = this.currentUser.create_card(recto_content.getText(), verso_content.getText(), reverse.getSelectedToggle() == oui);
-            String nom_deck = paquets.getSelectionModel().getSelectedItem();
-            Deck d = this.currentUser.get_deck(nom_deck);
-            this.currentUser.add_card2deck(c, d);
-            System.out.println("carte ajoutée");
-            String msg = ("Recto : \n" + recto_content.getText() + "\n\nVerso : \n" +verso_content.getText());
-            new DispSuccessPopup("La carte a été ajoutée avec succès", msg);
-            clean_fields();
-        } catch (SQLException e){
+            boolean reversible = (reverse.getSelectedToggle() == oui);
+            if (reversible) {
+                Card c = this.currentUser.create_one_card(recto_content.getText(), verso_content.getText());
+                Card c2 = this.currentUser.create_one_card(verso_content.getText(), recto_content.getText());
+                String nom_deck = paquets.getSelectionModel().getSelectedItem();
+                Deck d = this.currentUser.get_deck(nom_deck);
+                this.currentUser.add_card2deck(c, d);
+                this.currentUser.add_card2deck(c2, d);
+                System.out.println("carte ajoutée");
+                new DispSuccessPopup("Succès","Les deux cartes ont été ajoutées avec succès");
+                clean_fields();
+            } else {
+                Card c = this.currentUser.create_one_card(recto_content.getText(), verso_content.getText());
+                String nom_deck = paquets.getSelectionModel().getSelectedItem();
+                Deck d = this.currentUser.get_deck(nom_deck);
+                this.currentUser.add_card2deck(c, d);
+                System.out.println("carte ajoutée");
+                String msg = ("Recto : \n" + recto_content.getText() + "\n\nVerso : \n" + verso_content.getText());
+                new DispSuccessPopup("La carte a été ajoutée avec succès", msg);
+                clean_fields();
+            }
+
+        } catch (Exception e){
             new DispErrorPopup("Erreur de création de la carte", "Une carte déjà existante comporte les mêmes informations, soit dans son recto, soit dans son verso. Sa création est donc impossible.");
         }
     }
