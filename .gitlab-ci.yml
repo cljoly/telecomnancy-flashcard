@@ -16,6 +16,10 @@ jar:
     paths:
     - build/libs/
   allow_failure: true
+  artifacts:
+    paths:
+    - build/libs/codingweek-1.0-SNAPSHOT.jar
+    expire_in: 1 week
 
 javadoc:
   script:
