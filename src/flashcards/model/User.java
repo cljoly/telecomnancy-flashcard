@@ -339,6 +339,11 @@ public class User {
         this.currentTraining = new Training(this, d);
     }
 
+    public void createNewTraining(Deck d, int nbCard, int nbRepeat) throws SQLException
+    {
+        this.currentTraining = new Training(this, d, nbCard, nbRepeat);
+    }
+
     public void finishTraining()
     {
         this.currentTraining = null;
@@ -450,14 +455,7 @@ public class User {
                         " AND c." + Card.STATE_FIELD_NAME + " LIKE '" + cardStatType + "'" +
                         ""
         );
-        List<String[]> r = raw.getResults();
-        int nb_card = -1;
-        try {
-            nb_card = Integer.parseInt(r.get(0)[0]);
-        } catch (IndexOutOfBoundsException e) {
-            nb_card = 0;
-        }
-        return nb_card;
+        return listString(raw);
     }
 
     /**
@@ -472,6 +470,11 @@ public class User {
                         " AND dc." + DeckCard.DECK_ID_FIELD_NAME + " = " + deck.getId() + " " +
                         ""
         );
+        return listString(raw);
+    }
+
+    private int listString(GenericRawResults<String[]> raw) throws SQLException
+    {
         List<String[]> r = raw.getResults();
         int nb_card = -1;
         try {
