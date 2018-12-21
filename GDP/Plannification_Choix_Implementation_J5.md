@@ -13,6 +13,11 @@ Au delà de nos tâches individuelles, nous avons régulièrement travaillé ens
 
 ## Programme du jour
 
+Nous consacrerons cette journée à la finalisation de l’application : ajout des
+fonctionnalités qui n’ont été implémantés que partiellement, vérification du bon
+fonctionnement. Nous n’ajouterons pas de nouvelles fonctionnalités que nous
+crérions à partir de rien.
+
 - Vidéo
 - Écriture des exports sur le disque (Morgan)
 - Correction de la suppression des paquets dans l’interface (Laury)
