@@ -207,3 +207,5 @@ hs_err_pid*
 .idea/*
 
 database/*
+
+src/test/test.json

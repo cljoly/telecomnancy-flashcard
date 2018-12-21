@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.text.ParseException;
@@ -311,5 +312,15 @@ public class UserTest {
             System.out.println(c);
         }
         System.out.println("fin");
+    }
+
+    @Test
+    public void testInputOutputFile() throws IOException
+    {
+        String test = "Ceci n'est pas du json";
+        String path = "./src/test/test.json";
+        user.save_file(path,test);
+        String tmp = user.read_file(path);
+        assertEquals(test,tmp);
     }
 }

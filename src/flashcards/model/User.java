@@ -12,6 +12,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import javafx.util.Pair;
 
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -529,5 +530,28 @@ public class User {
             this.add_card2deck(c,this.get_deck(udd.getDeck().getNom()));
             System.out.println(c);
         }
+    }
+
+    public void save_file(String path, String json) throws IOException
+    {
+        //path = path.concat(".json");
+        File file = new File(path);
+        if(!file.exists())
+        {
+            if(file.createNewFile()) System.out.println("Fichier créé avec succès");
+        }
+        PrintWriter writer = new PrintWriter(path);
+        writer.println(json);
+        writer.close();
+    }
+
+    public String read_file(String path) throws IOException
+    {
+        InputStream stream = new FileInputStream(path);
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader buff = new BufferedReader(reader);
+        String json = buff.readLine();
+        buff.close();
+        return json;
     }
 }
