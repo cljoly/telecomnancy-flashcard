@@ -15,16 +15,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.Packets">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.Packets">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="60.0" left="200.0" right="200.0" top="20.0" />
          </BorderPane.margin>
          <content>
-            <TableView fx:id="home_table" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="home_table" prefHeight="200.0" prefWidth="200.0" styleClass="scroll-interior" stylesheets="@mainStylesheet.css">
               <columns>
-                <TableColumn fx:id="paquets_column" maxWidth="677.0" minWidth="450.0" prefWidth="677.0" text="Paquets" />
+                <TableColumn fx:id="paquets_column" maxWidth="677.0" minWidth="450.0" prefWidth="677.0" styleClass="scroll-interior" text="Paquets" />
               </columns>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
