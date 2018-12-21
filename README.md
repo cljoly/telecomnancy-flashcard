@@ -17,6 +17,9 @@ Nous avons développé Memscarlo avec Java 8. Pour la lancer, faire :
 $ ./gradlew run
 ```
 
+Des paquets tests sont disponibles au format JSON dans le dossier **Paquets_de_test**. Pour les importer, il suffit de renseigner leur chemin absolu dans l'onglet d'accueil et de cliquer sur importer.
+Le paquet sample2 a déjà subi un apprentissage très léger afin que lors de son import, on puisse voir directement des statistiques.
+
 ## Création du jar
 
 ``` sh
