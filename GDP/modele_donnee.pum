@@ -1,0 +1,29 @@
+@startuml
+
+class Card {
+  - int id;
+  - String recto
+  - String verso
+  - int mark
+  - String state
+}
+
+class Deck {
+  - int id;
+  - String nom
+  - String description
+}
+
+class DeckCard {
+  - int id
+  - int deck_id
+  - int card_id
+}
+
+class VisitePerDay {
+  - int id
+  - String day
+  - int nb_card
+}
+
+@enduml
