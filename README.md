@@ -36,3 +36,25 @@ $ ./gradlew javadoc
 - Morgan Ebandza
 - Lucas Fenouillet
 - Clément Joly
+
+# Fondements de l'applications
+
+## Utilisation d'une base de données
+
+Nous avons pris la décision dès le début du projet d'utiliser une base de données accompagnée d'un ORM pour stocker les données de l'utilisateur de l'application. Pour ce faire nous avons utilisé **ORMLite** qui a l'avantage d'être très bien documenté.
+
+L'utilisation d'un ORM nous a permis notamment de garder les données de l'utilisateurs et de pouvoirs les visualiser de manière claire. La base de données de plus est très adaptée à une utilisation de beaucoup de cartes et decks, nous nous sommes en effet demandés en début de projet de quelle manière nous allions visualiser les données lorsque nous lancerions un test avec un grand jeu de données, il nous est alors apparu que l'utilisation d'une base de données étaient la manière la plus simple de régler tous les problèmes à nos questions.
+
+Ainsi, nous avons pu utiliser des requêtes SQL pour accéder aux éléments de la base de données et pour les inserer dedans plutôt que de devoir créer des fonctions d'écriture et de lecture dans  un fichier qui impacterait fortement les performances et obligerait à lire et écrire dans un fichier.
+
+## Lien entre la base de données et l'interface utilisateur
+
+Pour utiliser et lier la partie interface à la partie modèle principalement conçue autour de la base de données nous avons appliqué le design pattern Façade à la classe **User**. Ainsi toutes les intéractions entre le modèle et l'interface se font grâce à une instance de **User** ce qui nous permet également de mettre à jour la base de données en conséquences en plus des instances des autres classes.
+
+## Accès à l'utilisateur courrant
+
+Dans l'objectif de pouvoir récépurer l'utilisateur courant quel que soit le module ou la classe dans laquelle on se situe, nous avons appliqué le design patter Singleton à la classe **GameUser**. L'élément clé de cette méthode et que grâce à la fonction *static* de cette classe nous pouvons récupérer le joueur courant. 
+
+
+
+
