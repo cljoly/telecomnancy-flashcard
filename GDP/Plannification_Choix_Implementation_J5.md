@@ -9,9 +9,13 @@ Travail réalisé hier
 - Laury : Ajout des fonctionnalité de suppression de l’interface. Amélioration de l’esthétique de l’interface. Ajout d’image dams l’interface.
 - Lucas : Fin de l’interface pour les statistiques. Ajout d’un manuel utlisateur.
 
+Au delà de nos tâches individuelles, nous avons régulièrement travaillé ensemble sur les problème les plus épineux.
+
 ## Programme du jour
 
 - Vidéo
-- Écriture des exports sur le disque
-- Correction de la suppression des paquets dans l’interface
+- Écriture des exports sur le disque (Morgan)
+- Correction de la suppression des paquets dans l’interface (Laury)
+- Documentation de notre travail (Clément)
+- Amélioration de l’esthétique de l’interface (Lucas)
 
