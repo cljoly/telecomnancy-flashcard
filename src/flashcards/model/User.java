@@ -215,7 +215,7 @@ public class User {
 
     /**
      * Renvoie la liste (éventuellement vide) des cartes associées à un paquet. On peut récupérer l’objet Deck avec
-     * @link get_deck.
+     * la méthode get_deck.
      * @param d Paquet dont on cheche les cartes
      * @return Cartes associées
      */
@@ -234,7 +234,7 @@ public class User {
 
     /**
      * Renvoie la liste (éventuellement vide) des paquets associés à une carte. On peut récupérer l’objet Deck avec
-     * @link get_recto.
+     * la méthode get_recto.
      * @param c Carte dont on cheche le paquet
      * @return Paquet associés
      */

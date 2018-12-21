@@ -52,7 +52,6 @@ public class Card {
      * Constructeur d’une flashcard
      * @param recto Recto de la carte (supposé unique parmis toutes les cartes)
      * @param verso Verso de la carte (supposé unique parmis toutes les cartes)
-     * @param reversible La carte est-elle réversible ?
      */
     public Card(String recto, String verso) {
         this.recto = recto;
