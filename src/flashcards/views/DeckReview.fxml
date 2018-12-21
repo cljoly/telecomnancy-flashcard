@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="deck_review_window" prefHeight="660.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckReview">
+<AnchorPane fx:id="deck_review_window" prefHeight="560.0" prefWidth="1080.0" styleClass="root" stylesheets="@mainStylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashcards.controllers.DeckReview">
    <children>
       <VBox prefHeight="615.0" prefWidth="1040.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -79,18 +79,6 @@
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btn_review_opts" mnemonicParsing="false" text="Options générales">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btn_review_alt_launch" mnemonicParsing="false" prefHeight="26.0" prefWidth="193.0" text="Supprimer le paquet">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
