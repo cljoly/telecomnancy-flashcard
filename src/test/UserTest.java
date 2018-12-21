@@ -1,14 +1,11 @@
-import flashcards.model.CardStates;
+import flashcards.model.*;
 import javafx.util.Pair;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-import flashcards.model.User;
-import flashcards.model.Card;
-import flashcards.model.Deck;
-
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.text.ParseException;
@@ -278,5 +275,52 @@ public class UserTest {
 
         assertEquals(2, this.user.get_deck_cards_number(d_eu));
         assertEquals(4, this.user.get_deck_cards_number(d_monde));
+    }
+    /*
+    @Test
+    public void testUserData() throws SQLException
+    {
+        UserData ud = new UserData(this.user);
+        String json = ud.toJson();
+        System.out.println("json======================================json");
+        System.out.println(json);
+        UserData ud2 = new UserData(json);
+        user.delete_all_data();
+        ud2.fill_data_base(user);
+        String json2 = ud2.toJson();
+        System.out.println("json2======================================json2");
+        System.out.println(json2);
+        assertEquals(json,json2);
+    }
+    */
+
+    @Test
+    public void testDeckExportImport() throws SQLException
+    {
+        Deck d1 = user.get_deck("Capitales eu");
+        String json = user.export_card_in_deck(d1);
+        System.out.println("json======================================json");
+        System.out.println(json);
+        user.delete_deck_and_its_cards(d1);
+        user.import_card_in_deck(json);
+
+        assertNotEquals(user.get_deck("Capitales eu"),null);
+        System.out.println("json======================================json");
+        System.out.println(user.get_deck("Capitales eu"));
+        for (Card c: user.get_card_from_deck(user.get_deck("Capitales eu")))
+        {
+            System.out.println(c);
+        }
+        System.out.println("fin");
+    }
+
+    @Test
+    public void testInputOutputFile() throws IOException
+    {
+        String test = "Ceci n'est pas du json";
+        String path = "./src/test/test.json";
+        user.save_file(path,test);
+        String tmp = user.read_file(path);
+        assertEquals(test,tmp);
     }
 }
